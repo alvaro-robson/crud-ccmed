@@ -1,0 +1,22 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+body{
+	font-size: 50px;
+	font-family: courier;
+	font-weight: bold;
+	background-color: #005163;
+	color: #FFA000;
+}
+
+.container{
+	margin: 20px auto;
+	width: 90%;
+}
+
+h3{
+	text-align: center;
+	font-size: 60px;
+}
