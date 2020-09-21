@@ -20,3 +20,27 @@ h3{
 	text-align: center;
 	font-size: 60px;
 }
+
+a{
+	color: #FFA000;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.icones{
+	width: 80px;
+	margin: 15px 20px;
+}
+
+input{
+	display: block;
+	width: 80%;
+	height: 70px;
+	box-sizing: border-box;
+	margin: 10px auto;
+	font-size: 50px;
+}
+
+.form-container{
+	margin: 500px auto;
+}

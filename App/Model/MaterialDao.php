@@ -16,6 +16,7 @@ class MaterialDao{
 		$stmt->bindValue(4, $m->getid_prat_fk());
 		$stmt->bindValue(5, $m->getid_forn_fk());
 		$stmt->execute();
+		header("location:form-cadastrar.php");
 	}
 
 	public function read(){
