@@ -282,6 +282,17 @@ foreach($fornDao->read() as $fornecedores){
 //$fornDao->update($forn);
 //$fornDao->delete(7);
 
+//--READ--FORN_LOGRA_POSSUI---------------------------------
+$flpDao = new App\Model\Forn_logra_possuiDao;
+$flpDao->read();
+echo "<h3><u>Listagem dos registros associativos entre FORNECEDOR e LOGRADOURO</u></h3><br>";
+foreach($flpDao->read() as $registros){
+	echo
+		"ID Fornecedor = " . $registros['id_forn_fk'] . "<br>" .
+		"CEP = " . $registros['cep_fk'] .
+		"<br>-----------------------------<br>";
+}
+
 /*
 echo "<pre>";
 	var_dump($cidade);
