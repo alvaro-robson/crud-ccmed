@@ -282,7 +282,8 @@ foreach($fornDao->read() as $fornecedores){
 //$fornDao->update($forn);
 //$fornDao->delete(7);
 
-//--READ--FORN_LOGRA_POSSUI---------------------------------
+//--READ--FORN_LOGRA_POSSUI--------------------------------------------
+/*
 $flpDao = new App\Model\Forn_logra_possuiDao;
 $flpDao->read();
 echo "<h3><u>Listagem dos registros associativos entre FORNECEDOR e LOGRADOURO</u></h3><br>";
@@ -292,6 +293,71 @@ foreach($flpDao->read() as $registros){
 		"CEP = " . $registros['cep_fk'] .
 		"<br>-----------------------------<br>";
 }
+*/
+
+
+//--CRUD--LOGRADOURO----------------------------------------------------
+
+//$logra = new App\Model\Logradouro;
+/*
+$logra->setcep('777777777');
+$logra->setnome_logra('aa');
+$logra->settipo_logra('Avenida');
+$logra->setid_cidade_fk(2);
+*/
+//$lograDao = new App\Model\LogradouroDao;
+//$lograDao->create($logra);
+/*
+$lograDao->read();
+echo "<u><h3>Logradouros</h3></u>";
+foreach($lograDao->read() as $logradouros){
+	echo
+		"CEP = " . $logradouros['cep'] . "<br>" . 
+		"Logradouro = " . $logradouros['nome_logra'] . "<br>" . 
+		"Tipo = " . $logradouros['tipo_logra'] . "<br>" . 
+		"ID cidade = " . $logradouros['id_cidade_fk'] . "<br>" . 
+		"<a href = ''>
+			<img src = 'icones/edit-64.png' class = 'icones'>
+		</a>
+		<a href = ''>
+			<img src = 'icones/x-mark-4-64.png' class = 'icones'>
+		</a> " .
+		"<br>-----------------------------<br>";
+}
+*/
+//$lograDao->update($logra);
+//$lograDao->delete('777777777');
+
+//$pedido = new App\Model\Pedido;
+
+//$pedido->setid_pedido(13);
+//$pedido->setdata_fechamento('');//PARA TESTES, FOI PRECISO DEIXAR ESSE MÉTODO COMENTADO PARA QUE ACEITASSE COMO NULO. nÃO BASTOU DEIXAR ASPAS VAZIAS.
+//$pedido->setstatus_pedido('');
+//$pedido->setid_usuario_fk(2);
+/*
+$pedidoDao = new App\Model\PedidoDao;
+//$pedidoDao->create($pedido);
+$pedidoDao->read();
+foreach($pedidoDao->read() as $pedidos){
+	echo 
+		"<u>ID</u> = " . $pedidos['id_pedido'] . "<br>" . 
+		"<u>Data de abertura</u> = " . $pedidos['data_abertura'] . "<br>" . 
+		"<u>Vencimento</u> = " . $pedidos['vencimento'] . "<br>" . 
+		"<u>Data de fechamento</u> = " . $pedidos['data_fechamento'] . "<br>" . 
+		"<u>Status do pedido</u> = " . $pedidos['status_pedido'] . "<br>" . 
+		"<u>ID do usuário</u> = " . $pedidos['id_usuario_fk'] . "<br>" . 
+		"<a href = ''>
+			<img src = 'icones/edit-64.png' class = 'icones'>
+		</a>
+		<a href = ''>
+			<img src = 'icones/x-mark-4-64.png' class = 'icones'>
+		</a> " .
+		"<br>-----------------------------<br>";
+}
+*/
+//$pedidoDao->update($pedido);
+//$pedidoDao->delete(14);
+
 
 /*
 echo "<pre>";
