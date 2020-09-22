@@ -21,9 +21,32 @@ class ComposerStaticInite47838b887e0888a2a526e06771a633e
     );
 
     public static $classMap = array (
+        'App\\Model\\Acesso' => __DIR__ . '/../..' . '/App/Model/Acesso.php',
+        'App\\Model\\AcessoDao' => __DIR__ . '/../..' . '/App/Model/AcessoDao.php',
+        'App\\Model\\Cidade' => __DIR__ . '/../..' . '/App/Model/Cidade.php',
+        'App\\Model\\CidadeDao' => __DIR__ . '/../..' . '/App/Model/CidadeDao.php',
+        'App\\Model\\Coluna' => __DIR__ . '/../..' . '/App/Model/Coluna.php',
+        'App\\Model\\ColunaDao' => __DIR__ . '/../..' . '/App/Model/ColunaDao.php',
         'App\\Model\\Conexao' => __DIR__ . '/../..' . '/App/Model/conexao.php',
+        'App\\Model\\Corredor' => __DIR__ . '/../..' . '/App/Model/Corredor.php',
+        'App\\Model\\CorredorDao' => __DIR__ . '/../..' . '/App/Model/CorredorDao.php',
+        'App\\Model\\Detalhe_pedido' => __DIR__ . '/../..' . '/App/Model/Detalhe_pedido.php',
+        'App\\Model\\Detalhe_pedidoDao' => __DIR__ . '/../..' . '/App/Model/Detalhe_pedidoDao.php',
+        'App\\Model\\Email' => __DIR__ . '/../..' . '/App/Model/Email.php',
+        'App\\Model\\EmailDao' => __DIR__ . '/../..' . '/App/Model/EmailDao.php',
+        'App\\Model\\Estado' => __DIR__ . '/../..' . '/App/Model/Estado.php',
+        'App\\Model\\EstadoDao' => __DIR__ . '/../..' . '/App/Model/EstadoDao.php',
+        'App\\Model\\Forn_logra_possuiDao' => __DIR__ . '/../..' . '/App/Model/Forn_logra_possuiDao.php',
+        'App\\Model\\Fornecedor' => __DIR__ . '/../..' . '/App/Model/Fornecedor.php',
+        'App\\Model\\FornecedorDao' => __DIR__ . '/../..' . '/App/Model/FornecedorDao.php',
+        'App\\Model\\Logradouro' => __DIR__ . '/../..' . '/App/Model/Logradouro.php',
+        'App\\Model\\LogradouroDao' => __DIR__ . '/../..' . '/App/Model/LogradouroDao.php',
         'App\\Model\\Material' => __DIR__ . '/../..' . '/App/Model/Material.php',
         'App\\Model\\MaterialDao' => __DIR__ . '/../..' . '/App/Model/MaterialDao.php',
+        'App\\Model\\Pedido' => __DIR__ . '/../..' . '/App/Model/Pedido.php',
+        'App\\Model\\PedidoDao' => __DIR__ . '/../..' . '/App/Model/PedidoDao.php',
+        'App\\Model\\Prateleira' => __DIR__ . '/../..' . '/App/Model/PrateleiraDao.php',
+        'App\\Model\\PrateleiraDao' => __DIR__ . '/../..' . '/App/Model/Prateleira.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

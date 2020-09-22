@@ -359,6 +359,108 @@ foreach($pedidoDao->read() as $pedidos){
 //$pedidoDao->delete(14);
 
 
+
+//--CRUD--PRATELEIRA------------------------------------------------
+$prat = new App\Model\Prateleira;
+/*
+$prat->setid_prat(17);
+$prat->setnome_prat('ewwww');
+$prat->setid_coluna_fk(2);
+*/
+
+$pratDao = new App\Model\PrateleiraDao;
+//$pratDao->create($prat);
+/*
+$pratDao->read();
+foreach($pratDao->read() as $prateleiras){
+	echo 
+	"ID = " . $prateleiras['id_prat'] . "<br>" .
+	"Prateleira = " . $prateleiras['nome_prat'] . "<br>" .
+	"ID Coluna = " . $prateleiras['id_coluna_fk'] . "<br>" .
+	"<a href = ''>
+			<img src = 'icones/edit-64.png' class = 'icones'>
+		</a>
+		<a href = ''>
+			<img src = 'icones/x-mark-4-64.png' class = 'icones'>
+		</a> " .
+		"<br>-----------------------------<br>";
+}
+*/
+//$pratDao->update($prat);
+//$pratDao->delete();
+
+
+
+//--CRUD--TELEFONE-------------------------------------------------
+$tel = new App\Model\Telefone;
+/*
+$tel->setid_telefone();
+$tel->setnumero_tel();
+$tel->setid_forn_fk();
+*/
+$telDao = new App\Model\TelefoneDao;
+//$telDao->create($tel);
+//$telDao->read();
+/*
+foreach($telDao->read() as $telefones){
+	echo
+		"ID = " . $telefones['id_telefone'] . "<br>" .
+		"Telefone = " . $telefones['numero_tel'] . "<br>" .
+		"ID Fornecedor = " . $telefones['id_forn_fk'] . "<br>" .
+		"<a href = ''>
+			<img src = 'icones/edit-64.png' class = 'icones'>
+		</a>
+		<a href = ''>
+			<img src = 'icones/x-mark-4-64.png' class = 'icones'>
+		</a> " .
+		"<br>-----------------------------<br>";
+}
+*/
+//$telDao->update($tel);
+//$telDao->delete();
+
+
+
+
+//--CRUD--USUARIO-------------------------------------------------
+$usu = new App\Model\Usuario;
+/*
+$usu->setid_usuario(8);
+$usu->setlogin('z');
+$usu->setsenha('z');
+$usu->setnome('z');
+$usu->setsobrenome('z');
+$usu->setmatricula(9992);
+$usu->setid_acesso_fk(1);
+*/
+
+$usuDao = new App\Model\UsuarioDao;
+//$usuDao->create($usu);
+/*
+$usuDao->read();
+foreach($usuDao->read() as $usuarios){
+	echo
+		"ID = " . $usuarios['id_usuario'] . "<br>" .
+		"Login = " . $usuarios['login'] . "<br>" .
+		"Senha = " . $usuarios['senha'] . "<br>" .
+		"Nome = " . $usuarios['nome'] . "<br>" .
+		"Sobrenome = " . $usuarios['sobrenome'] . "<br>" .
+		"Matrícula = " . $usuarios['matricula'] . "<br>" .
+		"ID acesso = " . $usuarios['id_acesso_fk'] . "<br>" .
+		"<a href = ''>
+			<img src = 'icones/edit-64.png' class = 'icones'>
+		</a>
+		<a href = ''>
+			<img src = 'icones/x-mark-4-64.png' class = 'icones'>
+		</a> " .
+		"<br>-----------------------------<br>";
+}
+*/
+//$usuDao->update($usu);
+//$usuDao->delete(8);
+
+
+
 /*
 echo "<pre>";
 	var_dump($cidade);
