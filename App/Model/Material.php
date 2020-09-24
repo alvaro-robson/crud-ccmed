@@ -4,7 +4,7 @@ namespace App\Model;
 
 class Material{
 
-    private $id_material, $nome_material, $desc_material, $qtde_estoque, $id_prat_fk, $id_forn_fk;
+    private $id_material, $nome_material, $desc_material, $qtde_estoque, $id_prat_fk, $id_forn_fk, $imagem;
     
 	//ID DO MATERIAL------------------------------------------------
     public function getid_material(){
@@ -53,5 +53,13 @@ class Material{
     public function setid_forn_fk($id_forn_fk){
       $this->id_forn_fk = $id_forn_fk;
     }
-  }
+
+    public function get_imagem(){
+      return $this->imagem;
+    }
+    public function setimagem($imagem){
+      $this->imagem = $imagem;
+    }
+    
+}
 ?>

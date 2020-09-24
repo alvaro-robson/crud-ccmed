@@ -3,7 +3,7 @@
 <html>
 <head>
 	<title></title>
-	<link rel="stylesheet" href="css/estilo.css">
+	<link rel="stylesheet" href="css/estilo2.css">
 </head>
 <body>
 	<div class="container">
@@ -22,35 +22,66 @@ $material->setqtde_estoque(10);
 $material->setid_prat_fk(3);
 $material->setid_forn_fk(1);
 */
-/*
+
 $materialDao = new \App\Model\MaterialDao();
 //CREATE
 if(isset($_POST['btnCadastrar'])){
-	//$material->setid_material(1);
+
+    
+
+    
+    $material->setid_material(1);
 	$material->setnome_material($_POST['nome_material']);
 	$material->setdesc_material($_POST['desc_material']);
 	$material->setqtde_estoque($_POST['qtde_estoque']);
 	$material->setid_prat_fk($_POST['id_prat_fk']);
 	$material->setid_forn_fk($_POST['id_forn_fk']);
+	//$material->setimagem($imagem);
 	$materialDao->create($material);//NÃO FUNCIONOU DE PRIMEIRA. Tive que dar o comando "composer dumpautoload -o"
+    
+  
+
+
+
+
+
+
+	/*
+	$material->setid_material(1);
+	$material->setnome_material($_POST['nome_material']);
+	$material->setdesc_material($_POST['desc_material']);
+	$material->setqtde_estoque($_POST['qtde_estoque']);
+	$material->setid_prat_fk($_POST['id_prat_fk']);
+	$material->setid_forn_fk($_POST['id_forn_fk']);
+	$material->setnome_imagem($_FILES['nome_imagem']['name']);
+	$materialDao->create($material);//NÃO FUNCIONOU DE PRIMEIRA. Tive que dar o comando "composer dumpautoload -o"
+	*/
 }
-*/
+
 //$materialDao->update($material);
 //$materialDao->delete(14);
-//$materialDao->read();
-/*
+$materialDao->read();
+
 echo "<h3><strong><u>Listagem dos materiais</u></strong></h3><br>";
 foreach ($materialDao->read() as $materiais) {
 	echo
+	"<img src = upload/" . $materiais['imagem'] . " class = 'imagem-material'> " . "<br>" . 
 	"ID = " . $materiais['id_material'] . "<br>" .  
 	"Nome = " . $materiais['nome_material'] . "<br>" . 
 	"Descrição = " . $materiais['desc_material'] . "<br>" .
 	"Qtde. estoque = " . $materiais['qtde_estoque'] . "<br>" .
 	"ID prateleira = " . $materiais['id_prat_fk'] . "<br>" .
-	"ID fornecedor = " . $materiais['id_forn_fk'] . 
-	"<br>-----------------------------<br>";
+	"ID fornecedor = " . $materiais['id_forn_fk'] . "<br>" .
+	"<a href = ''>
+			<img src = 'icones/edit-64.png' class = 'icones'>
+		</a>
+		<a href = ''>
+			<img src = 'icones/x-mark-4-64.png' class = 'icones'>
+		</a> " .
+		"<br>-----------------------------<br>";
 }
-*/
+
+//var_dump($material->setnome_imagem());
 
 //--CRUD-CIDADE-------------------------------------------------------
 /*
