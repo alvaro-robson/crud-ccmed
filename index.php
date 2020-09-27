@@ -26,11 +26,7 @@ $material->setid_forn_fk(1);
 $materialDao = new \App\Model\MaterialDao();
 //CREATE
 if(isset($_POST['btnCadastrar'])){
-
-    
-
-    
-    $material->setid_material(1);
+	$material->setid_material(1);
 	$material->setnome_material($_POST['nome_material']);
 	$material->setdesc_material($_POST['desc_material']);
 	$material->setqtde_estoque($_POST['qtde_estoque']);
@@ -38,28 +34,10 @@ if(isset($_POST['btnCadastrar'])){
 	$material->setid_forn_fk($_POST['id_forn_fk']);
 	//$material->setimagem($imagem);
 	$materialDao->create($material);//NÃO FUNCIONOU DE PRIMEIRA. Tive que dar o comando "composer dumpautoload -o"
-    
-  
 
-
-
-
-
-
-	/*
-	$material->setid_material(1);
-	$material->setnome_material($_POST['nome_material']);
-	$material->setdesc_material($_POST['desc_material']);
-	$material->setqtde_estoque($_POST['qtde_estoque']);
-	$material->setid_prat_fk($_POST['id_prat_fk']);
-	$material->setid_forn_fk($_POST['id_forn_fk']);
-	$material->setnome_imagem($_FILES['nome_imagem']['name']);
-	$materialDao->create($material);//NÃO FUNCIONOU DE PRIMEIRA. Tive que dar o comando "composer dumpautoload -o"
-	*/
 }
 
-//$materialDao->update($material);
-//$materialDao->delete(14);
+
 $materialDao->read();
 
 echo "<h3><strong><u>Listagem dos materiais</u></strong></h3><br>";
@@ -72,8 +50,8 @@ foreach ($materialDao->read() as $materiais) {
 	"Qtde. estoque = " . $materiais['qtde_estoque'] . "<br>" .
 	"ID prateleira = " . $materiais['id_prat_fk'] . "<br>" .
 	"ID fornecedor = " . $materiais['id_forn_fk'] . "<br>" .
-	"<a href = ''>
-			<img src = 'icones/edit-64.png' class = 'icones'>
+	"<a href = editar-material.php?id_edit=".$materiais['id_material'].">
+	<img src = 'icones/edit-64.png' class = 'icones'>
 		</a>
 		<a href = ''>
 			<img src = 'icones/x-mark-4-64.png' class = 'icones'>
@@ -81,7 +59,24 @@ foreach ($materialDao->read() as $materiais) {
 		"<br>-----------------------------<br>";
 }
 
-//var_dump($material->setnome_imagem());
+if(isset($_GET['id'])){
+		/*
+		$id = $_GET['id'];
+		$sql = 'SELECT * FROM MATERIAL WHERE id_material = ?';
+		$stmt = Conexao::getConn()->prepare($sql);
+		$stmt->bindValue(1, $id);
+		$stmt->execute();
+		if($stmt->rowCount() > 0){
+			 $result = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+			return $result;
+		}else{
+			echo "Nenhum registro";
+		}
+		*/
+	}
+//$materialDao->delete(14);
+
+
 
 //--CRUD-CIDADE-------------------------------------------------------
 /*

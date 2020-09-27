@@ -58,6 +58,31 @@ class MaterialDao{
 		$stmt->bindValue(1, $id_material);
 		$stmt->execute();
 	}
+	
+	/*
+	public function read_editar(){
+		$id_edit = $_GET['id'];
+		$sql = 'SELECT * FROM MATERIAL WHERE id_material = $id_edit';
+		$stmt = Conexao::getConn()->prepare($sql);
+		//$stmt->bindValue(1, $m->getid_edit());
+		$stmt->execute();
+		$resultado = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+	}
+	*/
+	public function editar_material(){
+		$id = $_GET['id_edit'];
+		//$res = array(); //se nao vier nada do banco, sera um array vazio(tratamento de erro)
+		$sql = 'SELECT * FROM MATERIAL WHERE id_material = ?';
+		$stmt = Conexao::getConn()->prepare($sql);
+		$stmt->bindValue(1, $id);
+		$stmt->execute();
+
+		$resultado = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+		return $resultado;
+	}
 }
+
+
+
 
  ?>

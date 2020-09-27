@@ -32,4 +32,8 @@ return array(
     'App\\Model\\PedidoDao' => $baseDir . '/App/Model/PedidoDao.php',
     'App\\Model\\Prateleira' => $baseDir . '/App/Model/PrateleiraDao.php',
     'App\\Model\\PrateleiraDao' => $baseDir . '/App/Model/Prateleira.php',
+    'App\\Model\\Telefone' => $baseDir . '/App/Model/Telefone.php',
+    'App\\Model\\TelefoneDao' => $baseDir . '/App/Model/TelefoneDao.php',
+    'App\\Model\\Usuario' => $baseDir . '/App/Model/Usuario.php',
+    'App\\Model\\UsuarioDao' => $baseDir . '/App/Model/UsuarioDao.php',
 );

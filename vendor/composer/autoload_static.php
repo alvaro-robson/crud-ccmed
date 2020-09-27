@@ -47,6 +47,10 @@ class ComposerStaticInite47838b887e0888a2a526e06771a633e
         'App\\Model\\PedidoDao' => __DIR__ . '/../..' . '/App/Model/PedidoDao.php',
         'App\\Model\\Prateleira' => __DIR__ . '/../..' . '/App/Model/PrateleiraDao.php',
         'App\\Model\\PrateleiraDao' => __DIR__ . '/../..' . '/App/Model/Prateleira.php',
+        'App\\Model\\Telefone' => __DIR__ . '/../..' . '/App/Model/Telefone.php',
+        'App\\Model\\TelefoneDao' => __DIR__ . '/../..' . '/App/Model/TelefoneDao.php',
+        'App\\Model\\Usuario' => __DIR__ . '/../..' . '/App/Model/Usuario.php',
+        'App\\Model\\UsuarioDao' => __DIR__ . '/../..' . '/App/Model/UsuarioDao.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

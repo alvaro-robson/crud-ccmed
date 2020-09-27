@@ -60,6 +60,13 @@ class Material{
     public function setimagem($imagem){
       $this->imagem = $imagem;
     }
+
+    public function getid_edit(){
+      return $this->id_edit;
+    }
+    public function setid_edit($id_edit){
+      $this->id_edit = $id_edit;
+    }
     
 }
 ?>
