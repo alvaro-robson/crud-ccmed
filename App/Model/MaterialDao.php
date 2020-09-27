@@ -40,7 +40,7 @@ class MaterialDao{
 	}
 
 	public function update(Material $m){//recebe a classe Material como parâmetro instanciada como $p
-		$sql = 'UPDATE MATERIAL SET nome_material = ?, desc_material = ?, qtde_estoque = ?, id_prat_fk = ?, id_forn_fk = ?, nome_imagem = ? WHERE id_material = ?';
+		$sql = 'UPDATE MATERIAL SET nome_material = ?, desc_material = ?, qtde_estoque = ?, id_prat_fk = ?, id_forn_fk = ? WHERE id_material = ?';
 		$stmt = Conexao::getConn()->prepare($sql);
 		$stmt->bindValue(1, $m->getnome_material());
 		$stmt->bindValue(2, $m->getdesc_material());
@@ -48,14 +48,15 @@ class MaterialDao{
 		$stmt->bindValue(4, $m->getid_prat_fk());
 		$stmt->bindValue(5, $m->getid_forn_fk());
 		$stmt->bindValue(6, $m->getid_material());
-		$stmt->bindValue(7, $m->getnome_imagem());
+		//$stmt->bindValue(7, $m->getnome_imagem());
 		$stmt->execute();
 	}
 
-	public function delete($id_material){
+	public function delete(){
+		$id = $_GET['id'];
 		$sql = 'DELETE FROM MATERIAL WHERE id_material = ?';
 		$stmt = Conexao::getConn()->prepare($sql);
-		$stmt->bindValue(1, $id_material);
+		$stmt->bindValue(1, $id);
 		$stmt->execute();
 	}
 	
@@ -70,13 +71,11 @@ class MaterialDao{
 	}
 	*/
 	public function editar_material(){
-		$id = $_GET['id_edit'];
-		//$res = array(); //se nao vier nada do banco, sera um array vazio(tratamento de erro)
+		$id = $_GET['id'];
 		$sql = 'SELECT * FROM MATERIAL WHERE id_material = ?';
 		$stmt = Conexao::getConn()->prepare($sql);
 		$stmt->bindValue(1, $id);
 		$stmt->execute();
-
 		$resultado = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 		return $resultado;
 	}
