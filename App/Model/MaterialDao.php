@@ -8,9 +8,9 @@ class MaterialDao{
 		$sql = 'INSERT INTO MATERIAL(nome_material, desc_material, qtde_estoque, id_prat_fk, id_forn_fk, imagem) VALUES(?, ?, ?, ?, ?, ?)';
 		//as interrogações são equivalentes aos valores
 		$extensao = strtolower(substr($_FILES['nome_imagem']['name'], -4)); //pega a extensao do arquivo
-	    $imagem = $_FILES['nome_imagem']['name'] . $extensao; //define o nome do arquivo
+	    $imagem = md5($_FILES['nome_imagem']['name']) . $extensao; //define o nome do arquivo
 	    $diretorio = "upload/"; //define o diretorio para onde enviaremos o arquivo
-		    move_uploaded_file($_FILES['nome_imagem']['tmp_name'], $diretorio.$imagem); //efetua o upload
+		move_uploaded_file($_FILES['nome_imagem']['tmp_name'], $diretorio.$imagem); //efetua o upload
 		//Preparando o sql usando o PDO, começando com o método getConn(que é uma instância do PDO) da classe Conexao:
 		$stmt = Conexao::getConn()->prepare($sql);
 		$stmt->bindValue(1, $m->getnome_material());
@@ -40,7 +40,13 @@ class MaterialDao{
 	}
 
 	public function update(Material $m){//recebe a classe Material como parâmetro instanciada como $p
-		$sql = 'UPDATE MATERIAL SET nome_material = ?, desc_material = ?, qtde_estoque = ?, id_prat_fk = ?, id_forn_fk = ? WHERE id_material = ?';
+		$sql = 'UPDATE MATERIAL SET nome_material = ?, desc_material = ?, qtde_estoque = ?, id_prat_fk = ?, id_forn_fk = ? /*imagem = ?*/ WHERE id_material = ?';
+		/*
+		$extensao = strtolower(substr($_FILES['nome_imagem_edit']['name'], -4)); //pega a extensao do arquivo
+	    $imagem = $_FILES['nome_imagem_edit']['name'] . $extensao; //define o nome do arquivo
+	    $diretorio = "upload/"; //define o diretorio para onde enviaremos o arquivo
+		    move_uploaded_file($_FILES['nome_imagem_edit']['tmp_name'], $diretorio.$imagem); //efetua o upload
+		*/
 		$stmt = Conexao::getConn()->prepare($sql);
 		$stmt->bindValue(1, $m->getnome_material());
 		$stmt->bindValue(2, $m->getdesc_material());
@@ -48,7 +54,7 @@ class MaterialDao{
 		$stmt->bindValue(4, $m->getid_prat_fk());
 		$stmt->bindValue(5, $m->getid_forn_fk());
 		$stmt->bindValue(6, $m->getid_material());
-		//$stmt->bindValue(7, $m->getnome_imagem());
+		//$stmt->bindValue(7, $imagem);
 		$stmt->execute();
 	}
 
@@ -79,6 +85,17 @@ class MaterialDao{
 		$resultado = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 		return $resultado;
 	}
+
+	public function armazenar(Material $m){
+		$id = $_GET['id'];
+		//$qtde = $_POST['qtde'];
+		$sql = 'UPDATE MATERIAL SET qtde_estoque = qtde_estoque + ? WHERE id_material = ?';
+		$stmt = Conexao::getConn()->prepare($sql);
+		$stmt->bindValue(1, $m->getqtde_estoque());
+		$stmt->bindValue(2, $id);
+		$stmt->execute();
+	}
+
 }
 
 

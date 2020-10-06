@@ -52,9 +52,12 @@ foreach ($materialDao->read() as $materiais) {
 	"<a href = editar.php?id=".$materiais['id_material'].">
 	<img src = 'icones/edit-64.png' class = 'icones'>
 		</a>
-		<a href = excluir.php?id=".$materiais['id_material'].">
-			<img src = 'icones/x-mark-4-64.png' class = 'icones'>
-		</a> " .
+	<a href = excluir.php?id=".$materiais['id_material'].">
+		<img src = 'icones/x-mark-4-64.png' class = 'icones'>
+	</a> 
+	<a href = armazenar.php?id=".$materiais['id_material'].">
+		<img src = 'icones/plus-8-64.png' class = 'icones'>
+	</a>" .
 		"<br>-----------------------------<br>";
 }
 

@@ -54,7 +54,7 @@ class Material{
       $this->id_forn_fk = $id_forn_fk;
     }
 
-    public function get_imagem(){
+    public function getimagem(){
       return $this->imagem;
     }
     public function setimagem($imagem){
