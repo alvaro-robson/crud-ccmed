@@ -1,6 +1,7 @@
 <?php 
 namespace App\Model;
 require_once "vendor/autoload.php";
+$FornecedorDao = new \App\Model\FornecedorDao;
  ?>
  <!--DOCTYPE html>
  <html>
@@ -49,27 +50,30 @@ require_once "vendor/autoload.php";
             <form class="mb-" action="index.php" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                   <label for="nome">Material</label>
-                  <input type="text" class="form-control" id="nome" name="nome_material" placeholder="Digite o nome do material">
+                  <input type="text" class="form-control" id="nome" name="nome_material" placeholder="Digite o nome do material" required>
                   
                 </div>
                 <div class="form-group">
                   <label for="descricao">Descrição</label>
-                  <textarea class="form-control" name="desc_material" placeholder="descricao">
-
-                  </textarea>
+                  <input type="text" class="form-control" name="desc_material" placeholder="Descricao" required>
                 </div>
                 
                 <div class="form-group">
-                    <label for="descricao">Quantidade</label>
-                    <input type="number" class="form-control" id="quantidade" name="qtde_estoque" placeholder="Quantidade">
+                    <label for="quantidade">Quantidade</label>
+                    <input type="number" class="form-control" id="quantidade" name="qtde_estoque" placeholder="Quantidade" pattern="[0-9]+$" min="0" required>
                   </div>
                   <div class="form-group">
-                    <label for="descricao">Prateleira</label>
-                    <input type="text" class="form-control" id="local" name="id_prat_fk" placeholder="id prateleira">
+                    <label for="prateleira">Prateleira</label>
+                    <input type="number" class="form-control" id="local" name="id_prat_fk" placeholder="id prateleira" min="1" max="16" required>
                   </div>
                   <div class="form-group">
-                    <label for="descricao">Fornecedor</label>
-                    <input type="text" class="form-control" id="local" name="id_forn_fk" placeholder="id fornecedor">
+                    <?php
+                    $array = $FornecedorDao->contar();
+                    $max = implode(end($array));
+                    ?>
+                    <label for="fornecedor">Fornecedor</label>
+                    <input type="number" class="form-control" id="local" name="id_forn_fk" placeholder="id fornecedor" min="1"  max="<?php echo $max; ?>" required>
+                   
                   </div>
                   <div class="form-group">
                 <label for="imagem">Imagem</label>
@@ -77,6 +81,10 @@ require_once "vendor/autoload.php";
                 </div>
                 <input type="submit" class="btn btn-secondary btn-block btn-lg mt-5" name="btnCadastrar" value="Armazenar">
               </form>
+              <?php 
+              
+              
+              ?>
         </div>
     </div>
 

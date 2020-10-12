@@ -45,6 +45,18 @@ class FornecedorDao{
 		$stmt->bindValue(1, $id_forn);
 		$stmt->execute();
 	}
+
+	public function contar(){
+		$sql = "SELECT COUNT(id_forn) as total FROM FORNECEDOR";
+		$stmt = Conexao::getConn()->prepare($sql);
+		$stmt->execute();
+		if($stmt->rowCount() > 0){
+			$resultado = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+			return $resultado;
+		}else{
+			echo "Nenhum registro";
+		}
+	}
 }
 
  ?>

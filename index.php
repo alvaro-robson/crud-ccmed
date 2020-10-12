@@ -26,14 +26,14 @@ $material->setid_forn_fk(1);
 $materialDao = new \App\Model\MaterialDao();
 //CREATE
 if(isset($_POST['btnCadastrar'])){
-	//$material->setid_material(1);
-	$material->setnome_material($_POST['nome_material']);
-	$material->setdesc_material($_POST['desc_material']);
-	$material->setqtde_estoque($_POST['qtde_estoque']);
-	$material->setid_prat_fk($_POST['id_prat_fk']);
-	$material->setid_forn_fk($_POST['id_forn_fk']);
-	//$material->setimagem($imagem);
-	$materialDao->create($material);//NÃO FUNCIONOU DE PRIMEIRA. Tive que dar o comando "composer dumpautoload -o"
+		//$material->setid_material(1);
+		$material->setnome_material($_POST['nome_material']);
+		$material->setdesc_material($_POST['desc_material']);
+		$material->setqtde_estoque($_POST['qtde_estoque']);
+		$material->setid_prat_fk($_POST['id_prat_fk']);
+		$material->setid_forn_fk($_POST['id_forn_fk']);
+		//$material->setimagem($imagem);
+		$materialDao->create($material);//NÃO FUNCIONOU DE PRIMEIRA. Tive que dar o comando "composer dumpautoload -o"
 }
 
 

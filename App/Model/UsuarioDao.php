@@ -17,7 +17,7 @@ class UsuarioDao{
 	}
 
 	public function read(){
-		$sql = "SELECT id_usuario, login, md5(senha) as 'senha', nome, sobrenome, matricula, id_acesso_fk FROM USUARIO";
+		$sql = "SELECT id_usuario, login, senha as 'senha', nome, sobrenome, matricula, id_acesso_fk FROM USUARIO";
 		$stmt = Conexao::getConn()->prepare($sql);
 		$stmt->execute();
 		if($stmt->rowCount() > 0){
@@ -48,6 +48,28 @@ class UsuarioDao{
 		$stmt->execute();
 	}
 
+	public function logar(Usuario $usu){
+		try{
+			$sql = "SELECT id_usuario, login, senha from USUARIO WHERE login = ?, senha = ?";
+			$stmt = Conexao::getConn()->prepare($sql);
+			$stmt->bindValue(1, $usu->getlogin);
+			$stmt->bindValue(2, $usu->getsenha);
+			$stmt->execute();
+			if($stmt->rowCount() > 0){
+			session_start();
+			$resultado = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+			return $resultado;
+			$_SESSION['logado'] = "sim";
+			$_SESSION['nome_session'] = $resultado['id_usuario'];
+			header("location:index.php");
+			}else{
+				header("location:login.php");
+				echo "Usuário ou senha inválidos";
+			}
+		}catch(PDOException $erro){
+			return $erro->getMessage();
+		}
+	}
 }
 
  ?>

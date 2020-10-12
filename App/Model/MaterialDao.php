@@ -3,7 +3,6 @@
 namespace App\Model;
 
 class MaterialDao{
-	
 	public function create(Material $m){ //recebe a classe Material como parâmetro instanciada como $p
 		$sql = 'INSERT INTO MATERIAL(nome_material, desc_material, qtde_estoque, id_prat_fk, id_forn_fk, imagem) VALUES(?, ?, ?, ?, ?, ?)';
 		//as interrogações são equivalentes aos valores
