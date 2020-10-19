@@ -2,6 +2,21 @@
 namespace App\Model;
 require_once "vendor/autoload.php";
 $FornecedorDao = new \App\Model\FornecedorDao;
+$material = new \App\Model\Material();
+
+$materialDao = new \App\Model\MaterialDao();
+//CREATE
+if(isset($_POST['btnCadastrar'])){
+    //$material->setid_material(1);
+    $material->setnome_material($_POST['nome_material']);
+    $material->setdesc_material($_POST['desc_material']);
+    $material->setqtde_estoque($_POST['qtde_estoque']);
+    $material->setid_prat_fk($_POST['id_prat_fk']);
+    $material->setid_forn_fk($_POST['id_forn_fk']);
+    //$material->setimagem($imagem);
+    $materialDao->create($material);//NÃO FUNCIONOU DE PRIMEIRA. Tive que dar o comando "composer dumpautoload -o"
+}
+
  ?>
  <!--DOCTYPE html>
  <html>
@@ -37,17 +52,17 @@ $FornecedorDao = new \App\Model\FornecedorDao;
     <!-- Bootstrap CSS -->
     <link href="custom.css" rel="stylesheet">
 
-    <title>Armazenamento</title>
+    <title>Cadastro de materiais</title>
   </head>
   <body class="color">
   <div class="row">
           <div class="container mt-5" style="display: flex; align-items: center; justify-content: center">
-              <h1 class="">Armazenagem</h1>
+              <h1 class="" align="center">Cadastro de materiais</h1>
           </div>
       </div>
     <div class="container mt-5">
         <div class="col-sm-12">
-            <form class="mb-" action="index.php" method="POST" enctype="multipart/form-data">
+            <form class="mb-" action="<?php $_SERVER['PHP_SELF'];?>" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                   <label for="nome">Material</label>
                   <input type="text" class="form-control" id="nome" name="nome_material" placeholder="Digite o nome do material" required>
@@ -68,6 +83,7 @@ $FornecedorDao = new \App\Model\FornecedorDao;
                   </div>
                   <div class="form-group">
                     <?php
+                    //tratamento de erros para o campo de fornecedor permitir até o número limite de ids que tem no banco
                     $array = $FornecedorDao->contar();
                     $max = implode(end($array));
                     ?>
@@ -81,6 +97,7 @@ $FornecedorDao = new \App\Model\FornecedorDao;
                 </div>
                 <input type="submit" class="btn btn-secondary btn-block btn-lg mt-5" name="btnCadastrar" value="Armazenar">
               </form>
+              <a href="index.php" class="btn btn-secondary btn-block btn-lg mt-5">Cancelar</a>
               <?php 
               
               

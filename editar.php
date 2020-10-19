@@ -3,6 +3,7 @@ namespace App\Model;
 require_once "vendor/autoload.php";
 $material = new \App\Model\Material();
 $materialDao = new \App\Model\MaterialDao();
+$FornecedorDao = new \App\Model\FornecedorDao;
 foreach($materialDao->editar_material() as $editar);
 
 if(isset($_POST['btnEditar'])){
@@ -16,6 +17,10 @@ if(isset($_POST['btnEditar'])){
 	$materialDao->update($material);
 	header("location:index.php");
 }
+if(isset($_POST['btnCancelar'])){
+  header("location:index.php");
+}
+
 ?>
  <!DOCTYPE html>
 <html lang="pt-br">
@@ -49,26 +54,32 @@ if(isset($_POST['btnEditar'])){
                 </div>
                 <div class="form-group">
                   <label for="descricao">Descrição</label>
-                  <input type="text" class="form-control" name="desc_material_edit" placeholder="descricao" value="<?= $editar['desc_material'];?>">
+                  <input type="text" class="form-control" name="desc_material_edit" placeholder="descricao" value="<?= $editar['desc_material'];?>" required>
                 </div>
                 
                 <div class="form-group">
                     <label for="descricao">Quantidade</label>
-                    <input type="number" class="form-control" id="quantidade" name="qtde_estoque_edit" placeholder="Quantidade" value="<?= $editar['qtde_estoque'];?>">
+                    <input type="number" class="form-control" id="quantidade" name="qtde_estoque_edit" placeholder="Quantidade" value="<?= $editar['qtde_estoque'];?>" pattern="[0-9]+$" min="1" required>
                   </div>
                   <div class="form-group">
                     <label for="descricao">Prateleira</label>
-                    <input type="text" class="form-control" id="local" name="id_prat_fk_edit" placeholder="id prateleira" value="<?= $editar['id_prat_fk'];?>">
+                    <input type="number" class="form-control" id="local" name="id_prat_fk_edit" placeholder="id prateleira" value="<?= $editar['id_prat_fk'];?>" min="1" max="16" required>
                   </div>
                   <div class="form-group">
+                    <?php
+                    //tratamento de erros para o campo de fornecedor permitir até o número limite de ids que tem no banco
+                    $array = $FornecedorDao->contar();
+                    $max = implode(end($array));
+                    ?>
                     <label for="descricao">Fornecedor</label>
-                    <input type="text" class="form-control" id="local" name="id_forn_fk_edit" placeholder="id fornecedor" value="<?= $editar['id_forn_fk'];?>">
+                    <input type="number" class="form-control" id="local" name="id_forn_fk_edit" placeholder="id fornecedor" value="<?= $editar['id_forn_fk'];?>" min="1"  max="<?php echo $max; ?>" required>
                   </div>
                   <div class="form-group">
                 <label for="imagem">Imagem</label>
                 <input type="file" name="nome_imagem_edit">
                 </div>
                 <input type="submit" class="btn btn-secondary btn-block btn-lg mt-5" name="btnEditar" value="Salvar">
+                <input type="submit" name="btnCancelar" value="Cancelar" class="btn btn-secondary btn-block btn-lg mt-5">
               </form>
         </div>
     </div>

@@ -1,20 +1,3 @@
-<?php 
-  
-  namespace App\Model;
-  require_once "vendor/autoload.php";
-
-  $usuarioDao = new \App\Model\UsuarioDao;
-
-  foreach($usuarioDao->read() as $users){
-    $login = $users['login'];
-    $senha = $users['senha'];
-  }
-
-  if (isset($_POST['btnEntrar'])) {
-    $usuarioDao->logar();
-  }
-
- ?>
 <!doctype html>
 <html lang="pt-br">
   <head>
@@ -27,31 +10,23 @@
 
     <!-- Bootstrap CSS -->
     <link href="custom.css" rel="stylesheet">
-    
-    <title>Login</title>
+
+    <title>Menu </title>
   </head>
-  <body class="color">
-  <div class="row">
-            <div class="container">
-            <img src="logo.png" width="100%" margin-bottom="20px" class="img-fluid">
-            </div>
-          
+  <body>
+      <div class="row">
+          <div class="container mt-5" style="display: flex; align-items: center; justify-content: center">
+              <h1 class="">Menu do sistema</h1>
+          </div>
       </div>
     <div class="container mt-5">
         <div class="col-sm-12">
-            <form class="mb-" action="">
-                <div class="form-group">
-                  <label for="nome">Usuário</label>
-                  <input type="text" class="form-control" id="nome" name="login" placeholder="Usuário">
-                  
-                </div>
-                <div class="form-group">
-                  <label for="descricao">Senha</label>
-                  <input type="password" class="form-control" id="descricao" name="senha" placeholder="******">
-                </div>
-                
-                <button type="submit" class="btn btn-secondary btn-block btn-lg mt-5" name="btnEntrar">Entrar</button>
-              </form>
+        <button type="submit" class="btn btn-secondary btn-block btn-lg mt-5">
+            <a href="form-cadastrar.php">Cadastro de materiais</a></button>
+        <button type="submit" class="btn btn-secondary btn-block btn-lg mt-5">
+          Retirada</button>
+        <button type="submit" class="btn btn-secondary btn-block btn-lg mt-5">
+          Pedido</button>
         </div>
     </div>
 

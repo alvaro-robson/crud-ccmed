@@ -4,8 +4,9 @@ namespace tests;
 use PHPUnit\Framework\TestCase;
 
 class MaterialDaoTest extends TestCase{
-	public function testarmazenar(){
+	public function testread(){
 		$materialDao = new \App\Model\MaterialDao();
-		$this->assertTrue($materialDao->armazenar(150));
+		$material = new \App\Model\Material();
+		$this->assertTrue($materialDao->read());
 	}
 }

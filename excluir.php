@@ -30,12 +30,12 @@ foreach($materialDao->editar_material() as $editar);
           	$materialDao->delete();
           	header("location:index.php");
           }
-if(isset($_POST['btnCancelar'])){
-	header("location:index.php");
-}
+          if(isset($_POST['btnCancelar'])){
+          	header("location:index.php");
+          }
 
 
-echo "<img src = upload/" . $editar['imagem'] . " class = 'imagem-material'> " .  "Deseja excluir " . $editar['nome_material'] . " " .  $editar['desc_material'] . "?";
+          echo "<img width = '100%' src = upload/" . $editar['imagem'] . " class = 'imagem-material'> " .  "Deseja excluir " . $editar['nome_material'] . " " .  $editar['desc_material'] . "?";
         	
         	 ?>
 	<form method="POST" action="<?php $_SERVER['PHP_SELF']; ?>" class="mb-">

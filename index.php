@@ -7,6 +7,7 @@
 </head>
 <body>
 	<div class="container">
+		<a href="menu.php">MENU</a>
 
 <?php 
 //Para fazer o autoload, sem precisar dar include em todas as classes:
@@ -55,7 +56,7 @@ foreach ($materialDao->read() as $materiais) {
 	<a href = excluir.php?id=".$materiais['id_material'].">
 		<img src = 'icones/x-mark-4-64.png' class = 'icones'>
 	</a> 
-	<a href = armazenar.php?id=".$materiais['id_material'].">
+	<a href = form-armazenar.php?id=".$materiais['id_material'].">
 		<img src = 'icones/plus-8-64.png' class = 'icones'>
 	</a>" .
 		"<br>-----------------------------<br>";
