@@ -2,16 +2,14 @@
   
   namespace App\Model;
   require_once "vendor/autoload.php";
-
-  $usuarioDao = new \App\Model\UsuarioDao;
-
-  foreach($usuarioDao->read() as $users){
-    $login = $users['login'];
-    $senha = $users['senha'];
-  }
-
-  if (isset($_POST['btnEntrar'])) {
-    $usuarioDao->logar();
+  $usuarioDao = new \App\Model\UsuarioDao();
+  $usuario = new \App\Model\Usuario();
+  
+  if(isset($_POST['btnEntrar'])){
+    $usuario->setlogin($_POST['login']);
+    $usuario->setsenha($_POST['senha']);
+    $usuarioDao->logar($usuario);
+    header("location:index.php");    
   }
 
  ?>
@@ -39,18 +37,19 @@
       </div>
     <div class="container mt-5">
         <div class="col-sm-12">
-            <form class="mb-" action="">
+            <form class="mb-" action="<?php $_SERVER['PHP_SELF']; ?>" method="POST">
+                
                 <div class="form-group">
                   <label for="nome">Usuário</label>
                   <input type="text" class="form-control" id="nome" name="login" placeholder="Usuário">
-                  
-                </div>
+                 </div>
+
                 <div class="form-group">
                   <label for="descricao">Senha</label>
                   <input type="password" class="form-control" id="descricao" name="senha" placeholder="******">
                 </div>
                 
-                <button type="submit" class="btn btn-secondary btn-block btn-lg mt-5" name="btnEntrar">Entrar</button>
+                <input type="submit" class="btn btn-secondary btn-block btn-lg mt-5" name="btnEntrar" value="Entrar">
               </form>
         </div>
     </div>

@@ -3,7 +3,6 @@ namespace App\Model;
 require_once "vendor/autoload.php";
 $FornecedorDao = new \App\Model\FornecedorDao;
 $material = new \App\Model\Material();
-
 $materialDao = new \App\Model\MaterialDao();
 //CREATE
 if(isset($_POST['btnCadastrar'])){

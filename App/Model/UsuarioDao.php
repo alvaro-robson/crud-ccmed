@@ -49,6 +49,20 @@ class UsuarioDao{
 	}
 
 	public function logar(Usuario $usu){
+		$sql = 'SELECT * FROM USUARIO WHERE login = ? and senha = ?';
+		$stmt = Conexao::getConn()->prepare($sql);
+		$stmt->bindValue(1, $usu->getlogin());
+		$stmt->bindValue(2, $usu->getsenha());
+		$stmt->execute();
+		if($stmt->rowCount() > 0){
+			$resultado = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+			return $resultado;
+			
+		}else{
+			echo "Nenhum registro";
+		}
+
+		/*
 		try{
 			$sql = "SELECT id_usuario, login, senha from USUARIO WHERE login = ?, senha = ?";
 			$stmt = Conexao::getConn()->prepare($sql);
@@ -69,6 +83,7 @@ class UsuarioDao{
 		}catch(PDOException $erro){
 			return $erro->getMessage();
 		}
+		*/
 	}
 }
 
