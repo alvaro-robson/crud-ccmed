@@ -1,0 +1,441 @@
+-- MySQL dump 10.13  Distrib 5.7.31, for Linux (x86_64)
+--
+-- Host: localhost    Database: db_ccmed
+-- ------------------------------------------------------
+-- Server version	5.7.31-0ubuntu0.16.04.1
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `ACESSO`
+--
+
+DROP TABLE IF EXISTS `ACESSO`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ACESSO` (
+  `id_acesso` int(4) NOT NULL AUTO_INCREMENT,
+  `nome_acesso` varchar(20) NOT NULL,
+  `desc_acesso` varchar(300) NOT NULL,
+  PRIMARY KEY (`id_acesso`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ACESSO`
+--
+
+LOCK TABLES `ACESSO` WRITE;
+/*!40000 ALTER TABLE `ACESSO` DISABLE KEYS */;
+INSERT INTO `ACESSO` VALUES (1,'Obra','Acesso a consultas e pedidos de materiais do estoque'),(2,'Estoque','Acesso a consultas, reservas, liberação de pedidos e cadastros de materiais e fornecedores'),(3,'Administrador','Acesso a todas as informações do sistema, como consultas, cadastro de materiais, fornecedores e novos usuários');
+/*!40000 ALTER TABLE `ACESSO` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `CIDADE`
+--
+
+DROP TABLE IF EXISTS `CIDADE`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `CIDADE` (
+  `id_cidade` int(4) NOT NULL AUTO_INCREMENT,
+  `nome_cidade` varchar(20) NOT NULL,
+  `id_estado_fk` int(4) NOT NULL,
+  PRIMARY KEY (`id_cidade`),
+  KEY `id_estado_fk` (`id_estado_fk`),
+  CONSTRAINT `CIDADE_ibfk_1` FOREIGN KEY (`id_estado_fk`) REFERENCES `ESTADO` (`id_estado`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `CIDADE`
+--
+
+LOCK TABLES `CIDADE` WRITE;
+/*!40000 ALTER TABLE `CIDADE` DISABLE KEYS */;
+INSERT INTO `CIDADE` VALUES (1,'São Paulo',1),(2,'Guarujá',1),(3,'Cotia',1),(4,'Santos',1),(5,'Ribeirão Preto',1),(6,'Campinas',1);
+/*!40000 ALTER TABLE `CIDADE` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `COLUNA`
+--
+
+DROP TABLE IF EXISTS `COLUNA`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `COLUNA` (
+  `id_coluna` int(4) NOT NULL AUTO_INCREMENT,
+  `nome_coluna` varchar(15) NOT NULL,
+  `id_corr_fk` int(4) NOT NULL,
+  PRIMARY KEY (`id_coluna`),
+  KEY `id_corr_fk` (`id_corr_fk`),
+  CONSTRAINT `COLUNA_ibfk_1` FOREIGN KEY (`id_corr_fk`) REFERENCES `CORREDOR` (`id_corr`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `COLUNA`
+--
+
+LOCK TABLES `COLUNA` WRITE;
+/*!40000 ALTER TABLE `COLUNA` DISABLE KEYS */;
+INSERT INTO `COLUNA` VALUES (1,'coluna 1',1),(2,'coluna 2',1),(3,'coluna 3',1),(4,'coluna 4',1),(5,'coluna 5',1),(6,'coluna 6',2),(7,'coluna 7',2),(8,'coluna 8',2),(9,'coluna 9',2),(10,'coluna 10',2),(35,'coluna 11',2);
+/*!40000 ALTER TABLE `COLUNA` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `CORREDOR`
+--
+
+DROP TABLE IF EXISTS `CORREDOR`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `CORREDOR` (
+  `id_corr` int(4) NOT NULL AUTO_INCREMENT,
+  `nome_corredor` varchar(15) NOT NULL,
+  PRIMARY KEY (`id_corr`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `CORREDOR`
+--
+
+LOCK TABLES `CORREDOR` WRITE;
+/*!40000 ALTER TABLE `CORREDOR` DISABLE KEYS */;
+INSERT INTO `CORREDOR` VALUES (1,'corredor 1'),(2,'corredor 2'),(3,'pppppppppppo');
+/*!40000 ALTER TABLE `CORREDOR` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `DETALHE_PEDIDO`
+--
+
+DROP TABLE IF EXISTS `DETALHE_PEDIDO`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `DETALHE_PEDIDO` (
+  `id_detalhe` int(11) NOT NULL AUTO_INCREMENT,
+  `quantidade` int(4) NOT NULL,
+  `id_material_fk` int(4) NOT NULL,
+  `id_pedido_fk` int(4) NOT NULL,
+  PRIMARY KEY (`id_detalhe`),
+  KEY `id_pedido_fk` (`id_pedido_fk`),
+  KEY `id_material_fk` (`id_material_fk`),
+  CONSTRAINT `DETALHE_PEDIDO_ibfk_1` FOREIGN KEY (`id_pedido_fk`) REFERENCES `PEDIDO` (`id_pedido`) ON DELETE CASCADE,
+  CONSTRAINT `DETALHE_PEDIDO_ibfk_2` FOREIGN KEY (`id_material_fk`) REFERENCES `MATERIAL` (`id_material`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `DETALHE_PEDIDO`
+--
+
+LOCK TABLES `DETALHE_PEDIDO` WRITE;
+/*!40000 ALTER TABLE `DETALHE_PEDIDO` DISABLE KEYS */;
+INSERT INTO `DETALHE_PEDIDO` VALUES (1,3,12,1),(2,10,11,2),(3,20,10,3),(4,8,9,4),(5,12,8,5),(6,4,7,6),(7,6,6,7),(8,14,5,8),(9,19,4,9),(10,10,3,10),(11,2,2,11),(12,3,1,12),(13,2,2,1),(14,10,3,1),(15,3,4,2),(16,3,5,2),(17,3,6,5),(18,3,7,5);
+/*!40000 ALTER TABLE `DETALHE_PEDIDO` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `EMAIL`
+--
+
+DROP TABLE IF EXISTS `EMAIL`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `EMAIL` (
+  `id_email_forn` int(4) NOT NULL AUTO_INCREMENT,
+  `email_forn` varchar(50) NOT NULL,
+  `id_forn_fk` int(4) NOT NULL,
+  PRIMARY KEY (`id_email_forn`),
+  KEY `id_forn_fk` (`id_forn_fk`),
+  CONSTRAINT `EMAIL_ibfk_1` FOREIGN KEY (`id_forn_fk`) REFERENCES `FORNECEDOR` (`id_forn`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `EMAIL`
+--
+
+LOCK TABLES `EMAIL` WRITE;
+/*!40000 ALTER TABLE `EMAIL` DISABLE KEYS */;
+INSERT INTO `EMAIL` VALUES (1,'contato@pedrix.com.br',1),(2,'porto@gmail.com',2),(3,'pavmax@yahoo.com.br',3),(4,'hidromax@gmail.com',4),(5,'construmark@gmail.com',5),(6,'fernandoepis@gmail.com',6);
+/*!40000 ALTER TABLE `EMAIL` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ESTADO`
+--
+
+DROP TABLE IF EXISTS `ESTADO`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ESTADO` (
+  `id_estado` int(4) NOT NULL AUTO_INCREMENT,
+  `nome_estado` varchar(20) NOT NULL,
+  PRIMARY KEY (`id_estado`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ESTADO`
+--
+
+LOCK TABLES `ESTADO` WRITE;
+/*!40000 ALTER TABLE `ESTADO` DISABLE KEYS */;
+INSERT INTO `ESTADO` VALUES (1,'SP');
+/*!40000 ALTER TABLE `ESTADO` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `FORNECEDOR`
+--
+
+DROP TABLE IF EXISTS `FORNECEDOR`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `FORNECEDOR` (
+  `id_forn` int(4) NOT NULL AUTO_INCREMENT,
+  `nome_forn` varchar(30) NOT NULL,
+  `num_endereco` int(6) DEFAULT NULL,
+  `complemento_end` varchar(4) DEFAULT NULL,
+  PRIMARY KEY (`id_forn`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `FORNECEDOR`
+--
+
+LOCK TABLES `FORNECEDOR` WRITE;
+/*!40000 ALTER TABLE `FORNECEDOR` DISABLE KEYS */;
+INSERT INTO `FORNECEDOR` VALUES (1,'Pedrix',25,''),(2,'Porto Fortaleza',245,''),(3,'Pav Max',900,'a'),(4,'Hidro Max',887,''),(5,'Constru Mark',12,'b'),(6,'Fernando EPIs',80,''),(7,'joao',200,'A');
+/*!40000 ALTER TABLE `FORNECEDOR` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `FORN_LOGRA_POSSUI`
+--
+
+DROP TABLE IF EXISTS `FORN_LOGRA_POSSUI`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `FORN_LOGRA_POSSUI` (
+  `id_forn_fk` int(4) NOT NULL,
+  `cep_fk` varchar(10) NOT NULL,
+  KEY `id_forn_fk` (`id_forn_fk`),
+  KEY `cep_fk` (`cep_fk`),
+  CONSTRAINT `FORN_LOGRA_POSSUI_ibfk_1` FOREIGN KEY (`id_forn_fk`) REFERENCES `FORNECEDOR` (`id_forn`),
+  CONSTRAINT `FORN_LOGRA_POSSUI_ibfk_2` FOREIGN KEY (`cep_fk`) REFERENCES `LOGRADOURO` (`cep`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `FORN_LOGRA_POSSUI`
+--
+
+LOCK TABLES `FORN_LOGRA_POSSUI` WRITE;
+/*!40000 ALTER TABLE `FORN_LOGRA_POSSUI` DISABLE KEYS */;
+INSERT INTO `FORN_LOGRA_POSSUI` VALUES (1,'06655678'),(2,'06666666'),(3,'06676666'),(4,'06679876'),(5,'06720120'),(6,'08888999');
+/*!40000 ALTER TABLE `FORN_LOGRA_POSSUI` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `LOGRADOURO`
+--
+
+DROP TABLE IF EXISTS `LOGRADOURO`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `LOGRADOURO` (
+  `cep` varchar(10) NOT NULL,
+  `nome_logra` varchar(50) NOT NULL,
+  `tipo_logra` varchar(50) NOT NULL,
+  `id_cidade_fk` int(4) NOT NULL,
+  PRIMARY KEY (`cep`),
+  KEY `id_cidade_fk` (`id_cidade_fk`),
+  CONSTRAINT `LOGRADOURO_ibfk_1` FOREIGN KEY (`id_cidade_fk`) REFERENCES `CIDADE` (`id_cidade`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `LOGRADOURO`
+--
+
+LOCK TABLES `LOGRADOURO` WRITE;
+/*!40000 ALTER TABLE `LOGRADOURO` DISABLE KEYS */;
+INSERT INTO `LOGRADOURO` VALUES ('06655678','dra. Aparecida','rua',6),('06666666','Epitacio Pessoa','avenida',4),('06676666','Sao Joao','rua',2),('06679876','America','avenida',3),('06720120','Assis Valente','rua',1),('08888999','da Paz','rua',5);
+/*!40000 ALTER TABLE `LOGRADOURO` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `MATERIAL`
+--
+
+DROP TABLE IF EXISTS `MATERIAL`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `MATERIAL` (
+  `id_material` int(4) NOT NULL AUTO_INCREMENT,
+  `nome_material` varchar(50) NOT NULL,
+  `desc_material` varchar(300) NOT NULL,
+  `qtde_estoque` int(11) DEFAULT NULL,
+  `id_prat_fk` int(4) NOT NULL,
+  `id_forn_fk` int(4) NOT NULL,
+  `imagem` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id_material`),
+  KEY `id_prat_fk` (`id_prat_fk`),
+  KEY `id_forn_fk` (`id_forn_fk`),
+  CONSTRAINT `MATERIAL_ibfk_1` FOREIGN KEY (`id_prat_fk`) REFERENCES `PRATELEIRA` (`id_prat`),
+  CONSTRAINT `MATERIAL_ibfk_2` FOREIGN KEY (`id_forn_fk`) REFERENCES `FORNECEDOR` (`id_forn`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `MATERIAL`
+--
+
+LOCK TABLES `MATERIAL` WRITE;
+/*!40000 ALTER TABLE `MATERIAL` DISABLE KEYS */;
+INSERT INTO `MATERIAL` VALUES (1,'Tubo PVC','100mm',25,1,1,'c4ca4238a0b923820dcc509a6f75849b.jpg'),(2,'Válvula de pressão','50mm',160,2,1,'c81e728d9d4c2f636f067f89cc14862c.jpg'),(3,'Braçadeira','100mm',90,3,2,'eccbc87e4b5ce2fe28308fd9f2a7baf3.jpg'),(4,'Cotovelo PVC','90mm',50,4,2,'a87ff679a2f3e71d9181a67b7542122c.jpg'),(5,'TE PVC','100mm',40,5,3,'e4da3b7fbbce2345d7772b0674a318d5.png'),(6,'Tubo PVC','50mm',80,6,3,'1679091c5a880faf6fb5e6087eb1b2dc.jpg'),(7,'Tampa de registro','Tam. único',90,7,4,'8f14e45fceea167a5a36dedd4bea2543.jpg'),(8,'Cimento','50kg',50,8,4,'c9f0f895fb98ab9159f51fd0297e236d.jpg'),(9,'Argamassa','50kg',30,9,5,'45c48cce2e2d7fbdea1afc51c7c6ad26.jpg'),(10,'Pá','Aço inox',20,10,5,'d3d9446802a44259755d38e6d163e820.png'),(11,'Bota bico de aço','Tam. 40',30,11,6,'6512bd43d9caa6e02c990b0a82652dca.jpg'),(12,'Alicate de corte','15 polegadas',10,3,1,'c20ad4d76fe97759aa27a0c99bff6710.jpg');
+/*!40000 ALTER TABLE `MATERIAL` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `PEDIDO`
+--
+
+DROP TABLE IF EXISTS `PEDIDO`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `PEDIDO` (
+  `id_pedido` int(4) NOT NULL AUTO_INCREMENT,
+  `data_abertura` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `vencimento` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `data_fechamento` datetime DEFAULT NULL,
+  `status_pedido` varchar(20) NOT NULL,
+  `id_usuario_fk` int(4) NOT NULL,
+  PRIMARY KEY (`id_pedido`),
+  KEY `id_usuario_fk` (`id_usuario_fk`),
+  CONSTRAINT `PEDIDO_ibfk_1` FOREIGN KEY (`id_usuario_fk`) REFERENCES `USUARIO` (`id_usuario`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `PEDIDO`
+--
+
+LOCK TABLES `PEDIDO` WRITE;
+/*!40000 ALTER TABLE `PEDIDO` DISABLE KEYS */;
+INSERT INTO `PEDIDO` VALUES (1,'2020-07-20 04:36:43','2020-07-20 04:36:43',NULL,'aberto',1),(2,'2020-07-20 04:36:43','2020-07-20 04:36:43',NULL,'aberto',1),(3,'2020-07-20 04:36:43','2020-07-20 04:36:43',NULL,'aberto',2),(4,'2020-07-20 04:36:43','2020-07-20 04:36:43',NULL,'aberto',3),(5,'2020-07-20 04:36:43','2020-07-20 04:36:43',NULL,'aberto',4),(6,'2020-07-20 04:36:43','2020-07-20 04:36:43','2020-07-20 16:05:49','fechado',4),(7,'2020-07-20 04:36:43','2020-07-20 04:36:43','2020-07-20 16:06:11','fechado',5),(8,'2020-07-20 04:36:43','2020-07-20 04:36:43','2020-07-20 16:06:14','fechado',5),(9,'2020-07-20 04:36:43','2020-07-20 04:36:43',NULL,'aberto',6),(10,'2020-07-20 04:36:43','2020-07-20 04:36:43','2020-07-20 16:06:16','fechado',6),(11,'2020-07-20 04:36:43','2020-07-20 04:36:43','2020-07-20 16:06:19','fechado',7),(12,'2020-07-20 04:36:43','2020-07-20 04:36:43',NULL,'aberto',7);
+/*!40000 ALTER TABLE `PEDIDO` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `PRATELEIRA`
+--
+
+DROP TABLE IF EXISTS `PRATELEIRA`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `PRATELEIRA` (
+  `id_prat` int(4) NOT NULL AUTO_INCREMENT,
+  `nome_prat` varchar(5) NOT NULL,
+  `id_coluna_fk` int(4) NOT NULL,
+  PRIMARY KEY (`id_prat`),
+  KEY `id_coluna_fk` (`id_coluna_fk`),
+  CONSTRAINT `PRATELEIRA_ibfk_1` FOREIGN KEY (`id_coluna_fk`) REFERENCES `COLUNA` (`id_coluna`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `PRATELEIRA`
+--
+
+LOCK TABLES `PRATELEIRA` WRITE;
+/*!40000 ALTER TABLE `PRATELEIRA` DISABLE KEYS */;
+INSERT INTO `PRATELEIRA` VALUES (1,'a',1),(2,'b',1),(3,'c',1),(4,'d',1),(5,'a',2),(6,'b',2),(7,'c',2),(8,'d',2),(9,'a',3),(10,'b',3),(11,'c',3),(12,'d',3),(13,'a',4),(14,'b',4),(15,'c',4),(16,'d',4);
+/*!40000 ALTER TABLE `PRATELEIRA` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `TELEFONE`
+--
+
+DROP TABLE IF EXISTS `TELEFONE`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `TELEFONE` (
+  `id_telefone` int(4) NOT NULL AUTO_INCREMENT,
+  `numero_tel` varchar(20) NOT NULL,
+  `id_forn_fk` int(4) NOT NULL,
+  PRIMARY KEY (`id_telefone`),
+  KEY `id_forn_fk` (`id_forn_fk`),
+  CONSTRAINT `TELEFONE_ibfk_1` FOREIGN KEY (`id_forn_fk`) REFERENCES `FORNECEDOR` (`id_forn`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `TELEFONE`
+--
+
+LOCK TABLES `TELEFONE` WRITE;
+/*!40000 ALTER TABLE `TELEFONE` DISABLE KEYS */;
+INSERT INTO `TELEFONE` VALUES (1,'3344-4477',1),(2,'3324-4666',2),(3,'3456-7889',3),(4,'3144-0099',4),(5,'3377-8877',5),(6,'2112-4227',6);
+/*!40000 ALTER TABLE `TELEFONE` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `USUARIO`
+--
+
+DROP TABLE IF EXISTS `USUARIO`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `USUARIO` (
+  `id_usuario` int(11) NOT NULL AUTO_INCREMENT,
+  `login` varchar(20) NOT NULL,
+  `senha` varchar(100) NOT NULL,
+  `nome` varchar(100) NOT NULL,
+  `sobrenome` varchar(100) NOT NULL,
+  `matricula` int(4) NOT NULL,
+  `id_acesso_fk` int(4) NOT NULL,
+  PRIMARY KEY (`id_usuario`),
+  UNIQUE KEY `matricula` (`matricula`),
+  KEY `id_acesso_fk` (`id_acesso_fk`),
+  CONSTRAINT `USUARIO_ibfk_1` FOREIGN KEY (`id_acesso_fk`) REFERENCES `ACESSO` (`id_acesso`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `USUARIO`
+--
+
+LOCK TABLES `USUARIO` WRITE;
+/*!40000 ALTER TABLE `USUARIO` DISABLE KEYS */;
+INSERT INTO `USUARIO` VALUES (1,'jose','1234','José','Silva',998,1),(2,'joao','1111','João','Santos',2228,1),(3,'kl','4321','Kleber','Alves',221,2),(4,'fernando','3344','Fernando','Souza',989,2),(5,'marcio','989898','Marcio','Freitas',134,2),(6,'matheus','3331234','Matheus','Castro',11,3),(7,'jorge','9994','Jorge','Santana',98,3);
+/*!40000 ALTER TABLE `USUARIO` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2020-10-21 21:11:50
