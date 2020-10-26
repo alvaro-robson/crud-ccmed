@@ -55,10 +55,32 @@ class UsuarioDao{
 		$stmt->bindValue(2, $usu->getsenha());
 		$stmt->execute();
 		if($stmt->rowCount() > 0){
-			$resultado = $stmt->fetchAll(\PDO::FETCH_ASSOC);
-			return $resultado;
-			
+			session_start();
+			$resultado = $stmt->fetch(\PDO::FETCH_ASSOC);
+			//return $resultado;
+			$_SESSION['logado'] = "sim";
+			//$_SESSION['nome_session'] = $resultado['id_usuario'];
+			foreach($resultado as $dados);
+			switch ($dados) {
+				case 1:
+					echo "obra";
+					//header('location:index.php');
+					break;
+				case 2:
+					echo "estoque";
+					//header('location:menu.php');
+					break;
+				case 3:
+					echo "admin";
+					//header('location:form-cadastrar.php');
+					break;
+				default:
+					echo "nenhum";
+					header('location:login.php');
+			}
+
 		}else{
+			//header("location:login.php");
 			echo "Nenhum registro";
 		}
 

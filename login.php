@@ -9,7 +9,7 @@
     $usuario->setlogin($_POST['login']);
     $usuario->setsenha($_POST['senha']);
     $usuarioDao->logar($usuario);
-    header("location:index.php");    
+   // header("location:index.php");    
   }
 
  ?>
