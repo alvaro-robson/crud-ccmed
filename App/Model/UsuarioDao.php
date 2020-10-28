@@ -58,16 +58,23 @@ class UsuarioDao{
 			session_start();
 			$resultado = $stmt->fetch(\PDO::FETCH_ASSOC);
 			//return $resultado;
-			$_SESSION['logado'] = "sim";
+			
+			$_SESSION['id_usuario'] = $resultado['id_usuario'];
+			$_SESSION['login'] = $resultado['login'];
+			$_SESSION['senha'] = $resultado['senha'];
+			$_SESSION['nome'] = $resultado['nome'];
+			$_SESSION['sobrenome'] = $resultado['sobrenome'];
+			$_SESSION['matricula'] = $resultado['matricula'];
+			$_SESSION['id_acesso_fk'] = $resultado['id_acesso_fk'];
+			
 			//$_SESSION['nome_session'] = $resultado['id_usuario'];
 			foreach($resultado as $acesso);
-			switch ($acesso) {
+			switch ($_SESSION['id_acesso_fk']) {
 				case 1:
-					echo "obra";
 					header('location:fazer-pedido.php');
 					break;
 				case 2:
-					echo "estoque";
+					echo $_SESSION['id_acesso_fk'];
 					header('location:menu.php');
 					break;
 				case 3:
@@ -82,30 +89,11 @@ class UsuarioDao{
 		}else{
 			//header("location:login.php");
 			echo "Nenhum registro";
-		}
+		}		
+	}
 
-		/*
-		try{
-			$sql = "SELECT id_usuario, login, senha from USUARIO WHERE login = ?, senha = ?";
-			$stmt = Conexao::getConn()->prepare($sql);
-			$stmt->bindValue(1, $usu->getlogin);
-			$stmt->bindValue(2, $usu->getsenha);
-			$stmt->execute();
-			if($stmt->rowCount() > 0){
-			session_start();
-			$resultado = $stmt->fetchAll(\PDO::FETCH_ASSOC);
-			return $resultado;
-			$_SESSION['logado'] = "sim";
-			$_SESSION['nome_session'] = $resultado['id_usuario'];
-			header("location:index.php");
-			}else{
-				header("location:login.php");
-				echo "Usuário ou senha inválidos";
-			}
-		}catch(PDOException $erro){
-			return $erro->getMessage();
-		}
-		*/
+	public function sessoes(){
+
 	}
 }
 

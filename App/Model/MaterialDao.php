@@ -94,6 +94,9 @@ class MaterialDao{
 		$stmt->bindValue(2, $id);
 		$stmt->execute();
 	}
+
+	
+
 }
 
 
