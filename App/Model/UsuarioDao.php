@@ -64,7 +64,7 @@ class UsuarioDao{
 			switch ($acesso) {
 				case 1:
 					echo "obra";
-					header('location:index.php');
+					header('location:fazer-pedido.php');
 					break;
 				case 2:
 					echo "estoque";

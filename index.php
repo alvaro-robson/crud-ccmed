@@ -28,6 +28,7 @@ $materialDao = new \App\Model\MaterialDao();
 //CREATE
 if(isset($_POST['btnCadastrar'])){
 		//$material->setid_material(1);
+
 		$material->setnome_material($_POST['nome_material']);
 		$material->setdesc_material($_POST['desc_material']);
 		$material->setqtde_estoque($_POST['qtde_estoque']);
@@ -37,7 +38,9 @@ if(isset($_POST['btnCadastrar'])){
 		$materialDao->create($material);//NÃO FUNCIONOU DE PRIMEIRA. Tive que dar o comando "composer dumpautoload -o"
 }
 
-
+?>
+	<form method="post">
+	<?php
 $materialDao->read();
 
 echo "<h3><strong><u>Listagem dos materiais</u></strong></h3><br>";
@@ -60,7 +63,13 @@ foreach ($materialDao->read() as $materiais) {
 		<img src = 'icones/plus-8-64.png' class = 'icones'>
 	</a>" .
 		"<br>-----------------------------<br>";
+		?>
+	<input type="number" name="">
+	<input type="submit" name="" value="clique">
+		</form>
+	<?php 
 }
+
 
 
 
