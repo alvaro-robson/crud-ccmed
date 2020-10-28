@@ -5,8 +5,8 @@
 	$materialDao = new \App\Model\MaterialDao;
 	$pedido = new \App\Model\Pedido;
 	$pedidoDao = new \App\Model\PedidoDao;
-	$detalhe = new \App\Model\Detalhe;
-	$detalheDao = new \App\Model\DetalheDao;
+	$detalhe = new \App\Model\Detalhe_pedido;
+	$detalheDao = new \App\Model\Detalhe_pedidoDao;
 ?>
 <!DOCTYPE html>
 <html>
@@ -18,12 +18,13 @@
 	<div class="container">
 		<a href="menu.php">MENU</a>
 	<?php
-
+/*
 		if(isset($_POST['btnSolicitar'])){
 			//FALTA DEFINIR VARIAVEIS
 			$pedidoDao->create($pedido);
 			$detalheDao->create($detalhe);
 		}
+		*/
 		foreach($materialDao->read() as $materiais){
 			echo
 		"<img src = upload/" . $materiais['imagem'] . " class = 'imagem-material'> " . "<br>" . 
