@@ -68,7 +68,7 @@ class UsuarioDao{
 			$_SESSION['id_acesso_fk'] = $resultado['id_acesso_fk'];
 			//session_destroy();
 			//$_SESSION['nome_session'] = $resultado['id_usuario'];
-			foreach($resultado as $acesso);
+			
 			switch ($_SESSION['id_acesso_fk']) {
 				case 1:
 					header('location:menu-pedidos.php');

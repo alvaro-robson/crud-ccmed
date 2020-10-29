@@ -14,7 +14,7 @@
     acesso: ' . $_SESSION['id_acesso_fk'];
     
     if(isset($_POST['btnPedido'])){
-        $pedido->setdata_fechamento('');
+        $pedido->setdata_fechamento(null);//O banco só aceita formato datetime. Com o pedido recém criado, não existe data de fechamento, então uma forma do banco aceitar foi com a palavra "null"
         $pedido->setstatus_pedido('Aberto');
         $pedido->setid_usuario_fk($_SESSION['id_usuario']);
         $pedidoDao->create($pedido);
@@ -27,7 +27,7 @@
         <link href="css/estilo2.css" rel="stylesheet">
     </head>
     <body>
-        <form action="" method="post">
+        <form method="post">
             <input type="submit" value="Realizar pedido" name="btnPedido">
         </form>
     </body>

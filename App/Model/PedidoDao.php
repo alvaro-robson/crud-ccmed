@@ -39,6 +39,25 @@ class PedidoDao{
 		$stmt->bindValue(1, $id_pedido);
 		$stmt->execute();
 	}
+
+	public function ultimo_pedido(){//mostra o último pedido
+		$sql = 'SELECT MAX(id_pedido) FROM PEDIDO';
+		$stmt = Conexao::getConn()->prepare($sql);
+		$stmt->execute();
+		if($stmt->rowCount() == 1){
+			$resultado = $stmt->fetch(\PDO::FETCH_ASSOC);
+			return $resultado;
+		}else{
+			echo "Nenhum registro";
+		}
+	}
+
+	public function cancelarPedido($pedido){
+		$sql = 'DELETE FROM PEDIDO ORDER BY id_pedido DESC LIMIT 1';
+		$stmt = Conexao::getConn()->prepare($sql);
+		$stmt->execute();
+		
+	}
 }
 
 
