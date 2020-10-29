@@ -31,7 +31,7 @@
   <body class="color">
   <div class="row">
             <div class="container">
-            <img src="logo.png" width="100%" margin-bottom="20px" class="img-fluid">
+            <img src="logo.png" width="50%" margin-bottom="20px" class="img-fluid">
             </div>
           
       </div>

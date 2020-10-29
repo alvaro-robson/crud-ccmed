@@ -7,14 +7,13 @@
 	$pedidoDao = new \App\Model\PedidoDao;
 	$detalhe = new \App\Model\Detalhe_pedido;
 	$detalheDao = new \App\Model\Detalhe_pedidoDao;
-	session_start();
 	
+	session_start();
 	echo 
 	'Olá, ' . $_SESSION['nome'] . '! <br>Seja bem-vindo.<br>
 	ID: ' . $_SESSION['id_usuario'] . ',<br>
-	matrícula: ' . $_SESSION['matricula'] . ',<br>
+	matrícula: ' . $_SESSION['matricula'] . '<br>
 	acesso: ' . $_SESSION['id_acesso_fk'];
-	
 ?>
 <!DOCTYPE html>
 <html>
@@ -25,6 +24,7 @@
 <body>
 	<div class="container">
 		<a href="menu.php">MENU</a>
+		<a href="login.php">SAIR</a>
 	<?php
 /*
 		if(isset($_POST['btnSolicitar'])){
@@ -44,9 +44,25 @@
 		"ID fornecedor = " . $materiais['id_forn_fk'] . "<br>";
 	?>
 		<form method="post">
-			<input type="number" name="" placeholder="Qtde. desejada" min="0" max="<?php echo $materiais['qtde_estoque']; ?>">
+			<input type="number" name="quantidade" placeholder="Qtde. desejada" min="0" max="<?php echo $materiais['qtde_estoque']; ?>">
 			<input type="submit" name="btnSolicitar" value="Solicitar">
 		</form>
 		<?php 
 		}
+		
+		if(isset($_POST['btnSolicitar'])){
+			
+			foreach($pedidoDao->read() as $pedidos);
+			
+			$pedido->setstatus_pedido('Aberto');
+			$pedido->setid_usuario_fk($_SESSION['id_usuario']);
+			$pedido->setdata_fechamento('');
+			$pedidoDao->create($pedido);
+			//-------------------------
+			$detalhe->setquantidade($_POST['quantidade']);
+			$detalhe->setid_material_fk($materiais['id_material']);
+			$detalhe->setid_pedido_fk($pedidos['id_pedido']);
+			$detalheDao->create($detalhe);
+		}
+		
  	?>
