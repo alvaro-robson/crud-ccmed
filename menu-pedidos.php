@@ -28,8 +28,7 @@
     </head>
     <body>
         <form method="post">
-            <input type="submit" value="Realizar pedido" name="btnPedido">
+            <input type="submit" value="Iniciar pedido" name="btnPedido">
         </form>
     </body>
-
 </html>

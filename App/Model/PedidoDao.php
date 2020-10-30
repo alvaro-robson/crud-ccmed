@@ -55,8 +55,17 @@ class PedidoDao{
 	public function cancelarPedido($pedido){
 		$sql = 'DELETE FROM PEDIDO ORDER BY id_pedido DESC LIMIT 1';
 		$stmt = Conexao::getConn()->prepare($sql);
+		$stmt->execute();		
+	}
+
+	public function confirmarPedido(){
+		$id = $_GET['id'];
+		$sql = 'SELECT * FROM MATERIAL WHERE id_material = ?';
+		$stmt = Conexao::getConn()->prepare($sql);
+		$stmt->bindValue(1, $id);
 		$stmt->execute();
-		
+		$resultado = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+		return $resultado;
 	}
 }
 
