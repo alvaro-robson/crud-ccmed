@@ -95,6 +95,14 @@ class MaterialDao{
 		$stmt->execute();
 	}
 
+	public function subtrairMaterial(Material $m){
+		$sql = 'UPDATE MATERIAL SET qtde_estoque = ? WHERE id_material = ?';
+		$stmt = Conexao::getConn()->prepare($sql);
+		$stmt->bindValue(1, $m->getqtde_estoque());
+		$stmt->bindValue(2, $m->getid_material());
+		$stmt->execute();
+	}
+
 	
 
 }

@@ -66,11 +66,7 @@
 		ID fornecedor = " . $materiais['id_forn_fk'] . "<br>
 		<a href = confirmar-pedido.php?id=".$materiais['id_material'].">SOLICITAR</a>";
 	?>
-		<!--a href="confirmar-pedido.php?id="<?php $materiais['id_material'] ?>">SOLICITAR</a-->
-		<form method="post"><!--Campo numérico e botão de solicitar-->
-			<input type="number" name="quantidade" placeholder="Qtde. desejada" min="0" max="<?php echo $materiais['qtde_estoque']; ?>">
-			<input type="submit" name="btnSolicitar" value="Solicitar">
-		</form>
+		
 		<?php 
 		}
 		

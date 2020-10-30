@@ -67,6 +67,8 @@ class PedidoDao{
 		$resultado = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 		return $resultado;
 	}
+
+	
 }
 
 

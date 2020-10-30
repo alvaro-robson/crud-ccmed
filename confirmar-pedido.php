@@ -3,6 +3,7 @@ namespace App\Model;
 require_once "vendor/autoload.php";
 $material = new \App\Model\Material;
 $materialDao = new \App\Model\MaterialDao;
+foreach($materialDao->read() as $materiais);
 $pedido = new \App\Model\Pedido;
 $pedidoDao = new \App\Model\PedidoDao;
 $detalhe = new \App\Model\Detalhe_pedido;
@@ -31,7 +32,8 @@ foreach($pedidoDao->confirmarPedido() as $confirmar){
     echo
     "Selecione quantas unidades deseja de:<br>".
     $confirmar['nome_material'] . " " . 
-    $confirmar['desc_material'] . "<br>
+    $confirmar['desc_material'] . "?<br>
+    Obs: Quantidade em estoque: " . $confirmar['qtde_estoque'] . "
     <img src = upload/" . $confirmar['imagem'] . " class = 'imagem-material'> <br>"  ;
 }
 
@@ -40,13 +42,19 @@ if(isset($_POST['btnConfirmar'])){
     $detalhe->setid_material_fk($confirmar['id_material']);
     $detalhe->setid_pedido_fk($ultimo);
     $detalheDao->create($detalhe);
+    $material->setqtde_estoque($confirmar['qtde_estoque'] - $_POST['quantidade']);
+    $material->setid_material($confirmar['id_material']);
+    $materialDao->subtrairMaterial($material);
+    header("location:fazer-pedido.php");
+}
+if(isset($_POST['btnCancelar'])){
     header("location:fazer-pedido.php");
 }
 
-foreach($materialDao->read() as $materiais);
 ?>
 
 <form method="post">
-<input type="number" name="quantidade" placeholder="Qtde. desejada" min="0" max="<?php echo $materiais['qtde_estoque']; ?>">
+<input type="number" name="quantidade" placeholder="Qtde. desejada" min="0" max="<?php echo $confirmar['qtde_estoque']; ?>">
     <input type="submit" value = "Confirmar" name = "btnConfirmar">
+    <input type="submit" value = "Cancelar" name = "btnCancelar">
 </form>
