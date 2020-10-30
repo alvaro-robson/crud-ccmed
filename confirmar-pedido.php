@@ -11,7 +11,8 @@ $detalheDao = new \App\Model\Detalhe_pedidoDao;
 
 session_start();
 	echo 
-	'Olá, ' . $_SESSION['nome'] . '! <br>Seja bem-vindo.<br>
+    '<div class = "session">
+    Olá, ' . $_SESSION['nome'] . '! <br>Seja bem-vindo.<br>
 	ID: ' . $_SESSION['id_usuario'] . ',<br>
 	matrícula: ' . $_SESSION['matricula'] . '<br>
 	acesso: ' . $_SESSION['id_acesso_fk'];
@@ -26,6 +27,8 @@ session_start();
 	<title></title>
 	<link rel="stylesheet" href="css/estilo2.css">
 </head>
+<body>
+</div>
 <div class="container">
 <?php
 foreach($pedidoDao->confirmarPedido() as $confirmar){

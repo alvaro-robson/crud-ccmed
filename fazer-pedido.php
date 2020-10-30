@@ -10,7 +10,8 @@
 	
 	session_start();
 	echo 
-	'Olá, ' . $_SESSION['nome'] . '! <br>Seja bem-vindo.<br>
+	'<div class = "session">
+	Olá, ' . $_SESSION['nome'] . '! <br>Seja bem-vindo.<br>
 	ID: ' . $_SESSION['id_usuario'] . ',<br>
 	matrícula: ' . $_SESSION['matricula'] . '<br>
 	acesso: ' . $_SESSION['id_acesso_fk'];
@@ -26,6 +27,7 @@
 	<link rel="stylesheet" href="css/estilo2.css">
 </head>
 <body>
+	</div>
 	<div class="container">
 		<a href="menu.php">MENU</a>
 		<a href="login.php">SAIR</a>
@@ -33,7 +35,6 @@
 			<input type="submit" name="cancelarPedido" value="Cancelar pedido">
 			<input type="submit" name="finalizarPedido" value = "Finalizar pedido">
 		</form>
-		<a href="menu-pedidos.php" name="cancelarPedido">CANCELAR</a>
 	<?php
 		/*
 		if(isset($_POST['btnSolicitar'])){
