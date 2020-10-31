@@ -57,8 +57,8 @@ class UsuarioDao{
 		if($stmt->rowCount() == 1){
 			session_start();
 			$resultado = $stmt->fetch(\PDO::FETCH_ASSOC);
-			//return $resultado;
 			
+			$_SESSION['logado'] = 'sim';
 			$_SESSION['id_usuario'] = $resultado['id_usuario'];
 			$_SESSION['login'] = $resultado['login'];
 			$_SESSION['senha'] = $resultado['senha'];

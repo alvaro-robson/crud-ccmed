@@ -9,11 +9,17 @@
   $detalheDao = new \App\Model\Detalhe_pedidoDao;
   
   session_start();
-  echo 
-  'Olá, ' . $_SESSION['nome'] . '! <br>Seja bem-vindo.<br>
-  ID: ' . $_SESSION['id_usuario'] . ',<br>
-  matrícula: ' . $_SESSION['matricula'] . ',<br>
-  acesso: ' . $_SESSION['id_acesso_fk'];
+    if(!isset($_SESSION['id_usuario'])){
+        session_destroy();
+        header("location:login.php");
+    }else{
+        echo 
+        '<div class = "session">
+        Olá, ' . $_SESSION['nome'] . '! <br>Seja bem-vindo.<br>
+        ID: ' . $_SESSION['id_usuario'] . ',<br>
+        matrícula: ' . $_SESSION['matricula'] . '<br>
+        acesso: ' . $_SESSION['id_acesso_fk'];
+    }
 ?>
     <br><a href="login.php">SAIR</a>
 

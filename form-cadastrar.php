@@ -5,6 +5,20 @@ $FornecedorDao = new \App\Model\FornecedorDao;
 $material = new \App\Model\Material();
 $materialDao = new \App\Model\MaterialDao();
 //CREATE
+
+session_start();
+    if(!isset($_SESSION['id_usuario'])){
+        session_destroy();
+        header("location:login.php");
+    }else{
+        echo 
+        '<div class = "session">
+        Olá, ' . $_SESSION['nome'] . '! <br>Seja bem-vindo.<br>
+        ID: ' . $_SESSION['id_usuario'] . ',<br>
+        matrícula: ' . $_SESSION['matricula'] . '<br>
+        acesso: ' . $_SESSION['id_acesso_fk'];
+    }
+
 if(isset($_POST['btnCadastrar'])){
     //$material->setid_material(1);
     $material->setnome_material($_POST['nome_material']);
