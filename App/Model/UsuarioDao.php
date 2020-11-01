@@ -92,11 +92,6 @@ class UsuarioDao{
 
 	public function mostrarSessao(){
 		//MOSTRA OS DADOS DO USUÁRIO DA SESSÃO ATUAL
-		/*
-		?>
-		<script>alert("Seja bem-vindo");</script>
-		<?php
-		*/
 		echo 
 		'<div class = "session">
 		Olá, ' . $_SESSION['nome'] . '! <br>Seja bem-vindo.<br>

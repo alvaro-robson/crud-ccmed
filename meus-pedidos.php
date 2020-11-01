@@ -28,12 +28,13 @@ if(!isset($_SESSION['id_usuario'])){
 
 //MOSTRAR OS PEDIDOS DO USUÁRIO LOGADO:
 $usuario->setid_usuario($_SESSION['id_usuario']);
-foreach($pedidoDao->mostrarPedidos($usuario) as $mostrar){
+foreach($pedidoDao->mostrarPedidosUsuario($usuario) as $mostrar){
   echo
   "ID: " . $mostrar['id_pedido'] . "<br>
   Abertura: " . $mostrar['data_abertura'] . "<br>
   Vencimento: " . $mostrar['vencimento'] . "<br>
   Fechamento: " . $mostrar['data_fechamento'] . "<br>
+  Status: " . $mostrar['status_pedido'] . "<br>
   <a href = detalhar-pedido.php?id_pedido=" . $mostrar['id_pedido'].">DETALHAR</a>
   ________________________________<br>";
 }

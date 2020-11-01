@@ -1,14 +1,18 @@
 <?php
 	namespace App\Model; 
     require_once "vendor/autoload.php";
-    //require "verificar.php";
     $material = new \App\Model\Material;
 	$materialDao = new \App\Model\MaterialDao;
     $pedido = new \App\Model\Pedido;
     $pedidoDao = new \App\Model\PedidoDao;
     $usuarioDao = new \App\Model\UsuarioDao;
     $usuario = new \App\Model\Usuario;
-
+    ?>
+    
+    <script src = scripts/document.js></script>
+    <script>boasVindas();</script>   
+     
+    <?php
     session_start();
     if(!isset($_SESSION['id_usuario'])){
         session_destroy();
@@ -33,18 +37,19 @@
         session_destroy();
         header("location:login.php");
     }
-
 ?>
+
 <html>
     <head>
         <link href="css/estilo2.css" rel="stylesheet">
     </head>
     <body>
-        
-        <form method="post">
-            <input type="submit" value="Iniciar pedido" name="btnIniciarPedido">
-            <input type="submit" value="Meus pedidos" name="btnMeusPedidos">
-            <input type="submit" value="Sair" name="btnSair">
-        </form>
+        <div class="container">
+            <form method="post">
+                <input type="submit" value="Iniciar pedido" name="btnIniciarPedido">
+                <input type="submit" value="Meus pedidos" name="btnMeusPedidos">
+                <input type="submit" value="Sair" name="btnSair">
+            </form>
+        </div>
     </body>
 </html>

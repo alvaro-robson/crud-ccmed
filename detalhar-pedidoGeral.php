@@ -9,7 +9,7 @@
     <body>
         <script src = scripts/document.js></script>
         <div class="container">
-            <a href="menu-pedidos.php">Voltar</a>
+            <a href="todos-pedidos.php">Voltar</a>
 <?php
 $material = new \App\Model\Material;
 $materialDao = new \App\Model\MaterialDao;
@@ -26,19 +26,20 @@ if(!isset($_SESSION['id_usuario'])){
     $usuarioDao->mostrarSessao();
 }
 //RELATÓRIO DO PEDIDO SELECIONADO NA PÁG. meus-pedidos.php
-$usuario->setid_usuario($_SESSION['id_usuario']);
-foreach($pedidoDao->detalharPedidosUsuario($usuario) as $detalhar);
+foreach($pedidoDao->detalharPedidosGeral($usuario) as $detalhar);
 echo
-"<br>=============================<br>
-Pedido nº " . $detalhar['id_pedido'] . "| Status: " . $detalhar['status_pedido'] . "<br>
-=============================<br>";
-foreach($pedidoDao->detalharPedidosUsuario($usuario) as $detalhar){
+"<br>=========================<br>
+Pedido nº " . $detalhar['id_pedido'] . " | Usuário: " . $detalhar['id_usuario_fk'] . "<br>
+=========================<br>";
+foreach($pedidoDao->detalharPedidosGeral() as $detalhar){
     echo
     "<br>Material : " . $detalhar['nome_material'] . "<br>
     Quantidade: " . $detalhar['quantidade'] . "<br>
+    Status: " . $detalhar['status_pedido'] . "<br>
     Abertura: " . $detalhar['data_abertura'] . "<br>
     Vencimento: " . $detalhar['vencimento'] . "<br>
     ___________________________<br>";
 }
+echo "<a href = liberar-pedido.php?id_pedido=" . $detalhar['id_pedido'].">LIBERAR PEDIDO</a>"
 
 ?>

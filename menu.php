@@ -49,9 +49,9 @@
         <button type="submit" class="btn btn-secondary btn-block btn-lg mt-5">
             <a href="form-cadastrar.php">Cadastro de materiais</a></button>
         <button type="submit" class="btn btn-secondary btn-block btn-lg mt-5">
-          Retirada</button>
+        <a href="index.php">Lista de materiais</a></button>
         <button type="submit" class="btn btn-secondary btn-block btn-lg mt-5">
-          Pedido</button>
+        <a href="todos-pedidos.php">Ver pedidos</a></button>
         </div>
     </div>
 

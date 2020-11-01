@@ -1,5 +1,8 @@
 <?php 
 namespace App\Model;
+?>
+	<script src = "../scripts/document.js"></script>
+<?php
 
 class PedidoDao{
 	public function create(Pedido $ped){
@@ -52,8 +55,6 @@ class PedidoDao{
 		}
 	}
 
-	
-	
 	public function cancelarPedido(Pedido $ped){
 		$sql = "DELETE FROM PEDIDO where id_pedido = ?";
 		$stmt = Conexao::getConn()->prepare($sql);
@@ -65,7 +66,8 @@ class PedidoDao{
 		$sql = "INSERT INTO PEDIDO_CANCELADO
 		(id_pedido_original, data_abertura, vencimento, data_fechamento, status_pedido, id_usuario_fk)
 		select id_pedido, data_abertura, vencimento, data_fechamento, status_pedido, id_usuario_fk
-		from PEDIDO WHERE id_pedido = ?";
+		from PEDIDO WHERE id_pedido = ?; 
+		UPDATE PEDIDO_CANCELADO SET status_pedido = 'Cancelado'";
 		$stmt = Conexao::getConn()->prepare($sql);
 		$stmt->bindValue(1, $ped->getid_pedido());
 		$stmt->execute();
@@ -92,7 +94,7 @@ class PedidoDao{
 		return $resultado;
 	}
 
-	public function mostrarPedidos(Usuario $usu){
+	public function mostrarPedidosUsuario(Usuario $usu){
 		$sql = "SELECT id_pedido, data_abertura, DATE_ADD(vencimento, interval 7 DAY) AS 'vencimento', data_fechamento, status_pedido FROM PEDIDO WHERE id_usuario_fk = ?";
 		$stmt = Conexao::getConn()->prepare($sql);
 		$stmt->bindValue(1, $usu->getid_usuario());
@@ -100,12 +102,34 @@ class PedidoDao{
 		if($stmt->rowCount() > 0){
 			$resultado = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 			return $resultado;
+		}else{
+			?>
+			<script>
+				redirecionar();
+			</script>
+			<?php
 		}
 	}
 
-	public function detalharPedidos(Usuario $usu){
+	public function mostrarPedidosGeral(){
+		$sql = "SELECT id_pedido, data_abertura, DATE_ADD(vencimento, interval 7 DAY) AS 'vencimento', data_fechamento, status_pedido, id_usuario_fk FROM PEDIDO";
+		$stmt = Conexao::getConn()->prepare($sql);
+		$stmt->execute();
+		if($stmt->rowCount() > 0){
+			$resultado = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+			return $resultado;
+		}else{
+			?>
+			<script>
+				redirecionar();
+			</script>
+			<?php
+		}
+	}
+
+	public function detalharPedidosUsuario(Usuario $usu){
 		$id_pedido = $_GET['id_pedido'];
-		$sql = "SELECT P.id_pedido, M.nome_material, D.quantidade, P.id_usuario_fk, U.nome, P.status_pedido, P.data_abertura, DATE_ADD(vencimento, INTERVAL 7 DAY) AS 'vencimento'
+		$sql = "SELECT P.id_pedido, M.nome_material, D.quantidade, P.id_usuario_fk, U.nome, P.status_pedido, P.data_abertura, P.id_pedido, DATE_ADD(vencimento, INTERVAL 7 DAY) AS 'vencimento'
 		FROM PEDIDO P INNER JOIN DETALHE_PEDIDO AS D
 		ON P.id_pedido = D.id_pedido_fk INNER JOIN MATERIAL AS M
 		ON D.id_material_fk = M.id_material INNER JOIN USUARIO AS U
@@ -120,14 +144,38 @@ class PedidoDao{
 		}else{
 			//header("location:meus-pedidos.php");
 			?>
-				<script>
-					redirecionar();
-				</script>
+			<script>
+				redirecionar();
+			</script>
 			<?php
 		}
 	}
 
-	
+	public function detalharPedidosGeral(){
+		$id_pedido = $_GET['id_pedido'];
+		$sql = "SELECT P.id_pedido, M.nome_material, D.quantidade, P.id_usuario_fk, U.nome, P.status_pedido, P.data_abertura, P.id_pedido, DATE_ADD(vencimento, INTERVAL 7 DAY) AS 'vencimento'
+		FROM PEDIDO P INNER JOIN DETALHE_PEDIDO AS D
+		ON P.id_pedido = D.id_pedido_fk INNER JOIN MATERIAL AS M
+		ON D.id_material_fk = M.id_material INNER JOIN USUARIO AS U
+		ON P.id_usuario_fk = U.id_usuario WHERE P.id_pedido = ?";
+		$stmt = Conexao::getConn()->prepare($sql);
+		$stmt->bindValue(1, $id_pedido);
+		$stmt->execute();
+		if($stmt->rowCount() > 0){
+			$resultado = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+			return $resultado;
+		}else{
+			//header("location:meus-pedidos.php");
+			
+		}
+	}
+
+	public function liberarPedido(Pedido $ped){
+		$sql = "UPDATE PEDIDO SET status_pedido = 'Liberado' where id_pedido = ?";
+		$stmt = Conexao::getConn()->prepare($sql);
+		$stmt->bindValue(1, $ped->getid_pedido());
+		$stmt->execute();
+	}	
 }
 
 

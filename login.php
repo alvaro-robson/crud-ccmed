@@ -33,8 +33,7 @@
             <div class="container">
             <img src="logo.png" width="50%" margin-bottom="20px" class="img-fluid">
             </div>
-          
-      </div>
+       </div>
     <div class="container mt-5">
         <div class="col-sm-12">
             <form class="mb-" action="<?php $_SERVER['PHP_SELF']; ?>" method="POST">
