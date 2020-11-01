@@ -57,7 +57,6 @@ class UsuarioDao{
 		if($stmt->rowCount() == 1){
 			session_start();
 			$resultado = $stmt->fetch(\PDO::FETCH_ASSOC);
-			
 			$_SESSION['logado'] = 'sim';
 			$_SESSION['id_usuario'] = $resultado['id_usuario'];
 			$_SESSION['login'] = $resultado['login'];
@@ -66,9 +65,8 @@ class UsuarioDao{
 			$_SESSION['sobrenome'] = $resultado['sobrenome'];
 			$_SESSION['matricula'] = $resultado['matricula'];
 			$_SESSION['id_acesso_fk'] = $resultado['id_acesso_fk'];
-			//session_destroy();
-			//$_SESSION['nome_session'] = $resultado['id_usuario'];
 			
+			//DECIDINDO EM QUAL PÁGINA O USUÁRIO ENTRARÁ DE ACORDO COM SEU ACESSO:
 			switch ($_SESSION['id_acesso_fk']) {
 				case 1:
 					header('location:menu-pedidos.php');
@@ -92,8 +90,20 @@ class UsuarioDao{
 		}		
 	}
 
-	public function sessoes(){
-
+	public function mostrarSessao(){
+		//MOSTRA OS DADOS DO USUÁRIO DA SESSÃO ATUAL
+		/*
+		?>
+		<script>alert("Seja bem-vindo");</script>
+		<?php
+		*/
+		echo 
+		'<div class = "session">
+		Olá, ' . $_SESSION['nome'] . '! <br>Seja bem-vindo.<br>
+		ID: ' . $_SESSION['id_usuario'] . ',<br>
+		matrícula: ' . $_SESSION['matricula'] . '<br>
+		acesso: ' . $_SESSION['id_acesso_fk'] . '<br>
+		</div>';		
 	}
 }
 

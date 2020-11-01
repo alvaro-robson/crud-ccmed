@@ -11,10 +11,13 @@
 
 <?php 
 session_start();
-if(!isset($_SESSION['id_usuario'])){
+if(($_SESSION['id_acesso_fk'] != 2) or !isset($_SESSION['id_usuario'])){
 	session_destroy();
 	header("location:login.php");
 }else{
+	?>
+	<script>alert("Seja bem-vindo");</script>
+	<?php
 	echo 
 	'<div class = "session">
 	Olá, ' . $_SESSION['nome'] . '! <br>Seja bem-vindo.<br>
