@@ -135,7 +135,7 @@ CREATE TABLE `detalhe_pedido` (
   KEY `id_material_fk` (`id_material_fk`),
   CONSTRAINT `DETALHE_PEDIDO_ibfk_1` FOREIGN KEY (`id_pedido_fk`) REFERENCES `pedido` (`id_pedido`) ON DELETE CASCADE,
   CONSTRAINT `DETALHE_PEDIDO_ibfk_2` FOREIGN KEY (`id_material_fk`) REFERENCES `material` (`id_material`)
-) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=77 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -144,7 +144,7 @@ CREATE TABLE `detalhe_pedido` (
 
 LOCK TABLES `detalhe_pedido` WRITE;
 /*!40000 ALTER TABLE `detalhe_pedido` DISABLE KEYS */;
-INSERT INTO `detalhe_pedido` VALUES (37,20,12,36),(38,2,1,36),(39,2,2,36),(40,90,3,37),(41,1,12,37),(42,1,12,37),(43,1,12,37),(44,1,12,37),(45,1,12,37),(46,1,12,37),(47,1,12,37),(48,10,2,38),(49,10,2,38),(50,33,2,38),(51,10,1,40),(52,17,2,40),(53,5,1,41),(54,20,2,41),(55,5,1,49),(56,1,1,50),(57,20,2,50),(58,50,6,50),(59,80,3,51);
+INSERT INTO `detalhe_pedido` VALUES (74,10,1,102),(75,2,2,102),(76,4,3,102);
 /*!40000 ALTER TABLE `detalhe_pedido` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -309,7 +309,7 @@ CREATE TABLE `material` (
 
 LOCK TABLES `material` WRITE;
 /*!40000 ALTER TABLE `material` DISABLE KEYS */;
-INSERT INTO `material` VALUES (1,'Tubo PVC','100mm',4,1,1,'c4ca4238a0b923820dcc509a6f75849b.jpg'),(2,'Válvula de pressão','50mm',60,2,1,'c81e728d9d4c2f636f067f89cc14862c.jpg'),(3,'Braçadeira','100mm',10,3,2,'eccbc87e4b5ce2fe28308fd9f2a7baf3.jpg'),(4,'Cotovelo PVC','90mm',50,4,2,'a87ff679a2f3e71d9181a67b7542122c.jpg'),(5,'TE PVC','100mm',40,5,3,'e4da3b7fbbce2345d7772b0674a318d5.png'),(6,'Tubo PVC','50mm',30,6,3,'1679091c5a880faf6fb5e6087eb1b2dc.jpg'),(7,'Tampa de registro','Tam. único',90,7,4,'8f14e45fceea167a5a36dedd4bea2543.jpg'),(8,'Cimento','50kg',50,8,4,'c9f0f895fb98ab9159f51fd0297e236d.jpg'),(9,'Argamassa','50kg',30,9,5,'45c48cce2e2d7fbdea1afc51c7c6ad26.jpg'),(10,'Pá','Aço inox',20,10,5,'d3d9446802a44259755d38e6d163e820.png'),(11,'Bota bico de aço','Tam. 40',30,11,6,'6512bd43d9caa6e02c990b0a82652dca.jpg'),(12,'Alicate de corte','15 polegadas',9,3,1,'c20ad4d76fe97759aa27a0c99bff6710.jpg');
+INSERT INTO `material` VALUES (1,'Tubo PVC','100mm',60,1,1,'c4ca4238a0b923820dcc509a6f75849b.jpg'),(2,'Válvula de pressão','50mm',8,2,1,'c81e728d9d4c2f636f067f89cc14862c.jpg'),(3,'Abraçadeira','100mm',4,3,2,'eccbc87e4b5ce2fe28308fd9f2a7baf3.jpg'),(4,'Cotovelo PVC','90mm',25,4,2,'a87ff679a2f3e71d9181a67b7542122c.jpg'),(5,'TE PVC','100mm',40,5,3,'e4da3b7fbbce2345d7772b0674a318d5.png'),(6,'Tubo PVC','50mm',30,6,3,'1679091c5a880faf6fb5e6087eb1b2dc.jpg'),(7,'Tampa de registro','Tam. único',70,7,4,'8f14e45fceea167a5a36dedd4bea2543.jpg'),(8,'Cimento','50kg',50,8,4,'c9f0f895fb98ab9159f51fd0297e236d.jpg'),(9,'Argamassa','50kg',30,9,5,'45c48cce2e2d7fbdea1afc51c7c6ad26.jpg'),(10,'Pá','Aço inox',20,10,5,'d3d9446802a44259755d38e6d163e820.png'),(11,'Bota bico de aço','Tam. 40',30,11,6,'6512bd43d9caa6e02c990b0a82652dca.jpg'),(12,'Alicate de corte','15 polegadas',9,3,1,'c20ad4d76fe97759aa27a0c99bff6710.jpg');
 /*!40000 ALTER TABLE `material` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -330,7 +330,7 @@ CREATE TABLE `pedido` (
   PRIMARY KEY (`id_pedido`),
   KEY `id_usuario_fk` (`id_usuario_fk`),
   CONSTRAINT `PEDIDO_ibfk_1` FOREIGN KEY (`id_usuario_fk`) REFERENCES `usuario` (`id_usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=103 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -339,8 +339,38 @@ CREATE TABLE `pedido` (
 
 LOCK TABLES `pedido` WRITE;
 /*!40000 ALTER TABLE `pedido` DISABLE KEYS */;
-INSERT INTO `pedido` VALUES (28,'2020-10-29 23:34:26','2020-10-29 23:34:26',NULL,'Aberto',1),(29,'2020-10-29 23:35:54','2020-10-29 23:35:54',NULL,'Aberto',1),(30,'2020-10-29 23:38:33','2020-10-29 23:38:33',NULL,'Aberto',1),(36,'2020-10-29 23:48:55','2020-10-29 23:48:55',NULL,'Aberto',1),(37,'2020-10-30 01:02:54','2020-10-30 01:02:54',NULL,'Aberto',1),(38,'2020-10-30 01:27:27','2020-10-30 01:27:27',NULL,'Aberto',1),(40,'2020-10-30 02:01:43','2020-10-30 02:01:43',NULL,'Aberto',2),(41,'2020-10-30 02:12:38','2020-10-30 02:12:38',NULL,'Aberto',1),(45,'2020-10-30 03:26:58','2020-10-30 03:26:58',NULL,'Aberto',1),(48,'2020-10-30 03:32:27','2020-10-30 03:32:27',NULL,'Aberto',1),(49,'2020-10-30 03:33:49','2020-10-30 03:33:49',NULL,'Aberto',1),(50,'2020-10-30 03:36:26','2020-10-30 03:36:26',NULL,'Aberto',1),(51,'2020-10-30 03:40:54','2020-10-30 03:40:54',NULL,'Aberto',1),(53,'2020-10-30 03:46:20','2020-10-30 03:46:20',NULL,'Aberto',1);
+INSERT INTO `pedido` VALUES (102,'2020-11-01 21:07:34','2020-11-01 21:07:34',NULL,'Liberado',1);
 /*!40000 ALTER TABLE `pedido` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `pedido_cancelado`
+--
+
+DROP TABLE IF EXISTS `pedido_cancelado`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `pedido_cancelado` (
+  `id_pedido_cancelado` int(11) NOT NULL AUTO_INCREMENT,
+  `id_pedido_original` int(11) NOT NULL,
+  `data_abertura` datetime NOT NULL,
+  `vencimento` datetime NOT NULL,
+  `data_fechamento` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `status_pedido` varchar(20) NOT NULL,
+  `id_usuario_fk` int(11) NOT NULL,
+  PRIMARY KEY (`id_pedido_cancelado`),
+  KEY `id_usuario_fk` (`id_usuario_fk`)
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `pedido_cancelado`
+--
+
+LOCK TABLES `pedido_cancelado` WRITE;
+/*!40000 ALTER TABLE `pedido_cancelado` DISABLE KEYS */;
+INSERT INTO `pedido_cancelado` VALUES (1,28,'2020-10-29 20:34:26','2020-10-29 20:34:26',NULL,'Cancelado',1),(2,83,'2020-11-01 14:00:07','2020-11-01 14:00:07',NULL,'Cancelado',1),(3,84,'2020-11-01 14:10:09','2020-11-01 14:10:09',NULL,'Cancelado',1),(4,85,'2020-11-01 14:12:58','2020-11-01 14:12:58',NULL,'Cancelado',1),(5,86,'2020-11-01 14:14:23','2020-11-01 14:14:23',NULL,'Cancelado',1),(6,87,'2020-11-01 14:18:43','2020-11-01 14:18:43',NULL,'Cancelado',1),(7,93,'2020-11-01 15:05:53','2020-11-01 15:05:53',NULL,'Cancelado',1),(8,94,'2020-11-01 15:06:28','2020-11-01 15:06:28',NULL,'Cancelado',1);
+/*!40000 ALTER TABLE `pedido_cancelado` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -438,4 +468,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-10-30 23:48:14
+-- Dump completed on 2020-11-01 19:37:56

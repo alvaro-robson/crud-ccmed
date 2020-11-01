@@ -9,7 +9,7 @@
     <body>
         <script src = scripts/document.js></script>
         <div class="container">
-            <a href="todos-pedidos.php">Voltar</a>
+            <a href="menu.php">Voltar</a>
 <?php
 $pedido = new \App\Model\Pedido;
 $pedidoDao = new \App\Model\PedidoDao;

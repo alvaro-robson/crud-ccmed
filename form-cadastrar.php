@@ -68,6 +68,7 @@ if(isset($_POST['btnCadastrar'])){
     <title>Cadastro de materiais</title>
   </head>
   <body class="color">
+  <br><a href="login.php">Sair</a>
   <div class="row">
           <div class="container mt-5" style="display: flex; align-items: center; justify-content: center">
               <h1 class="" align="center">Cadastro de materiais</h1>
@@ -110,7 +111,7 @@ if(isset($_POST['btnCadastrar'])){
                 </div>
                 <input type="submit" class="btn btn-secondary btn-block btn-lg mt-5" name="btnCadastrar" value="Armazenar">
               </form>
-              <a href="index.php" class="btn btn-secondary btn-block btn-lg mt-5">Cancelar</a>
+              <a href="menu.php" class="btn btn-secondary btn-block btn-lg mt-5">Cancelar</a>
               <?php 
               
               

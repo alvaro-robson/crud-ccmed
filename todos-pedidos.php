@@ -15,7 +15,7 @@ $usuarioDao = new \App\Model\UsuarioDao;
         <link href="css/estilo2.css" rel="stylesheet">
     </head>
     <body>
-    <a href="menu-pedidos.php">Voltar</a>
+    <a href="menu.php">Voltar</a>
 <?php
 
 session_start();
