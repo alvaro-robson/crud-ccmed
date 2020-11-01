@@ -103,6 +103,16 @@ class MaterialDao{
 		$stmt->bindValue(2, $m->getid_material());
 		$stmt->execute();
 	}
+	/*
+	//DEVOLVENDO OS MATERIAIS AO ESTOQUE APÓS CANCELAR O PEDIDO:
+	public function devolverMateriais(Material $m){
+		$sql = "UPDATE MATERIAL SET qtde_estoque = qtde_estoque + ? WHERE id_material = ?";
+		$stmt = Conexao::getConn()->prepare($sql);
+		$stmt->bindValue(1, $m->getqtde_estoque());
+		$stmt->bindValue(2, $m->getid_material());
+		$stmt->execute();
+	}
+	*/
 }
 
 

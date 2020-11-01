@@ -52,6 +52,26 @@ class PedidoDao{
 		}
 	}
 
+	
+	
+	public function cancelarPedido(Pedido $ped){
+		$sql = "DELETE FROM PEDIDO where id_pedido = ?";
+		$stmt = Conexao::getConn()->prepare($sql);
+		$stmt->bindValue(1, $ped->getid_pedido());
+		$stmt->execute();		
+	}
+	//MANDA O PEDIDO PRA TABELA PEDIDO_CANCELADO ANTES DE EXCLUÍ-LO DA TABELA PEDIDO
+	public function transferirPedidoCancelado(Pedido $ped){
+		$sql = "INSERT INTO PEDIDO_CANCELADO
+		(id_pedido_original, data_abertura, vencimento, data_fechamento, status_pedido, id_usuario_fk)
+		select id_pedido, data_abertura, vencimento, data_fechamento, status_pedido, id_usuario_fk
+		from PEDIDO WHERE id_pedido = ?";
+		$stmt = Conexao::getConn()->prepare($sql);
+		$stmt->bindValue(1, $ped->getid_pedido());
+		$stmt->execute();
+	}
+
+	/*
 	//Altera para "Cancelado" o status do último pedido da tabela, ou seja, o pedido atual, caso o usuario clique em Cancelar
 	public function cancelarPedido(Pedido $ped){
 		$sql = "UPDATE PEDIDO SET status_pedido = 'Cancelado' where id_pedido = ?";
@@ -59,6 +79,8 @@ class PedidoDao{
 		$stmt->bindValue(1, $ped->getid_pedido());
 		$stmt->execute();		
 	}
+	*/
+	
 
 	public function confirmarPedido(){
 		$id = $_GET['id'];
@@ -97,7 +119,11 @@ class PedidoDao{
 			return $resultado;
 		}else{
 			//header("location:meus-pedidos.php");
-			?><!--script>alert("nada");</script--><?php
+			?>
+				<script>
+					redirecionar();
+				</script>
+			<?php
 		}
 	}
 

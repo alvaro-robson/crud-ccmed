@@ -1,7 +1,9 @@
 <?php 
   namespace App\Model; 
   require_once "vendor/autoload.php";
-
+?>
+<script src = scripts/document.js></script>
+<?php
 $material = new \App\Model\Material;
 $materialDao = new \App\Model\MaterialDao;
 $pedido = new \App\Model\Pedido;
