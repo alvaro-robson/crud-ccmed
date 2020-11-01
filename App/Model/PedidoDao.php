@@ -52,9 +52,11 @@ class PedidoDao{
 		}
 	}
 
-	public function cancelarPedido($pedido){
-		$sql = 'DELETE FROM PEDIDO ORDER BY id_pedido DESC LIMIT 1';
+	//Altera para "Cancelado" o status do último pedido da tabela, ou seja, o pedido atual, caso o usuario clique em Cancelar
+	public function cancelarPedido(Pedido $ped){
+		$sql = "UPDATE PEDIDO SET status_pedido = 'Cancelado' where id_pedido = ?";
 		$stmt = Conexao::getConn()->prepare($sql);
+		$stmt->bindValue(1, $ped->getid_pedido());
 		$stmt->execute();		
 	}
 
@@ -66,6 +68,24 @@ class PedidoDao{
 		$stmt->execute();
 		$resultado = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 		return $resultado;
+	}
+
+	
+	public function meusPedidos(Usuario $usu){
+		$sql = "SELECT P.id_pedido, M.nome_material, D.quantidade, P.id_usuario_fk, U.nome, P.status_pedido, P.data_abertura, DATE_ADD(vencimento, INTERVAL 7 DAY) AS 'Vencimento'
+		FROM PEDIDO P INNER JOIN DETALHE_PEDIDO AS D
+		ON P.id_pedido = D.id_pedido_fk INNER JOIN MATERIAL AS M
+		ON D.id_material_fk = M.id_material INNER JOIN USUARIO AS U
+		ON P.id_usuario_fk = U.id_usuario WHERE id_usuario = ?";
+		$stmt = Conexao::getConn()->prepare($sql);
+		$stmt->bindValue(1, $usu->getid_usuario());
+		$stmt->execute();
+		if($stmt->rowCount() > 0){
+			$resultado = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+			return $resultado;
+		}else{
+			echo "Nenhum pedido";
+		}
 	}
 
 	

@@ -95,6 +95,7 @@ class MaterialDao{
 		$stmt->execute();
 	}
 
+	//SUBTRAINDO QUANTIDADES DE MATERIAIS AO FAZER O PEDIDO:
 	public function subtrairMaterial(Material $m){
 		$sql = 'UPDATE MATERIAL SET qtde_estoque = ? WHERE id_material = ?';
 		$stmt = Conexao::getConn()->prepare($sql);
@@ -102,9 +103,6 @@ class MaterialDao{
 		$stmt->bindValue(2, $m->getid_material());
 		$stmt->execute();
 	}
-
-	
-
 }
 
 

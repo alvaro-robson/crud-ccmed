@@ -50,8 +50,9 @@ if(!isset($_SESSION['id_usuario'])){
 
 		//Cancelando o pedido(Excluindo-o do banco)
 		if(isset($_POST['cancelarPedido'])){
-			header("location:menu-pedidos.php");
+			$pedido->setid_pedido($ultimo);
 			$pedidoDao->cancelarPedido($pedido);
+			header("location:menu-pedidos.php");
 		}
 		if(isset($_POST['finalizarPedido'])){
 			header("location:menu-pedidos.php");
