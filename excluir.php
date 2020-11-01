@@ -13,9 +13,9 @@ if(!isset($_SESSION['id_usuario'])){
 	echo 
     '<div class = "session">
     Olá, ' . $_SESSION['nome'] . '! <br>Seja bem-vindo.<br>
-	ID: ' . $_SESSION['id_usuario'] . ',<br>
-	matrícula: ' . $_SESSION['matricula'] . '<br>
-    acesso: ' . $_SESSION['id_acesso_fk'];
+	  ID: ' . $_SESSION['id_usuario'] . ',<br>
+	  Matrícula: ' . $_SESSION['matricula'] . '<br>
+    Acesso: ' . $_SESSION['id_acesso_fk'];
 }
 
 ?>

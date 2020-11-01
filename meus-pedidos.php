@@ -26,8 +26,21 @@ if(!isset($_SESSION['id_usuario'])){
     $usuarioDao->mostrarSessao();
 }
 
+//MOSTRAR OS PEDIDOS DO USUÁRIO LOGADO:
 $usuario->setid_usuario($_SESSION['id_usuario']);
-foreach($pedidoDao->meusPedidos($usuario) as $meus){
+foreach($pedidoDao->mostrarPedidos($usuario) as $mostrar){
+  echo
+  "ID: " . $mostrar['id_pedido'] . "<br>
+  Abertura: " . $mostrar['data_abertura'] . "<br>
+  Vencimento: " . $mostrar['vencimento'] . "<br>
+  Fechamento: " . $mostrar['data_fechamento'] . "<br>
+  <a href = detalhar-pedido.php?id_pedido=" . $mostrar['id_pedido'].">DETALHAR</a>
+  ________________________________<br>";
+}
+/*
+//RELATÓRIO DE PEDIDOS DO USUÁRIO LOGADO:
+$usuario->setid_usuario($_SESSION['id_usuario']);
+foreach($pedidoDao->detalharPedidos($usuario) as $meus){
   echo
   "Pedido nº: " . $meus['id_pedido'] . "(Status: " . $meus['status_pedido'] . ")<br>
   Material: " . $meus['nome_material'] . "<br>
@@ -37,4 +50,5 @@ foreach($pedidoDao->meusPedidos($usuario) as $meus){
   Vencimento: " . $meus['Vencimento'] . "<br>
   -------------------------<br>";
 }
+*/
 ?>

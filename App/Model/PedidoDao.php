@@ -70,21 +70,34 @@ class PedidoDao{
 		return $resultado;
 	}
 
-	
-	public function meusPedidos(Usuario $usu){
-		$sql = "SELECT P.id_pedido, M.nome_material, D.quantidade, P.id_usuario_fk, U.nome, P.status_pedido, P.data_abertura, DATE_ADD(vencimento, INTERVAL 7 DAY) AS 'Vencimento'
-		FROM PEDIDO P INNER JOIN DETALHE_PEDIDO AS D
-		ON P.id_pedido = D.id_pedido_fk INNER JOIN MATERIAL AS M
-		ON D.id_material_fk = M.id_material INNER JOIN USUARIO AS U
-		ON P.id_usuario_fk = U.id_usuario WHERE id_usuario = ?";
+	public function mostrarPedidos(Usuario $usu){
+		$sql = "SELECT id_pedido, data_abertura, DATE_ADD(vencimento, interval 7 DAY) AS 'vencimento', data_fechamento, status_pedido FROM PEDIDO WHERE id_usuario_fk = ?";
 		$stmt = Conexao::getConn()->prepare($sql);
 		$stmt->bindValue(1, $usu->getid_usuario());
 		$stmt->execute();
 		if($stmt->rowCount() > 0){
 			$resultado = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 			return $resultado;
+		}
+	}
+
+	public function detalharPedidos(Usuario $usu){
+		$id_pedido = $_GET['id_pedido'];
+		$sql = "SELECT P.id_pedido, M.nome_material, D.quantidade, P.id_usuario_fk, U.nome, P.status_pedido, P.data_abertura, DATE_ADD(vencimento, INTERVAL 7 DAY) AS 'vencimento'
+		FROM PEDIDO P INNER JOIN DETALHE_PEDIDO AS D
+		ON P.id_pedido = D.id_pedido_fk INNER JOIN MATERIAL AS M
+		ON D.id_material_fk = M.id_material INNER JOIN USUARIO AS U
+		ON P.id_usuario_fk = U.id_usuario WHERE id_usuario = ? and P.id_pedido = ?";
+		$stmt = Conexao::getConn()->prepare($sql);
+		$stmt->bindValue(1, $usu->getid_usuario());
+		$stmt->bindValue(2, $id_pedido);
+		$stmt->execute();
+		if($stmt->rowCount() > 0){
+			$resultado = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+			return $resultado;
 		}else{
-			echo "Nenhum pedido";
+			//header("location:meus-pedidos.php");
+			?><!--script>alert("nada");</script--><?php
 		}
 	}
 
