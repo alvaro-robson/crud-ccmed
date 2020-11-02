@@ -38,6 +38,18 @@ class AcessoDao{
 		$sql->bindValue(1, $a->getid_acesso());
 		$stmt->execute();
 	}
+
+	public function contar(){
+		$sql = "SELECT COUNT(id_acesso) as total FROM ACESSO";
+		$stmt = Conexao::getConn()->prepare($sql);
+		$stmt->execute();
+		if($stmt->rowCount() > 0){
+			$resultado = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+			return $resultado;
+		}else{
+			echo "Nenhum registro";
+		}
+	}
 }
 
  ?>

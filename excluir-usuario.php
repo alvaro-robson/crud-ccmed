@@ -1,10 +1,9 @@
 <?php 
 namespace App\Model;
 require_once "vendor/autoload.php";
-$material = new \App\Model\Material;
-$materialDao = new \App\Model\MaterialDao;
+$usuario = new \App\Model\Usuario;
 $usuarioDao = new \App\Model\UsuarioDao;
-foreach($materialDao->editar_material() as $editar);
+foreach($usuarioDao->coletar_id_usuario($usuario) as $coletar);
 
 session_start();
 if(!isset($_SESSION['id_usuario'])){
@@ -28,26 +27,26 @@ if(!isset($_SESSION['id_usuario'])){
     <!-- Bootstrap CSS -->
     <link href="custom.css" rel="stylesheet">
 
-    <title>Exclusão</title>
+    <title>Exclusão de usuário</title>
   </head>
   <body class="color">
   	 <div class="container mt-5">
         <div class="col-sm-12">
         	<?php 
-        	if(isset($_POST['btnExcluir'])){
-          	$materialDao->delete();
-          	header("location:index.php");
+        	if(isset($_POST['btnExcluirUsuario'])){
+          	$usuarioDao->delete();
+          	header("location:listagem-usuarios.php");
           }
           if(isset($_POST['btnCancelar'])){
-          	header("location:index.php");
+          	header("location:listagem-usuarios.php");
           }
 
 
-          echo "<img width = '100%' src = upload/" . $editar['imagem'] . " class = 'imagem-material'> " .  "Deseja excluir " . $editar['nome_material'] . " " .  $editar['desc_material'] . "?";
+          echo "<img width = '100%' src = upload/" . $coletar['imagem'] . " class = 'imagem-material'> " .  "Deseja excluir " . $coletar['nome'] . " " .  $coletar['sobrenome'] . "?";
         	
         	 ?>
 	<form method="POST" action="<?php $_SERVER['PHP_SELF']; ?>" class="mb-">
-		<input type="submit" name="btnExcluir" value="SIM" class="btn btn-secondary btn-block btn-lg mt-5">
+		<input type="submit" name="btnExcluirUsuario" value="SIM" class="btn btn-secondary btn-block btn-lg mt-5">
 		<input type="submit" name="btnCancelar" value="NÃO" class="btn btn-secondary btn-block btn-lg mt-5">
 	</form>
 </div>

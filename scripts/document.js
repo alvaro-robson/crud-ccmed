@@ -20,3 +20,8 @@ function pedidoLiberado(){
     alert("Pedido liberado com sucesso");
     window.location.href = "todos-pedidos.php";
 }
+
+function verificarMatricula(){
+    alert("Funcionário já cadastrado");
+    window.location.href = "../form-cadastrar-usuario.php";
+}

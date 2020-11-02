@@ -21,6 +21,19 @@ body{
 	font-family: Verdana;
 	font-weight: bolder;
 	background-color: goldenrod;
+	display: flex;
+}
+.dadosUsuarioSession{
+	width: 80%;
+}
+.divFotoSession{
+	width: 20%;
+}
+.fotoSession{
+	width: 80%;
+	border-radius: 100px;
+	border: solid black 10px;
+	margin-top: 18px;
 }
 
 h3{

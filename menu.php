@@ -7,18 +7,15 @@
   $pedidoDao = new \App\Model\PedidoDao;
   $detalhe = new \App\Model\Detalhe_pedido;
   $detalheDao = new \App\Model\Detalhe_pedidoDao;
+  $usuario = new \App\Model\Usuario;
+  $usuarioDao = new \App\Model\UsuarioDao;
   
   session_start();
     if(!isset($_SESSION['id_usuario'])){
         session_destroy();
         header("location:login.php");
     }else{
-        echo 
-        '<div class = "session">
-        Olá, ' . $_SESSION['nome'] . '! <br>Seja bem-vindo.<br>
-        ID: ' . $_SESSION['id_usuario'] . ',<br>
-        matrícula: ' . $_SESSION['matricula'] . '<br>
-        acesso: ' . $_SESSION['id_acesso_fk'];
+        $usuarioDao->mostrarSessao();
     }
 ?>
     <br><a href="login.php">SAIR</a>
@@ -46,12 +43,16 @@
       </div>
     <div class="container mt-5">
         <div class="col-sm-12">
-        <button type="submit" class="btn btn-secondary btn-block btn-lg mt-5">
-            <a href="form-cadastrar.php">Cadastro de materiais</a></button>
-        <button type="submit" class="btn btn-secondary btn-block btn-lg mt-5">
-        <a href="index.php">Lista de materiais</a></button>
-        <button type="submit" class="btn btn-secondary btn-block btn-lg mt-5">
-        <a href="todos-pedidos.php">Ver pedidos</a></button>
+          <button type="submit" class="btn btn-secondary btn-block btn-lg mt-5">
+              <a href="form-cadastrar.php">Cadastro de materiais</a></button>
+          <button type="submit" class="btn btn-secondary btn-block btn-lg mt-5">
+          <a href="index.php">Lista de materiais</a></button>
+          <button type="submit" class="btn btn-secondary btn-block btn-lg mt-5">
+          <a href="todos-pedidos.php">Ver pedidos</a></button>
+          <button type="submit" class="btn btn-secondary btn-block btn-lg mt-5">
+              <a href="cadastros.php">Cadastros</a></button>
+          <button type="submit" class="btn btn-secondary btn-block btn-lg mt-5">
+          <a href="listagem-usuarios.php">Lista de usuários</a></button>
         </div>
     </div>
 
