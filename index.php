@@ -298,14 +298,14 @@ foreach($estadoDao->read() as $estados){
 
 
 //--CRUD--FORNECEDOR---------------------------------------------
-$forn = new App\Model\Fornecedor;
+$forn = new \App\Model\Fornecedor;
 /*
 $forn->setid_forn(7);
 $forn->setnome_forn('nlaab');
 $forn->setnum_endereco(12);
 $forn->setcomplemento_end('dhud');
 */
-$fornDao = new App\Model\FornecedorDao;
+$fornDao = new \App\Model\FornecedorDao;
 //$fornDao->create($forn);
 /*
 $fornDao->read();
@@ -406,14 +406,14 @@ foreach($pedidoDao->read() as $pedidos){
 
 
 //--CRUD--PRATELEIRA------------------------------------------------
-$prat = new App\Model\Prateleira;
+$prat = new \App\Model\Prateleira;
 /*
 $prat->setid_prat(17);
 $prat->setnome_prat('ewwww');
 $prat->setid_coluna_fk(2);
 */
 
-$pratDao = new App\Model\PrateleiraDao;
+$pratDao = new \App\Model\PrateleiraDao;
 //$pratDao->create($prat);
 /*
 $pratDao->read();
@@ -437,13 +437,13 @@ foreach($pratDao->read() as $prateleiras){
 
 
 //--CRUD--TELEFONE-------------------------------------------------
-$tel = new App\Model\Telefone;
+$tel = new \App\Model\Telefone;
 /*
 $tel->setid_telefone();
 $tel->setnumero_tel();
 $tel->setid_forn_fk();
 */
-$telDao = new App\Model\TelefoneDao;
+$telDao = new \App\Model\TelefoneDao;
 //$telDao->create($tel);
 //$telDao->read();
 /*
@@ -468,7 +468,7 @@ foreach($telDao->read() as $telefones){
 
 
 //--CRUD--USUARIO-------------------------------------------------
-$usu = new App\Model\Usuario;
+$usu = new \App\Model\Usuario;
 /*
 $usu->setid_usuario(8);
 $usu->setlogin('z');
@@ -479,7 +479,7 @@ $usu->setmatricula(9992);
 $usu->setid_acesso_fk(1);
 */
 
-$usuDao = new App\Model\UsuarioDao;
+$usuDao = new \App\Model\UsuarioDao;
 //$usuDao->create($usu);
 /*
 $usuDao->read();

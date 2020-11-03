@@ -111,7 +111,7 @@ if(isset($_POST['btnCadastrar'])){
                 </div>
                 <input type="submit" class="btn btn-secondary btn-block btn-lg mt-5" name="btnCadastrar" value="Armazenar">
               </form>
-              <a href="menu.php" class="btn btn-secondary btn-block btn-lg mt-5">Cancelar</a>
+              <a href="menu.php" class="btn btn-secondary btn-block btn-lg mt-5">Voltar</a>
               <?php 
               
               

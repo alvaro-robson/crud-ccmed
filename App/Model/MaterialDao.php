@@ -87,7 +87,6 @@ class MaterialDao{
 
 	public function armazenar(Material $m){
 		$id = $_GET['id'];
-		//$qtde = $_POST['qtde'];
 		$sql = 'UPDATE MATERIAL SET qtde_estoque = qtde_estoque + ? WHERE id_material = ?';
 		$stmt = Conexao::getConn()->prepare($sql);
 		$stmt->bindValue(1, $m->getqtde_estoque());

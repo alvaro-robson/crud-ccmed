@@ -33,10 +33,11 @@ if(!isset($_SESSION['id_usuario'])){
 	?>
 	<div class="container">
 	   <form method="post">
-		   <input type="submit" name="cancelarPedido" value="Cancelar pedido">
+		   <!--input type="submit" name="cancelarPedido" value="Cancelar pedido"-->
 		   <input type="submit" name="finalizarPedido" value = "Finalizar pedido">
 	   </form>
 	   <?php
+		/*
 		//Cancelando o pedido(Excluindo-o do banco)
 		if(isset($_POST['cancelarPedido'])){
 			$pedido->setid_pedido($ultimo);
@@ -44,6 +45,7 @@ if(!isset($_SESSION['id_usuario'])){
 			$pedidoDao->cancelarPedido($pedido);
 			header("location:menu-pedidos.php");
 		}
+		*/
 		if(isset($_POST['finalizarPedido'])){
 			header("location:menu-pedidos.php");
 		}
