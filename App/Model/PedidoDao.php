@@ -26,6 +26,20 @@ class PedidoDao{
 		}
 	}
 
+	public function readFiltro(Pedido $ped){
+		$sql = "SELECT id_pedido, data_abertura, date_add(vencimento, interval 7 day) as 'vencimento', data_fechamento, status_pedido, id_usuario_fk FROM PEDIDO where status_pedido = ?";
+		$stmt = Conexao::getConn()->prepare($sql);
+		$stmt->bindValue(1, $ped->getstatus_pedido());
+		$stmt->execute();
+		if($stmt->rowCount() > 0){
+			$resultado = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+			return $resultado;
+		}else{
+			echo "Nenhum Registro";
+		}
+	}
+
+
 	public function update(Pedido $ped){
 		$sql = 'UPDATE PEDIDO SET data_fechamento = ?, status_pedido = ?, id_usuario_fk = ? WHERE id_pedido = ?';
 		$stmt = Conexao::getConn()->prepare($sql);

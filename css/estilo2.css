@@ -68,3 +68,9 @@ input{
 .imagem-material{
 	width: 100%;
 }
+
+.filtro{
+	width: 50%;
+	height: 5%;
+	font-size: 100%;
+}
