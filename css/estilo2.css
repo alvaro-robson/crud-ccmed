@@ -69,8 +69,11 @@ input{
 	width: 100%;
 }
 
+select{
+	font-size: 30%;
+}
 .filtro{
-	width: 50%;
+	width: 60%;
 	height: 5%;
-	font-size: 100%;
+	font-size: 30%;
 }

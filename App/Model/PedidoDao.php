@@ -20,6 +20,17 @@ class PedidoDao{
 		$stmt->execute();
 		if($stmt->rowCount() > 0){
 			$resultado = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+			foreach($resultado as $res){
+                echo
+                "Nº pedido: " . $res['id_pedido'] . "<br>
+                Abertura: " . $res['data_abertura'] . "<br>
+                Vencimento: " . $res['vencimento'] . "<br>
+                Fechamento: " . $res['data_fechamento'] . "<br>
+                Status: " . $res['status_pedido'] . "<br>
+                Usuário: " . $res['id_usuario_fk'] . "<br>
+                <a href = detalhar-pedidoGeral.php?id_pedido=" . $res['id_pedido'].">DETALHAR</a>
+                ________________________________<br>";
+            }
 			return $resultado;
 		}else{
 			echo "Nenhum Registro";
@@ -33,6 +44,17 @@ class PedidoDao{
 		$stmt->execute();
 		if($stmt->rowCount() > 0){
 			$resultado = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+			foreach($resultado as $res){
+                echo
+                "Nº pedido: " . $res['id_pedido'] . "<br>
+                Abertura: " . $res['data_abertura'] . "<br>
+                Vencimento: " . $res['vencimento'] . "<br>
+                Fechamento: " . $res['data_fechamento'] . "<br>
+                Status: " . $res['status_pedido'] . "<br>
+                Usuário: " . $res['id_usuario_fk'] . "<br>
+                <a href = detalhar-pedidoGeral.php?id_pedido=" . $res['id_pedido'].">DETALHAR</a>
+                ________________________________<br>";
+            }
 			return $resultado;
 		}else{
 			echo "Nenhum Registro";
