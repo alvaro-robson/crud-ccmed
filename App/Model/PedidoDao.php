@@ -61,6 +61,29 @@ class PedidoDao{
 		}
 	}
 
+	public function readCancelados(){
+		$sql = "SELECT id_pedido_original, id_pedido_cancelado, data_abertura, date_add(vencimento, interval 7 day) as 'vencimento', data_fechamento, status_pedido, id_usuario_fk FROM PEDIDO_CANCELADO";//FOI PRECISO CRIAR UM ALIAS PARA O VENCIMENTO COM DATE_ADD, POIS SEU ÍNDICE NO FOREACH NÃO ESTAVA SENDO RECONHECIDO SEM O ALIAS
+		$stmt = Conexao::getConn()->prepare($sql);
+		$stmt->execute();
+		if($stmt->rowCount() > 0){
+			$resultado = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+			foreach($resultado as $res){
+                echo
+                "Nº pedido: " . $res['id_pedido_original'] . "<br>
+                Abertura: " . $res['data_abertura'] . "<br>
+                Vencimento: " . $res['vencimento'] . "<br>
+                Fechamento: " . $res['data_fechamento'] . "<br>
+                Status: " . $res['status_pedido'] . "<br>
+                Usuário: " . $res['id_usuario_fk'] . "<br>
+                <a href = detalhar-pedidoGeral.php?id_pedido=" . $res['id_pedido_original'].">DETALHAR</a>
+                ________________________________<br>";
+            }
+			return $resultado;
+		}else{
+			echo "Nenhum Registro";
+		}
+	}
+
 
 	public function update(Pedido $ped){
 		$sql = 'UPDATE PEDIDO SET data_fechamento = ?, status_pedido = ?, id_usuario_fk = ? WHERE id_pedido = ?';
@@ -211,7 +234,28 @@ class PedidoDao{
 		$stmt = Conexao::getConn()->prepare($sql);
 		$stmt->bindValue(1, $ped->getid_pedido());
 		$stmt->execute();
-	}	
+	}
+
+	public function mostrarItens(){
+		$sql = "SELECT M.nome_material, D.quantidade
+		FROM MATERIAL M INNER JOIN DETALHE_PEDIDO AS D
+		ON D.id_material_fk = M.id_material";
+		$stmt = Conexao::getConn()->prepare($sql);
+		//$stmt->bindValue(1, $id_pedido);
+		$stmt->execute();
+		if($stmt->rowCount() > 0){
+			$resultado = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+			echo 
+				"Itens solicitados:<br>";
+			foreach($resultado as $res){
+				echo $res['nome_material'] . " - " . $res['quantidade'] . " un" . " X<br>"; 
+			}
+			return $resultado;
+		}else{
+			//header("location:meus-pedidos.php");
+			
+		}
+	}
 }
 
 

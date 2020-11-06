@@ -10,7 +10,7 @@
     ?>
     
     <script src = scripts/document.js></script>
-    <script>boasVindas();</script>   
+    <!--script>boasVindas();</script-->   
      
     <?php
     session_start();

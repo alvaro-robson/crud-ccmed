@@ -28,8 +28,11 @@ if(!isset($_SESSION['id_usuario'])){
 
 	//MOSTRANDO O PEDIDO ATUAL:
 	foreach($pedidoDao->ultimo_pedido() as $ultimo){
-		echo "<br>Pedido atual: " . $ultimo;
+		echo "<br>Pedido atual: " . $ultimo . "<br>";
 	}
+
+	$pedidoDao->mostrarItens();
+
 	?>
 	<div class="container">
 	   <form method="post">

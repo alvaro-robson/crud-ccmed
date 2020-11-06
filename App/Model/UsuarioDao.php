@@ -95,11 +95,10 @@ class UsuarioDao{
 					echo "nenhum";
 					header('location:login.php');
 			}
-
 		}else{
 			//header("location:login.php");
 			echo "Nenhum registro";
-		}		
+		}
 	}
 
 	public function mostrarSessao(){

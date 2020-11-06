@@ -28,9 +28,9 @@ if(!isset($_SESSION['id_usuario'])){
 //RELATÓRIO DO PEDIDO SELECIONADO NA PÁG. meus-pedidos.php
 foreach($pedidoDao->detalharPedidosGeral($usuario) as $detalhar);
 echo
-"<br>=========================<br>
+"<br>==========================<br>
 Pedido nº " . $detalhar['id_pedido'] . " | Usuário: " . $detalhar['id_usuario_fk'] . "<br>
-=========================<br>";
+==========================<br>";
 foreach($pedidoDao->detalharPedidosGeral() as $detalhar){
     echo
     "<br>Material : " . $detalhar['nome_material'] . "<br>

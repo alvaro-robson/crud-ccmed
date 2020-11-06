@@ -33,6 +33,7 @@ if(!isset($_SESSION['id_usuario'])){
             <option name="todos">Todos</option>
             <option name="aberto">Aberto</option>
             <option name="liberado">Liberado</option>
+            <option name = "cancelado">Cancelados</option>
         </select>
         <input type="submit" value="filtrar" name="btnFiltrar">
     </form>
@@ -41,6 +42,7 @@ if(isset($_POST['btnFiltrar'])){
     switch($_POST['filtro']){
         case "Todos":
             $pedidoDao->read();
+            $pedidoDao->readCancelados();
         break;
         case "Aberto":
             $pedido->setstatus_pedido("Aberto");
@@ -49,6 +51,10 @@ if(isset($_POST['btnFiltrar'])){
         case "Liberado":
             $pedido->setstatus_pedido("Liberado");
             $pedidoDao->readFiltro($pedido);
+        break;
+        case "Cancelados":
+            $pedido->setstatus_pedido("Cancelado");
+            $pedidoDao->readCancelados();
         break;
     }
 }
