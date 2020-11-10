@@ -97,7 +97,10 @@ class UsuarioDao{
 			}
 		}else{
 			//header("location:login.php");
-			echo "Nenhum registro";
+			//echo "Nenhum registro";
+			?>
+				<script>alert("Dados inválidos");</script>
+			<?php
 		}
 	}
 
