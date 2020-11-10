@@ -34,10 +34,17 @@ class Detalhe_pedidoDao{
 		$stmt->execute();
 	}
 
-	public function delete($id_detalhe){
+	public function delete(Detalhe_pedido $det){
 		$sql = 'DELETE FROM DETALHE_PEDIDO WHERE id_detalhe = ?';
 		$stmt = Conexao::getConn()->prepare($sql);
-		$stmt->bindValue(1, $id_detalhe);
+		$stmt->bindValue(1, $det->getid_detalhe());
+		$stmt->execute();
+	}
+
+	public function deletar_item(Detalhe_pedido $det){
+		$sql = 'DELETE FROM DETALHE_PEDIDO WHERE id_detalhe = ?';
+		$stmt = Conexao::getConn()->prepare($sql);
+		$stmt->bindValue(1, $det->getid_detalhe());
 		$stmt->execute();
 	}
 }

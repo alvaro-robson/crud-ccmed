@@ -36,10 +36,10 @@ class EmailDao{
 		$stmt->execute();
 	}
 
-	public function delete($id_email_forn){
+	public function delete(Email $email){
 		$sql = 'DELETE FROM EMAIL WHERE id_email_forn = ?';
 		$stmt = Conexao::getConn()->prepare($sql);
-		$stmt->bindValue(1, $id_email_forn);
+		$stmt->bindValue(1, $email->getid_forn_fk());
 		$stmt->execute();
 	}
 }

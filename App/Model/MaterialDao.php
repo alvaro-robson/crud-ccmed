@@ -65,16 +65,6 @@ class MaterialDao{
 		$stmt->execute();
 	}
 	
-	/*
-	public function read_editar(){
-		$id_edit = $_GET['id'];
-		$sql = 'SELECT * FROM MATERIAL WHERE id_material = $id_edit';
-		$stmt = Conexao::getConn()->prepare($sql);
-		//$stmt->bindValue(1, $m->getid_edit());
-		$stmt->execute();
-		$resultado = $stmt->fetchAll(\PDO::FETCH_ASSOC);
-	}
-	*/
 	public function editar_material(){
 		$id = $_GET['id'];
 		$sql = 'SELECT * FROM MATERIAL WHERE id_material = ?';
@@ -91,6 +81,14 @@ class MaterialDao{
 		$stmt = Conexao::getConn()->prepare($sql);
 		$stmt->bindValue(1, $m->getqtde_estoque());
 		$stmt->bindValue(2, $id);
+		$stmt->execute();
+	}
+
+	public function devolver(Material $m){
+		$sql = 'UPDATE MATERIAL SET qtde_estoque = qtde_estoque + ? WHERE id_material = ?';
+		$stmt = Conexao::getConn()->prepare($sql);
+		$stmt->bindValue(1, $m->getqtde_estoque());
+		$stmt->bindValue(2, $m->getid_material());
 		$stmt->execute();
 	}
 
@@ -112,6 +110,49 @@ class MaterialDao{
 		$stmt->execute();
 	}
 	*/
+
+	public function relatorioMateriais(){
+		$sql = 'SELECT
+		M.id_material, M.nome_material, M.desc_material, M.qtde_estoque, M.imagem,
+		F.nome_forn,
+		P.nome_prat,
+		C.nome_coluna, 
+        CO.nome_corredor
+        FROM MATERIAL M INNER JOIN FORNECEDOR F
+        ON M.id_forn_fk = F.id_forn INNER JOIN PRATELEIRA P
+        ON M.id_forn_fk = P.id_prat INNER JOIN COLUNA C
+        ON P.id_coluna_fk = C.id_coluna INNER JOIN CORREDOR CO
+		ON C.id_corr_fk = CO.id_corr';
+		$stmt = Conexao::getConn()->prepare($sql);
+		$stmt->execute();
+		if($stmt->rowCount() > 0){
+			$resultado = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+			foreach($resultado as $res){
+				echo
+					"<img src = upload/" . $res['imagem'] . " class = 'imagem-material'><br>
+					ID: " . $res['id_material'] . "<br>" .
+					$res['nome_material'] . " - " . $res['desc_material'] . "<br>
+					Qtde em estoque: " .	$res['qtde_estoque'] . "<br>
+					Fornecedor: " .	$res['nome_forn'] . "<br>
+					Prateleira: " . $res['nome_prat'] . "<br>" . 
+					$res['nome_coluna'] . "<br>" . 
+					$res['nome_corredor'] . "<br>
+					<a href = editar.php?id=".$res['id_material'] . ">
+					<img src = 'icones/edit-64.png' class = 'icones'>
+						</a>
+					<a href = excluir.php?id=".$res['id_material'].">
+						<img src = 'icones/x-mark-4-64.png' class = 'icones'>
+					</a> 
+					<a href = form-armazenar.php?id=".$res['id_material'].">
+						<img src = 'icones/plus-8-64.png' class = 'icones'>
+					</a>
+					<br>____________________________<br>";
+			}
+			return $resultado;
+		}else{
+			echo "Nenhum registro";
+		}
+	}
 }
 
 

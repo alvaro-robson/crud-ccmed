@@ -77,3 +77,7 @@ select{
 	height: 5%;
 	font-size: 30%;
 }
+
+.btnDevolver{
+	width: 50px;
+}

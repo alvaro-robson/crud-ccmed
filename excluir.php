@@ -28,7 +28,7 @@ if(!isset($_SESSION['id_usuario'])){
     <!-- Bootstrap CSS -->
     <link href="custom.css" rel="stylesheet">
 
-    <title>Exclusão</title>
+    <title>Exclusão de material</title>
   </head>
   <body class="color">
   	 <div class="container mt-5">

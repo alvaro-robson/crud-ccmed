@@ -62,7 +62,7 @@ if(isset($_POST['btnCancelar'])){
 ?>
 
 <form method="post">
-<input type="number" name="quantidade" placeholder="Qtde. desejada" min="0" max="<?php echo $confirmar['qtde_estoque']; ?>">
+<input type="number" name="quantidade" placeholder="Qtde. desejada" min="1" max="<?php echo $confirmar['qtde_estoque']; ?>">
     <input type="submit" value = "Confirmar" name = "btnConfirmar">
     <input type="submit" value = "Cancelar" name = "btnCancelar">
 </form>

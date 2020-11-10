@@ -18,7 +18,8 @@
         $usuarioDao->mostrarSessao();
     }
 ?>
-    <br><a href="login.php">SAIR</a>
+    <br><a href="login.php">SAIR</a><br>
+    <a href="menu.php">Voltar</a><br>
 
 <!doctype html>
 <html lang="pt-br">
@@ -33,22 +34,24 @@
     <!-- Bootstrap CSS -->
     <link href="custom.css" rel="stylesheet">
 
-    <title>Menu </title>
+    <title>Menu</title>
   </head>
   <body>
       <!div class="row">
           <div class="container mt-5" style="display: flex; align-items: center; justify-content: center">
-              <h1 class="">Menu do sistema</h1>
+              <h1 class="">Listas</h1>
           </div>
       </div>
     <div class="container mt-5">
         <div class="col-sm-12">
           <button type="submit" class="btn btn-secondary btn-block btn-lg mt-5">
-              <a href="form-cadastrar.php">Cadastro de materiais</a></button>
+          <a href="index.php">Materiais</a></button>
           <button type="submit" class="btn btn-secondary btn-block btn-lg mt-5">
-              <a href="form-cadastrar-usuario.php">Cadastros de usuários</a></button>
+          <a href="todos-pedidos.php">Pedidos</a></button>
           <button type="submit" class="btn btn-secondary btn-block btn-lg mt-5">
-              <a href="form-cadastrar-forn.php">Cadastros de fornecedores</a></button>
+              <a href="listagem-fornecedores.php">Fornecedores</a></button>
+          <button type="submit" class="btn btn-secondary btn-block btn-lg mt-5">
+          <a href="listagem-usuarios.php">Usuários</a></button>
         </div>
     </div>
 

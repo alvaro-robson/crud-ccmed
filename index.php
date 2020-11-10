@@ -30,10 +30,6 @@ if(!isset($_SESSION['id_usuario'])){
 	$usuarioDao->mostrarSessao();
 }
 
-
-//Para fazer o autoload, sem precisar dar include em todas as classes:
-require_once "vendor/autoload.php";
-
 //--CRUD-MATERIAL-------------------------------------------------------
 $material = new \App\Model\Material();
 /*
@@ -65,6 +61,7 @@ if(isset($_POST['btnCadastrar'])){
 $materialDao->read();
 
 echo "<h3><strong><u>Listagem dos materiais</u></strong></h3><br>";
+/*
 foreach ($materialDao->read() as $materiais) {
 	echo
 	"<img src = upload/" . $materiais['imagem'] . " class = 'imagem-material'><br> 
@@ -86,6 +83,9 @@ foreach ($materialDao->read() as $materiais) {
 	<br>____________________________<br>";
 		
 }
+*/
+$materialDao->relatorioMateriais();
+
 
 
 

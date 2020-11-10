@@ -25,18 +25,18 @@ class TelefoneDao{
 	}
 
 	public function update(Telefone $tel){
-		$sql = 'UPDATE TELEFONE SET numero_tel = ?, id_forn_fk = ? WHERE id_telefone = ?';
+		$sql = 'UPDATE TELEFONE SET numero_tel = ?,  WHERE id_forn_fk = ?';
 		$stmt = Conexao::getConn()->prepare($sql);
 		$stmt->bindValue(1, $tel->getnumero_tel());
 		$stmt->bindValue(2, $tel->getid_forn_fk());
-		$stmt->bindValue(3, $tel->getid_telefone());
+		//$stmt->bindValue(3, $tel->getid_telefone());
 		$stmt->execute();
 	}
 
-	public function delete($id_telefone){
-		$sql = 'DELETE FROM TELEFONE WHERE id_telefone = ?';
+	public function delete(Telefone $tel){
+		$sql = 'DELETE FROM TELEFONE WHERE id_forn_fk = ?';
 		$stmt = Conexao::getConn()->prepare($sql);
-		$stmt->bindValue(1, $id_telefone);
+		$stmt->bindValue(1, $tel->getid_forn_fk());
 		$stmt->execute();
 	}
 

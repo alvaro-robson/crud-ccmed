@@ -80,7 +80,7 @@ class PedidoDao{
             }
 			return $resultado;
 		}else{
-			echo "Nenhum Registro";
+			echo "Nenhum Registro cancelado";
 		}
 	}
 
@@ -236,24 +236,18 @@ class PedidoDao{
 		$stmt->execute();
 	}
 
-	public function mostrarItens(){
-		$sql = "SELECT M.nome_material, D.quantidade
+	public function mostrarItens(Detalhe_pedido $det){
+		$sql = "SELECT M.nome_material, D.quantidade, D.id_material_fk, D.id_detalhe
 		FROM MATERIAL M INNER JOIN DETALHE_PEDIDO AS D
-		ON D.id_material_fk = M.id_material";
+		ON D.id_material_fk = M.id_material WHERE D.id_pedido_fk = ?";
 		$stmt = Conexao::getConn()->prepare($sql);
-		//$stmt->bindValue(1, $id_pedido);
+		$stmt->bindValue(1, $det->getid_pedido_fk());
 		$stmt->execute();
 		if($stmt->rowCount() > 0){
 			$resultado = $stmt->fetchAll(\PDO::FETCH_ASSOC);
-			echo 
-				"Itens solicitados:<br>";
-			foreach($resultado as $res){
-				echo $res['nome_material'] . " - " . $res['quantidade'] . " un" . " X<br>"; 
-			}
 			return $resultado;
 		}else{
-			//header("location:meus-pedidos.php");
-			
+			echo "Nenhum registro";
 		}
 	}
 }

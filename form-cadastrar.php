@@ -2,8 +2,14 @@
 namespace App\Model;
 require_once "vendor/autoload.php";
 $FornecedorDao = new \App\Model\FornecedorDao;
-$material = new \App\Model\Material();
-$materialDao = new \App\Model\MaterialDao();
+$material = new \App\Model\Material;
+$materialDao = new \App\Model\MaterialDao;
+$prat = new \App\Model\Prateleira;
+$pratDao = new \App\Model\PrateleiraDao;
+$col = new \App\Model\Coluna;
+$colDao = new \App\Model\ColunaDao;
+$corr = new \App\Model\Corredor;
+$corrDao = new \App\Model\CorredorDao;
 //CREATE
 
 session_start();
@@ -94,6 +100,14 @@ if(isset($_POST['btnCadastrar'])){
                   <div class="form-group">
                     <label for="prateleira">Prateleira</label>
                     <input type="number" class="form-control" id="local" name="id_prat_fk" placeholder="id prateleira" min="1" max="16" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="prateleira">Coluna</label>
+                    <input type="number" class="form-control" id="local" name="id_coluna" placeholder="id coluna" min="1" max="16" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="prateleira">Corredor</label>
+                    <input type="number" class="form-control" id="local" name="id_corr" placeholder="id corredor" min="1" max="16" required>
                   </div>
                   <div class="form-group">
                     <?php
