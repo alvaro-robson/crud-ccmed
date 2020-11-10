@@ -99,22 +99,13 @@ if(isset($_POST['btnCadastrar'])){
                   </div>
                   <div class="form-group">
                     <label for="prateleira">Prateleira</label>
-                    <input type="number" class="form-control" id="local" name="id_prat_fk" placeholder="id prateleira" min="1" max="16" required>
+                    <input type="number" class="form-control" id="local" name="id_prat_fk" placeholder="id prateleira" min="1" max="64" required>
                   </div>
-                  <div class="form-group">
-                    <label for="prateleira">Coluna</label>
-                    <input type="number" class="form-control" id="local" name="id_coluna" placeholder="id coluna" min="1" max="16" required>
-                  </div>
-                  <div class="form-group">
-                    <label for="prateleira">Corredor</label>
-                    <input type="number" class="form-control" id="local" name="id_corr" placeholder="id corredor" min="1" max="16" required>
-                  </div>
-                  <div class="form-group">
-                    <?php
+                <?php
                     //tratamento de erros para o campo de fornecedor permitir até o número limite de ids que tem no banco
                     $array = $FornecedorDao->contar();
                     $max = implode(end($array));
-                    ?>
+                ?>
                     <label for="fornecedor">Fornecedor</label>
                     <input type="number" class="form-control" id="local" name="id_forn_fk" placeholder="id fornecedor" min="1"  max="<?php echo $max; ?>" required>
                    

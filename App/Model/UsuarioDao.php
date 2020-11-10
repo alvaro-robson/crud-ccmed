@@ -4,8 +4,8 @@ class UsuarioDao{
 
 	public function create(Usuario $usu){
 		$sql = 'INSERT INTO USUARIO (login, senha, nome, sobrenome, matricula, id_acesso_fk, imagem) VALUES(?, ?, ?, ?, ?, ?, ?)';
-		$extensao = strtolower(substr($_FILES['nome_imagem']['name'], -4)); //pega a extensao do arquivo
-	    $imagem = md5($_FILES['nome_imagem']['name']) . $extensao; //define o nome do arquivo
+		//$extensao = strtolower(substr($_FILES['nome_imagem']['name'], -4)); //pega a extensao do arquivo
+	    $imagem = $_FILES['nome_imagem']['name']; //define o nome do arquivo
 	    $diretorio = "upload/"; //define o diretorio para onde enviaremos o arquivo
 		move_uploaded_file($_FILES['nome_imagem']['tmp_name'], $diretorio.$imagem); //efetua o upload
 		$stmt = Conexao::getConn()->prepare($sql);
@@ -25,6 +25,37 @@ class UsuarioDao{
 		$stmt->execute();
 		if($stmt->rowCount() > 0){
 			$resultado = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+			return $resultado;
+		}else{
+			echo "Nenhum registro";
+		}
+	}
+
+	public function relatorioUsuarios(){
+		$sql = 'SELECT U.id_usuario, U.login, U.nome, U.sobrenome, U.matricula, A.id_acesso, A.nome_acesso, U.imagem
+		FROM USUARIO U INNER JOIN ACESSO A
+		ON U.id_acesso_fk = A.id_acesso';
+		$stmt = Conexao::getConn()->prepare($sql);
+		$stmt->execute();
+		if($stmt->rowCount() > 0){
+			$resultado = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+			foreach($resultado as $res){
+				echo
+					"<img src = upload/" . $res['imagem'] . " class = 'imagem-material'><br>
+					Id: " . $res['id_usuario'] . "<br>
+					Login: " . $res['login'] . "<br>
+					Nome: " . $res['nome'] . " " . $res['sobrenome'] . "<br>
+					Matrícula: " . $res['matricula'] . "<br>
+					Nível de acesso: " . $res['id_acesso'] . "(" . $res['nome_acesso'] . ")<br>
+					
+					<a href = editar-usuario.php?id_usuario=" . $res['id_usuario'] . ">
+					<img src = 'icones/edit-64.png' class = 'icones'>
+					</a>
+					<a href = excluir-usuario.php?id_usuario=".$res['id_usuario'].">
+						<img src = 'icones/x-mark-4-64.png' class = 'icones'>
+					</a>
+					<br>-----------------------------<br>";
+			}
 			return $resultado;
 		}else{
 			echo "Nenhum registro";

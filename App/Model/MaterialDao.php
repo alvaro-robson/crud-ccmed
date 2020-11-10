@@ -103,16 +103,16 @@ class MaterialDao{
 
 	public function relatorioMateriais(){
 		$sql = 'SELECT
-		M.id_material, M.nome_material, M.desc_material, M.qtde_estoque, M.imagem,
+		M.id_material, M.nome_material, M.desc_material, M.qtde_estoque, M.imagem, M.id_prat_fk,
 		F.nome_forn,
 		P.nome_prat,
 		C.nome_coluna, 
         CO.nome_corredor
-        FROM MATERIAL M INNER JOIN FORNECEDOR F
-        ON M.id_forn_fk = F.id_forn INNER JOIN PRATELEIRA P
-        ON M.id_forn_fk = P.id_prat INNER JOIN COLUNA C
-        ON P.id_coluna_fk = C.id_coluna INNER JOIN CORREDOR CO
-		ON C.id_corr_fk = CO.id_corr';
+        FROM CORREDOR CO INNER JOIN COLUNA C
+		ON CO.id_corr = C.id_corr_fk INNER JOIN PRATELEIRA P
+		ON C.id_coluna = P.id_coluna_fk INNER JOIN MATERIAL M
+		ON P.id_prat = M.id_prat_fk INNER JOIN FORNECEDOR F
+		ON M.id_forn_fk = F.id_forn';
 		$stmt = Conexao::getConn()->prepare($sql);
 		$stmt->execute();
 		if($stmt->rowCount() > 0){
