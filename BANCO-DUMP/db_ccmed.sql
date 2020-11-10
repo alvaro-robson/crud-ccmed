@@ -49,12 +49,14 @@ DROP TABLE IF EXISTS `cidade`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cidade` (
   `id_cidade` int(4) NOT NULL AUTO_INCREMENT,
-  `nome_cidade` varchar(20) NOT NULL,
+  `nome_cidade` varchar(50) NOT NULL,
   `id_estado_fk` int(4) NOT NULL,
   PRIMARY KEY (`id_cidade`),
+  UNIQUE KEY `nome_cidade` (`nome_cidade`),
+  UNIQUE KEY `nome_cidade_2` (`nome_cidade`),
   KEY `id_estado_fk` (`id_estado_fk`),
   CONSTRAINT `CIDADE_ibfk_1` FOREIGN KEY (`id_estado_fk`) REFERENCES `estado` (`id_estado`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -63,7 +65,7 @@ CREATE TABLE `cidade` (
 
 LOCK TABLES `cidade` WRITE;
 /*!40000 ALTER TABLE `cidade` DISABLE KEYS */;
-INSERT INTO `cidade` VALUES (1,'São Paulo',1),(2,'Guarujá',1),(3,'Cotia',1),(4,'Santos',1),(5,'Ribeirão Preto',1),(6,'Campinas',1);
+INSERT INTO `cidade` VALUES (1,'São Paulo',1),(2,'Guarujá',1),(3,'Cotia',1),(4,'Santos',1),(5,'Ribeirão Preto',1),(6,'Campinas',1),(9,'Marília',1),(11,'Forn City',1),(12,'Teste FLP',1),(14,'TTT',1),(16,'io',1),(18,'z',1),(19,'za',1),(21,'s',1),(22,'dd',1),(23,'ss',1),(24,'oiu',1),(25,'gjhgj',1);
 /*!40000 ALTER TABLE `cidade` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -90,7 +92,7 @@ CREATE TABLE `coluna` (
 
 LOCK TABLES `coluna` WRITE;
 /*!40000 ALTER TABLE `coluna` DISABLE KEYS */;
-INSERT INTO `coluna` VALUES (1,'coluna 1',1),(2,'coluna 2',1),(3,'coluna 3',1),(4,'coluna 4',1),(5,'coluna 5',1),(6,'coluna 6',2),(7,'coluna 7',2),(8,'coluna 8',2),(9,'coluna 9',2),(10,'coluna 10',2),(35,'coluna 11',2);
+INSERT INTO `coluna` VALUES (1,'coluna 1',1),(2,'coluna 2',1),(3,'coluna 3',1),(4,'coluna 4',1),(5,'coluna 5',1),(6,'coluna 6',2),(7,'coluna 7',2),(8,'coluna 8',2),(9,'coluna 9',2),(10,'coluna 10',2);
 /*!40000 ALTER TABLE `coluna` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -114,7 +116,7 @@ CREATE TABLE `corredor` (
 
 LOCK TABLES `corredor` WRITE;
 /*!40000 ALTER TABLE `corredor` DISABLE KEYS */;
-INSERT INTO `corredor` VALUES (1,'corredor 1'),(2,'corredor 2'),(3,'pppppppppppo');
+INSERT INTO `corredor` VALUES (1,'corredor 1'),(2,'corredor 2');
 /*!40000 ALTER TABLE `corredor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -135,7 +137,7 @@ CREATE TABLE `detalhe_pedido` (
   KEY `id_material_fk` (`id_material_fk`),
   CONSTRAINT `DETALHE_PEDIDO_ibfk_1` FOREIGN KEY (`id_pedido_fk`) REFERENCES `pedido` (`id_pedido`) ON DELETE CASCADE,
   CONSTRAINT `DETALHE_PEDIDO_ibfk_2` FOREIGN KEY (`id_material_fk`) REFERENCES `material` (`id_material`)
-) ENGINE=InnoDB AUTO_INCREMENT=77 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=174 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -144,7 +146,7 @@ CREATE TABLE `detalhe_pedido` (
 
 LOCK TABLES `detalhe_pedido` WRITE;
 /*!40000 ALTER TABLE `detalhe_pedido` DISABLE KEYS */;
-INSERT INTO `detalhe_pedido` VALUES (74,10,1,102),(75,2,2,102),(76,4,3,102);
+INSERT INTO `detalhe_pedido` VALUES (90,1,4,111),(98,1,4,115),(104,1,6,117),(140,4,2,126),(159,2,1,129),(160,4,2,129),(161,1,1,130),(162,2,1,131),(163,2,2,131),(164,2,9,131),(165,3,1,132),(167,10,2,135),(169,44,1,136),(170,3,2,136),(171,3,3,136);
 /*!40000 ALTER TABLE `detalhe_pedido` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -157,12 +159,13 @@ DROP TABLE IF EXISTS `email`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `email` (
   `id_email_forn` int(4) NOT NULL AUTO_INCREMENT,
-  `email_forn` varchar(50) NOT NULL,
+  `email_forn` varchar(100) NOT NULL,
   `id_forn_fk` int(4) NOT NULL,
   PRIMARY KEY (`id_email_forn`),
+  UNIQUE KEY `email_forn` (`email_forn`),
   KEY `id_forn_fk` (`id_forn_fk`),
   CONSTRAINT `EMAIL_ibfk_1` FOREIGN KEY (`id_forn_fk`) REFERENCES `fornecedor` (`id_forn`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -171,7 +174,7 @@ CREATE TABLE `email` (
 
 LOCK TABLES `email` WRITE;
 /*!40000 ALTER TABLE `email` DISABLE KEYS */;
-INSERT INTO `email` VALUES (1,'contato@pedrix.com.br',1),(2,'porto@gmail.com',2),(3,'pavmax@yahoo.com.br',3),(4,'hidromax@gmail.com',4),(5,'construmark@gmail.com',5),(6,'fernandoepis@gmail.com',6);
+INSERT INTO `email` VALUES (1,'contato@pedrix.com.br',1),(2,'porto@gmail.com',2),(3,'pavmax@yahoo.com.br',3),(4,'hidromax@gmail.com',4),(5,'construmark@gmail.com',5),(6,'fernandoepis@gmail.com',6),(7,'a@a',8),(8,'o@o',9),(10,'alv@alv.com',11),(11,'O@Oo',12),(12,'forn@forn.com',13),(13,'s@s',14),(15,'TTT@TTT',16),(19,'z@z',20),(20,'za@za',21),(22,'o@2',23),(23,'iu@iu',24),(25,'poi@pi',26),(26,'tuyt@tuyt',27);
 /*!40000 ALTER TABLE `email` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -207,13 +210,15 @@ DROP TABLE IF EXISTS `forn_logra_possui`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `forn_logra_possui` (
+  `id_flp` int(11) NOT NULL AUTO_INCREMENT,
   `id_forn_fk` int(4) NOT NULL,
   `cep_fk` varchar(10) NOT NULL,
+  PRIMARY KEY (`id_flp`),
   KEY `id_forn_fk` (`id_forn_fk`),
   KEY `cep_fk` (`cep_fk`),
   CONSTRAINT `FORN_LOGRA_POSSUI_ibfk_1` FOREIGN KEY (`id_forn_fk`) REFERENCES `fornecedor` (`id_forn`),
-  CONSTRAINT `FORN_LOGRA_POSSUI_ibfk_2` FOREIGN KEY (`cep_fk`) REFERENCES `logradouro` (`cep`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  CONSTRAINT `FORN_LOGRA_POSSUI_ibfk_2` FOREIGN KEY (`cep_fk`) REFERENCES `logradouro` (`CEP`)
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -222,7 +227,7 @@ CREATE TABLE `forn_logra_possui` (
 
 LOCK TABLES `forn_logra_possui` WRITE;
 /*!40000 ALTER TABLE `forn_logra_possui` DISABLE KEYS */;
-INSERT INTO `forn_logra_possui` VALUES (1,'06655678'),(2,'06666666'),(3,'06676666'),(4,'06679876'),(5,'06720120'),(6,'08888999');
+INSERT INTO `forn_logra_possui` VALUES (1,1,'06655678'),(2,2,'06666666'),(3,3,'06676666'),(4,4,'06679876'),(5,5,'06720120'),(6,6,'08888999'),(15,24,'90'),(16,25,'9898'),(17,26,'998'),(18,27,'089'),(19,28,'123');
 /*!40000 ALTER TABLE `forn_logra_possui` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -239,7 +244,7 @@ CREATE TABLE `fornecedor` (
   `num_endereco` int(6) DEFAULT NULL,
   `complemento_end` varchar(4) DEFAULT NULL,
   PRIMARY KEY (`id_forn`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -248,7 +253,7 @@ CREATE TABLE `fornecedor` (
 
 LOCK TABLES `fornecedor` WRITE;
 /*!40000 ALTER TABLE `fornecedor` DISABLE KEYS */;
-INSERT INTO `fornecedor` VALUES (1,'Pedrix',25,''),(2,'Porto Fortaleza',245,''),(3,'Pav Max',900,'a'),(4,'Hidro Max',887,''),(5,'Constru Mark',12,'b'),(6,'Fernando EPIs',80,''),(7,'joao',200,'A');
+INSERT INTO `fornecedor` VALUES (1,'Pedrix',25,''),(2,'Porto Fortaleza',245,''),(3,'Pav Max',900,'a'),(4,'Hidro Max',887,''),(5,'Constru Mark',12,'b'),(6,'Fernando EPIs',80,'a'),(7,'joao',200,'A'),(8,'alvaro',308,'a'),(9,'a',1,'a'),(10,'o',309,'a'),(11,'o',309,'a'),(12,'Álvaro',11,'a'),(13,'OO',11,'w'),(14,'Forn',11,'oo'),(15,'Teste FLP',1,'a'),(16,'Teste FLP',1,'a'),(17,'TTT',1,'TTT'),(18,'TTT',1,'TTT'),(19,'p',9,'o9'),(20,'p',9,'o9'),(21,'z',9090,'z'),(22,'za',90,'za'),(23,'za',90,'za'),(24,'orrr',2,'s'),(25,'iu',9,'s'),(26,'d',11,'ss'),(27,'poi',11,'oiu'),(28,'utyut',7676,'hh');
 /*!40000 ALTER TABLE `fornecedor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -260,14 +265,17 @@ DROP TABLE IF EXISTS `logradouro`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `logradouro` (
-  `cep` varchar(10) NOT NULL,
+  `id_logra` int(11) NOT NULL AUTO_INCREMENT,
+  `CEP` varchar(20) NOT NULL,
   `nome_logra` varchar(50) NOT NULL,
   `tipo_logra` varchar(50) NOT NULL,
   `id_cidade_fk` int(4) NOT NULL,
-  PRIMARY KEY (`cep`),
+  PRIMARY KEY (`id_logra`),
+  UNIQUE KEY `nome_logra` (`nome_logra`),
+  UNIQUE KEY `CEP` (`CEP`),
   KEY `id_cidade_fk` (`id_cidade_fk`),
   CONSTRAINT `LOGRADOURO_ibfk_1` FOREIGN KEY (`id_cidade_fk`) REFERENCES `cidade` (`id_cidade`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -276,7 +284,7 @@ CREATE TABLE `logradouro` (
 
 LOCK TABLES `logradouro` WRITE;
 /*!40000 ALTER TABLE `logradouro` DISABLE KEYS */;
-INSERT INTO `logradouro` VALUES ('06655678','dra. Aparecida','rua',6),('06666666','Epitacio Pessoa','avenida',4),('06676666','Sao Joao','rua',2),('06679876','America','avenida',3),('06720120','Assis Valente','rua',1),('08888999','da Paz','rua',5);
+INSERT INTO `logradouro` VALUES (1,'1','a','Rua',6),(2,'06679876','America','avenida',3),(3,'06720120','Assis Valente','rua',1),(4,'08888999','da Paz','rua',5),(5,'06655678','dra. Aparecida','rua',6),(6,'06666666','Epitacio Pessoa','avenida',4),(7,'11111','Rua Epitacio','Rua',9),(8,'06676666','Sao Joao','rua',2),(9,'9898989','do Forn','Rua',11),(10,'2','teste','Rua',12),(12,'11','TTT','Rua',14),(14,'99','p','Rua',16),(16,'9090','z','Rua',18),(17,'90','za','Rua',19),(20,'9898','oioi','Rua',22),(21,'998','ss','Rua',23),(22,'089','poi','Rua',24),(23,'123','uyuyiy','Rua',25);
 /*!40000 ALTER TABLE `logradouro` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -300,7 +308,7 @@ CREATE TABLE `material` (
   KEY `id_forn_fk` (`id_forn_fk`),
   CONSTRAINT `MATERIAL_ibfk_1` FOREIGN KEY (`id_prat_fk`) REFERENCES `prateleira` (`id_prat`),
   CONSTRAINT `MATERIAL_ibfk_2` FOREIGN KEY (`id_forn_fk`) REFERENCES `fornecedor` (`id_forn`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -309,7 +317,7 @@ CREATE TABLE `material` (
 
 LOCK TABLES `material` WRITE;
 /*!40000 ALTER TABLE `material` DISABLE KEYS */;
-INSERT INTO `material` VALUES (1,'Tubo PVC','100mm',60,1,1,'c4ca4238a0b923820dcc509a6f75849b.jpg'),(2,'Válvula de pressão','50mm',8,2,1,'c81e728d9d4c2f636f067f89cc14862c.jpg'),(3,'Abraçadeira','100mm',4,3,2,'eccbc87e4b5ce2fe28308fd9f2a7baf3.jpg'),(4,'Cotovelo PVC','90mm',25,4,2,'a87ff679a2f3e71d9181a67b7542122c.jpg'),(5,'TE PVC','100mm',40,5,3,'e4da3b7fbbce2345d7772b0674a318d5.png'),(6,'Tubo PVC','50mm',30,6,3,'1679091c5a880faf6fb5e6087eb1b2dc.jpg'),(7,'Tampa de registro','Tam. único',70,7,4,'8f14e45fceea167a5a36dedd4bea2543.jpg'),(8,'Cimento','50kg',50,8,4,'c9f0f895fb98ab9159f51fd0297e236d.jpg'),(9,'Argamassa','50kg',30,9,5,'45c48cce2e2d7fbdea1afc51c7c6ad26.jpg'),(10,'Pá','Aço inox',20,10,5,'d3d9446802a44259755d38e6d163e820.png'),(11,'Bota bico de aço','Tam. 40',30,11,6,'6512bd43d9caa6e02c990b0a82652dca.jpg'),(12,'Alicate de corte','15 polegadas',9,3,1,'c20ad4d76fe97759aa27a0c99bff6710.jpg');
+INSERT INTO `material` VALUES (1,'Tubo PVC','100mm',49,1,1,'c4ca4238a0b923820dcc509a6f75849b.jpg'),(2,'Válvula de pressão','50mm',80,2,1,'c81e728d9d4c2f636f067f89cc14862c.jpg'),(3,'Abraçadeira','100mm',96,3,2,'eccbc87e4b5ce2fe28308fd9f2a7baf3.jpg'),(4,'Cotovelo PVC','90mm',13,4,2,'a87ff679a2f3e71d9181a67b7542122c.jpg'),(5,'TE PVC','100mm',40,5,3,'e4da3b7fbbce2345d7772b0674a318d5.png'),(6,'Tubo PVC','50mm',29,6,3,'1679091c5a880faf6fb5e6087eb1b2dc.jpg'),(7,'Tampa de registro','Tam. único',76,7,4,'8f14e45fceea167a5a36dedd4bea2543.jpg'),(8,'Cimento','50kg',50,8,4,'c9f0f895fb98ab9159f51fd0297e236d.jpg'),(9,'Argamassa','50kg',28,9,5,'45c48cce2e2d7fbdea1afc51c7c6ad26.jpg'),(10,'Pá','Aço inox',20,10,5,'d3d9446802a44259755d38e6d163e820.png'),(11,'Bota bico de aço','Tam. 40',30,11,6,'6512bd43d9caa6e02c990b0a82652dca.jpg'),(12,'Alicate de corte','15 polegadas',9,3,1,'c20ad4d76fe97759aa27a0c99bff6710.jpg');
 /*!40000 ALTER TABLE `material` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -330,7 +338,7 @@ CREATE TABLE `pedido` (
   PRIMARY KEY (`id_pedido`),
   KEY `id_usuario_fk` (`id_usuario_fk`),
   CONSTRAINT `PEDIDO_ibfk_1` FOREIGN KEY (`id_usuario_fk`) REFERENCES `usuario` (`id_usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=103 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=138 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -339,7 +347,7 @@ CREATE TABLE `pedido` (
 
 LOCK TABLES `pedido` WRITE;
 /*!40000 ALTER TABLE `pedido` DISABLE KEYS */;
-INSERT INTO `pedido` VALUES (102,'2020-11-01 21:07:34','2020-11-01 21:07:34',NULL,'Liberado',1);
+INSERT INTO `pedido` VALUES (109,'2020-11-05 22:49:28','2020-11-05 22:49:28',NULL,'Liberado',1),(110,'2020-11-06 14:50:54','2020-11-06 14:50:54',NULL,'Aberto',1),(111,'2020-11-07 16:51:31','2020-11-07 16:51:31',NULL,'Aberto',1),(112,'2020-11-07 17:09:14','2020-11-07 17:09:14',NULL,'Aberto',1),(113,'2020-11-07 17:31:16','2020-11-07 17:31:16',NULL,'Aberto',1),(114,'2020-11-07 17:33:17','2020-11-07 17:33:17',NULL,'Aberto',1),(115,'2020-11-07 17:35:14','2020-11-07 17:35:14',NULL,'Aberto',1),(116,'2020-11-07 18:18:25','2020-11-07 18:18:25',NULL,'Aberto',1),(117,'2020-11-07 18:31:16','2020-11-07 18:31:16',NULL,'Aberto',1),(118,'2020-11-07 18:42:59','2020-11-07 18:42:59',NULL,'Aberto',1),(119,'2020-11-07 18:47:03','2020-11-07 18:47:03',NULL,'Aberto',1),(120,'2020-11-07 18:51:26','2020-11-07 18:51:26',NULL,'Aberto',1),(121,'2020-11-07 19:13:55','2020-11-07 19:13:55',NULL,'Aberto',1),(122,'2020-11-07 19:14:46','2020-11-07 19:14:46',NULL,'Aberto',1),(123,'2020-11-07 19:19:47','2020-11-07 19:19:47',NULL,'Aberto',1),(124,'2020-11-07 19:25:29','2020-11-07 19:25:29',NULL,'Aberto',1),(125,'2020-11-07 19:38:39','2020-11-07 19:38:39',NULL,'Aberto',1),(126,'2020-11-07 19:42:48','2020-11-07 19:42:48',NULL,'Aberto',1),(127,'2020-11-07 20:01:11','2020-11-07 20:01:11',NULL,'Aberto',1),(128,'2020-11-07 22:07:54','2020-11-07 22:07:54',NULL,'Aberto',1),(129,'2020-11-07 22:22:03','2020-11-07 22:22:03',NULL,'Aberto',1),(130,'2020-11-07 22:29:41','2020-11-07 22:29:41',NULL,'Aberto',1),(131,'2020-11-07 22:30:00','2020-11-07 22:30:00',NULL,'Aberto',1),(132,'2020-11-07 22:37:44','2020-11-07 22:37:44',NULL,'Aberto',1),(133,'2020-11-07 22:39:21','2020-11-07 22:39:21',NULL,'Aberto',1),(134,'2020-11-07 22:40:47','2020-11-07 22:40:47',NULL,'Aberto',1),(135,'2020-11-07 22:40:51','2020-11-07 22:40:51',NULL,'Aberto',1),(136,'2020-11-07 22:55:53','2020-11-07 22:55:53',NULL,'Aberto',1),(137,'2020-11-07 23:03:54','2020-11-07 23:03:54',NULL,'Aberto',1);
 /*!40000 ALTER TABLE `pedido` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -360,7 +368,7 @@ CREATE TABLE `pedido_cancelado` (
   `id_usuario_fk` int(11) NOT NULL,
   PRIMARY KEY (`id_pedido_cancelado`),
   KEY `id_usuario_fk` (`id_usuario_fk`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -369,7 +377,6 @@ CREATE TABLE `pedido_cancelado` (
 
 LOCK TABLES `pedido_cancelado` WRITE;
 /*!40000 ALTER TABLE `pedido_cancelado` DISABLE KEYS */;
-INSERT INTO `pedido_cancelado` VALUES (1,28,'2020-10-29 20:34:26','2020-10-29 20:34:26',NULL,'Cancelado',1),(2,83,'2020-11-01 14:00:07','2020-11-01 14:00:07',NULL,'Cancelado',1),(3,84,'2020-11-01 14:10:09','2020-11-01 14:10:09',NULL,'Cancelado',1),(4,85,'2020-11-01 14:12:58','2020-11-01 14:12:58',NULL,'Cancelado',1),(5,86,'2020-11-01 14:14:23','2020-11-01 14:14:23',NULL,'Cancelado',1),(6,87,'2020-11-01 14:18:43','2020-11-01 14:18:43',NULL,'Cancelado',1),(7,93,'2020-11-01 15:05:53','2020-11-01 15:05:53',NULL,'Cancelado',1),(8,94,'2020-11-01 15:06:28','2020-11-01 15:06:28',NULL,'Cancelado',1);
 /*!40000 ALTER TABLE `pedido_cancelado` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -387,7 +394,7 @@ CREATE TABLE `prateleira` (
   PRIMARY KEY (`id_prat`),
   KEY `id_coluna_fk` (`id_coluna_fk`),
   CONSTRAINT `PRATELEIRA_ibfk_1` FOREIGN KEY (`id_coluna_fk`) REFERENCES `coluna` (`id_coluna`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -396,7 +403,7 @@ CREATE TABLE `prateleira` (
 
 LOCK TABLES `prateleira` WRITE;
 /*!40000 ALTER TABLE `prateleira` DISABLE KEYS */;
-INSERT INTO `prateleira` VALUES (1,'a',1),(2,'b',1),(3,'c',1),(4,'d',1),(5,'a',2),(6,'b',2),(7,'c',2),(8,'d',2),(9,'a',3),(10,'b',3),(11,'c',3),(12,'d',3),(13,'a',4),(14,'b',4),(15,'c',4),(16,'d',4);
+INSERT INTO `prateleira` VALUES (1,'a',1),(2,'b',1),(3,'c',1),(4,'d',1),(5,'a',2),(6,'b',2),(7,'c',2),(8,'d',2),(9,'a',3),(10,'b',3),(11,'c',3),(12,'d',3),(13,'a',4),(14,'b',4),(15,'c',4),(16,'d',4),(17,'a',5),(18,'b',5),(19,'c',5),(20,'d',5),(21,'a',6),(22,'b',6),(23,'c',6),(24,'d',6),(25,'a',7),(26,'b',7),(27,'c',7),(28,'d',7),(29,'a',8),(30,'b',8),(31,'c',8),(32,'d',8),(33,'a',9),(34,'b',9),(35,'c',9),(36,'d',9),(37,'a',10),(38,'b',10),(39,'c',10),(40,'d',10),(41,'a',5),(42,'b',5),(43,'c',5),(44,'d',5),(45,'a',6),(46,'b',6),(47,'c',6),(48,'d',6),(49,'a',7),(50,'b',7),(51,'c',7),(52,'d',7),(53,'a',8),(54,'b',8),(55,'c',8),(56,'d',8),(57,'a',9),(58,'b',9),(59,'c',9),(60,'d',9),(61,'a',10),(62,'b',10),(63,'c',10),(64,'d',10);
 /*!40000 ALTER TABLE `prateleira` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -414,7 +421,7 @@ CREATE TABLE `telefone` (
   PRIMARY KEY (`id_telefone`),
   KEY `id_forn_fk` (`id_forn_fk`),
   CONSTRAINT `TELEFONE_ibfk_1` FOREIGN KEY (`id_forn_fk`) REFERENCES `fornecedor` (`id_forn`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -423,7 +430,7 @@ CREATE TABLE `telefone` (
 
 LOCK TABLES `telefone` WRITE;
 /*!40000 ALTER TABLE `telefone` DISABLE KEYS */;
-INSERT INTO `telefone` VALUES (1,'3344-4477',1),(2,'3324-4666',2),(3,'3456-7889',3),(4,'3144-0099',4),(5,'3377-8877',5),(6,'2112-4227',6);
+INSERT INTO `telefone` VALUES (1,'33444477',1),(2,'33244666',2),(3,'34567889',3),(4,'31440099',4),(5,'33778877',5),(6,'21124227',6),(7,'21123337',7),(8,'1',8),(9,'1',9),(10,'1',10),(11,'11111',11),(12,'1',12),(13,'99999999',13),(14,'1',14),(15,'1',15),(16,'111',16),(17,'111',17),(18,'0',18),(19,'0',19),(20,'0',20),(21,'9898',21),(22,'9898',22),(23,'0',23),(25,'8',25);
 /*!40000 ALTER TABLE `telefone` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -442,11 +449,12 @@ CREATE TABLE `usuario` (
   `sobrenome` varchar(100) NOT NULL,
   `matricula` int(4) NOT NULL,
   `id_acesso_fk` int(4) NOT NULL,
+  `imagem` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id_usuario`),
   UNIQUE KEY `matricula` (`matricula`),
   KEY `id_acesso_fk` (`id_acesso_fk`),
   CONSTRAINT `USUARIO_ibfk_1` FOREIGN KEY (`id_acesso_fk`) REFERENCES `acesso` (`id_acesso`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -455,9 +463,73 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (1,'jose','1234','José','Silva',998,1),(2,'joao','1111','João','Santos',2228,1),(3,'kl','4321','Kleber','Alves',221,2),(4,'fernando','3344','Fernando','Souza',989,2),(5,'marcio','989898','Marcio','Freitas',134,2),(6,'matheus','3331234','Matheus','Castro',11,3),(7,'jorge','9994','Jorge','Santana',98,3);
+INSERT INTO `usuario` VALUES (1,'ze','1234','José','Gonçalves',998,1,'4.jpg'),(2,'joao','1111','João','Santos',2228,1,'2.jpg'),(3,'kl','4321','Kleber','Alves',221,2,'5.jpg'),(4,'fernando','3344','Fernando','Souza',989,2,'1.jpg'),(6,'lu','3331234','Luiza','Ramos',110,3,'10.jpg'),(26,'ana','o','Ana','Paula',55,2,'6.jpg');
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Temporary table structure for view `view_coluna`
+--
+
+DROP TABLE IF EXISTS `view_coluna`;
+/*!50001 DROP VIEW IF EXISTS `view_coluna`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `view_coluna` AS SELECT 
+ 1 AS `id_coluna`,
+ 1 AS `nome_coluna`,
+ 1 AS `id_corr_fk`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `view_prat`
+--
+
+DROP TABLE IF EXISTS `view_prat`;
+/*!50001 DROP VIEW IF EXISTS `view_prat`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `view_prat` AS SELECT 
+ 1 AS `id_prat`,
+ 1 AS `nome_prat`,
+ 1 AS `id_coluna_fk`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Final view structure for view `view_coluna`
+--
+
+/*!50001 DROP VIEW IF EXISTS `view_coluna`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`estudo`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `view_coluna` AS select `coluna`.`id_coluna` AS `id_coluna`,`coluna`.`nome_coluna` AS `nome_coluna`,`coluna`.`id_corr_fk` AS `id_corr_fk` from `coluna` */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `view_prat`
+--
+
+/*!50001 DROP VIEW IF EXISTS `view_prat`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`estudo`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `view_prat` AS select `prateleira`.`id_prat` AS `id_prat`,`prateleira`.`nome_prat` AS `nome_prat`,`prateleira`.`id_coluna_fk` AS `id_coluna_fk` from `prateleira` */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -468,4 +540,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-11-01 19:37:56
+-- Dump completed on 2020-11-10 21:24:56
