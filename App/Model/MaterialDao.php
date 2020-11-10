@@ -40,7 +40,7 @@ class MaterialDao{
 
 	public function update(Material $m){//recebe a classe Material como parâmetro instanciada como $p
 		$sql = 'UPDATE MATERIAL SET nome_material = ?, desc_material = ?, qtde_estoque = ?, id_prat_fk = ?, id_forn_fk = ? /*imagem = ?*/ WHERE id_material = ?';
-		/*
+		/* AINDA NÃO FUNCIONA O UPDATE DA IMAGEM
 		$extensao = strtolower(substr($_FILES['nome_imagem_edit']['name'], -4)); //pega a extensao do arquivo
 	    $imagem = $_FILES['nome_imagem_edit']['name'] . $extensao; //define o nome do arquivo
 	    $diretorio = "upload/"; //define o diretorio para onde enviaremos o arquivo
@@ -100,16 +100,6 @@ class MaterialDao{
 		$stmt->bindValue(2, $m->getid_material());
 		$stmt->execute();
 	}
-	/*
-	//DEVOLVENDO OS MATERIAIS AO ESTOQUE APÓS CANCELAR O PEDIDO:
-	public function devolverMateriais(Material $m){
-		$sql = "UPDATE MATERIAL SET qtde_estoque = qtde_estoque + ? WHERE id_material = ?";
-		$stmt = Conexao::getConn()->prepare($sql);
-		$stmt->bindValue(1, $m->getqtde_estoque());
-		$stmt->bindValue(2, $m->getid_material());
-		$stmt->execute();
-	}
-	*/
 
 	public function relatorioMateriais(){
 		$sql = 'SELECT

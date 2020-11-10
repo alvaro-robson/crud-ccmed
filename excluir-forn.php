@@ -69,7 +69,7 @@ if(!isset($_SESSION['id_usuario'])){
 
           echo "Deseja excluir " . $editar['nome_forn'] . "?";
         	
-        	 ?>
+        	?>
 	<form method="POST" action="<?php $_SERVER['PHP_SELF']; ?>" class="mb-">
 		<input type="submit" name="btnExcluirForn" value="SIM" class="btn btn-secondary btn-block btn-lg mt-5">
 		<input type="submit" name="btnCancelarForn" value="NÃO" class="btn btn-secondary btn-block btn-lg mt-5">

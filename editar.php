@@ -14,8 +14,8 @@ if(!isset($_SESSION['id_usuario'])){
 	echo 
     '<div class = "session">
     Olá, ' . $_SESSION['nome'] . '! <br>Seja bem-vindo.<br>
-	ID: ' . $_SESSION['id_usuario'] . ',<br>
-	matrícula: ' . $_SESSION['matricula'] . '<br>
+    ID: ' . $_SESSION['id_usuario'] . ',<br>
+    matrícula: ' . $_SESSION['matricula'] . '<br>
     acesso: ' . $_SESSION['id_acesso_fk'];
 }
 
@@ -103,28 +103,3 @@ if(isset($_POST['btnCancelar'])){
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
   </body>
-
-
-
- <?php 
- /*
- <html>
- <head>
- 	<title></title>
- 	<link rel="stylesheet" href="css/estilo2.css">
- </head>
- <body>
- 	<div class="form-container">
-	 	<form action="<?php $_SERVER['PHP_SELF'];?>" method="POST" enctype="multipart/form-data">
-	 		<input type="text" name="nome_material_edit" placeholder="Nome do material" value="<?= $editar['nome_material'];?>">
-	 		<input type="text" name="desc_material_edit" placeholder="Descrição" value="<?php echo $editar['desc_material'];?>">
-	 		<input type="number" name="qtde_estoque_edit" placeholder="Quantidade" value="<?php echo $editar['qtde_estoque'];?>">
-	 		<input type="number" name="id_prat_fk_edit" placeholder="ID prateleira" value="<?php echo $editar['id_prat_fk'];?>">
-	 		<input type="number" name="id_forn_fk_edit" placeholder="ID fornecedor" value="<?php echo $editar['id_forn_fk'];?>">
-	 		<input type="file" name="nome_imagem_edit" value="<?php echo $editar['nome_imagem'];?>">
-	 		<input type="submit" name="btnEditar" value="SALVAR">
-	 	</form>
- 	</div>
- </body>
- </html>
- */ ?>

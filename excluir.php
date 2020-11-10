@@ -41,8 +41,7 @@ if(!isset($_SESSION['id_usuario'])){
           if(isset($_POST['btnCancelar'])){
           	header("location:index.php");
           }
-
-
+          
           echo "<img width = '100%' src = upload/" . $editar['imagem'] . " class = 'imagem-material'> " .  "Deseja excluir " . $editar['nome_material'] . " " .  $editar['desc_material'] . "?";
         	
         	 ?>

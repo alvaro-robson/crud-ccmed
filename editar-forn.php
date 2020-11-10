@@ -77,39 +77,6 @@ if(isset($_POST['btnEditarForn'])){
     $flp->setcep_fk($_POST['cep']);
     $flpDao->update($flp);
     header("location:listagem-fornecedores.php");
-    
-    /*
-    foreach($fornDao->read() as $ultimoForn);
-    $forn->setnome_forn($_POST['nome_forn']);
-    $forn->setnum_endereco($_POST['num_endereco']);
-    $forn->setcomplemento_end($_POST['complemento_end']);
-    $fornDao->create($forn);
-    //
-    $tel->setnumero_tel($_POST['numero_tel']);
-    $tel->setid_forn_fk($ultimoForn['id_forn']);
-    $telDao->create($tel);
-    //
-    $email->setemail_forn($_POST['email_forn']);
-    $email->setid_forn_fk($ultimoForn['id_forn']);
-    $emailDao->create($email);
-    //
-    $cidade->setnome_cidade($_POST['nome_cidade']);
-    $cidade->setid_estado_fk(1); //Só haverá 1 estado no sistema(SP)
-    $cidadeDao->create($cidade);
-    //
-    $logra->setcep($_POST['cep']);
-    $logra->setnome_logra($_POST['nome_logra']);
-    $logra->settipo_logra($_POST['tipo_logra']);
-    foreach($cidadeDao->read() as $cid);
-    $logra->setid_cidade_fk($cid['id_cidade']);
-    $lograDao->create($logra);
-    //
-    foreach($fornDao->read() as $idforns);
-    $flp->setid_forn_fk($idforns['id_forn']);
-    foreach($lograDao->read() as $cep)
-    $flp->setcep_fk($cep['CEP']);
-    $flpDao->create($flp);
-    */
 }
 ?>
 

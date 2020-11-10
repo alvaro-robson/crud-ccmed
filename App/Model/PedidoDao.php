@@ -132,17 +132,6 @@ class PedidoDao{
 		$stmt->execute();
 	}
 
-	/*
-	//Altera para "Cancelado" o status do último pedido da tabela, ou seja, o pedido atual, caso o usuario clique em Cancelar
-	public function cancelarPedido(Pedido $ped){
-		$sql = "UPDATE PEDIDO SET status_pedido = 'Cancelado' where id_pedido = ?";
-		$stmt = Conexao::getConn()->prepare($sql);
-		$stmt->bindValue(1, $ped->getid_pedido());
-		$stmt->execute();		
-	}
-	*/
-	
-
 	public function confirmarPedido(){
 		$id = $_GET['id'];
 		$sql = 'SELECT * FROM MATERIAL WHERE id_material = ?';

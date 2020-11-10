@@ -10,7 +10,6 @@ class CorredorDao{
 		$stmt = Conexao::getConn()->prepare($sql);
 		$stmt->bindValue(1, $corr->getnome_corredor());
 		$stmt->execute();
-		//header("location:index.php");
 	}
 
 	public function read(){
