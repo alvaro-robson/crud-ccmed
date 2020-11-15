@@ -83,9 +83,11 @@
 					$detalheDao->deletar_item($detalhe);
 					header("location:menu-pedidos.php");
 				}
-            }
-            ?>
-</div>
+			}
+    }
+                ?>
+
+            </div>
         </div>
     </div>
 
@@ -116,11 +118,6 @@
 		if(isset($_POST['finalizarPedido'])){
 			header("location:menu-pedidos.php");
 		}
-
-    }
-                
-
-            
 		
 
 		//Mostrando os materiais a serem solicitados

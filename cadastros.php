@@ -18,7 +18,7 @@
         $usuarioDao->mostrarSessao();
     }
 ?>
-    <br><a href="login.php">SAIR</a>
+ 
 
 <!doctype html>
 <html lang="pt-br">
@@ -33,25 +33,47 @@
     <!-- Bootstrap CSS -->
     <link href="custom.css" rel="stylesheet">
 
-    <title>Menu </title>
+    <title>Cadastros </title>
   </head>
   <body>
-      <!div class="row">
-          <div class="container mt-5" style="display: flex; align-items: center; justify-content: center">
-              <h1 class="">Menu do sistema</h1>
-          </div>
-      </div>
-    <div class="container mt-5">
-        <div class="col-sm-12">
-          <button type="submit" class="btn btn-secondary btn-block btn-lg mt-5">
-              <a href="form-cadastrar.php">Cadastro de materiais</a></button>
-          <button type="submit" class="btn btn-secondary btn-block btn-lg mt-5">
-              <a href="form-cadastrar-usuario.php">Cadastros de usuários</a></button>
-          <button type="submit" class="btn btn-secondary btn-block btn-lg mt-5">
-              <a href="form-cadastrar-forn.php">Cadastros de fornecedores</a></button>
-        </div>
-    </div>
+        <div class="container" style="display: flex; align-items: center; justify-content: center"><!--  div container 1 -->
+            <div class="row">
+                <div class="col-12 col-sm-12">
+                    <h1>Cadastros</h1>
+                </div>
+            </div>
+        </div><!-- fim div container 1 -->
 
+        <div class="container "><!--  div container 2' -->
+            <div class="row">
+                <div class="col-sm-12">
+                    <a href="form-cadastrar.php">
+                        <button type="submit" class="btn btn-info btn-block btn-lg">Cadastro de materiais
+                        </button>    
+                    </a>
+                    <a href="form-cadastrar-usuario.php">
+                        <button type="submit" class="btn btn-info btn-block btn-lg mt-2">Cadastros de usuários
+                        </button>
+                    </a>
+                    <a href="form-cadastrar-forn.php">
+                        <button type="submit" class="btn btn-info btn-block btn-lg mt-2">Cadastros de fornecedores
+                        </button>    
+                    </a>
+                </div>
+            </div>
+        </div><!-- fim div container 2 -->
+        <div class="container mt-2"><!--  div container 3' -->
+		<div class="row">
+			<div class="col-sm-12">
+				<a href="menu.php">
+					<button class="btn btn-warning btn-block btn-lg">Voltar</button>
+				</a>
+				<a href="login.php">
+					<button class="btn btn-danger btn-block btn-lg mt-2">Sair</button>
+				</a>
+			</div>
+		</div>
+	</div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

@@ -10,7 +10,7 @@ class Conexao{
 		//se não existir a instância de conexão
 		if(!isset(self::$instance)):
 			//vai criar a conexão
-			self::$instance = new \PDO('mysql:host=localhost; dbname=db_ccmed; charset=utf8', 'estudo', '');
+			self::$instance = new \PDO('mysql:host=localhost; dbname=db_ccmed; charset=utf8', 'root', '');
 		endif;
 		return self::$instance;
 	}

@@ -25,27 +25,7 @@ if(isset($_POST['btnCadastrarUsuario'])){
 }
 
  ?>
- <!--DOCTYPE html>
- <html>
- <head>
- 	<title></title>
- 	<link rel="stylesheet" href="css/estilo2.css">
- </head>
- <body>
- 	<div class="form-container">
-	 	<form action="index.php" method="POST" enctype="multipart/form-data">
-	 		<input type="text" name="nome_material" placeholder="Nome do material">
-	 		<input type="text" name="desc_material" placeholder="Descrição">
-	 		<input type="number" name="qtde_estoque" placeholder="Quantidade">
-	 		<input type="number" name="id_prat_fk" placeholder="ID prateleira">
-	 		<input type="number" name="id_forn_fk" placeholder="ID fornecedor">
-	 		<input type="file" name="nome_imagem">
-	 		<input type="submit" name="btnCadastrar" value="CADASTRAR">
-	 	</form>
- 	</div>
- </body>
- </html-->
- <!doctype html>
+<!doctype html>
 <html lang="pt-br">
   <head>
     <!-- Required meta tags -->
@@ -61,13 +41,17 @@ if(isset($_POST['btnCadastrarUsuario'])){
   </head>
   <body class="color">
   <script src = "scripts/document.js"></script>
-  <br><a href="login.php">Sair</a>
-  <div class="row">
-          <div class="container mt-5" style="display: flex; align-items: center; justify-content: center">
-              <h1 class="" align="center">Cadastro de usuários</h1>
-          </div>
-      </div>
-    <div class="container mt-5">
+  
+<div class="container">
+    <div class="row" style="display: flex; align-items: center; justify-content: center">
+        <div class="col-12 col-sm-12">
+            <h1 align="center">Cadastro de usuários</h1>
+        </div>
+    </div>
+</div><!--fim do 1 container-->
+
+<div class="container"><!--container 2-->
+    <div class="row">
         <div class="col-sm-12">
         <!--INICIO FORM---------------------------------------------->
             <form class="mb-" action="<?php $_SERVER['PHP_SELF'];?>" method="POST" enctype="multipart/form-data">
@@ -110,11 +94,26 @@ if(isset($_POST['btnCadastrarUsuario'])){
                     <label for="imagem">Imagem</label>
                     <input type="file" name="nome_imagem">
                 </div>
-                <input type="submit" class="btn btn-secondary btn-block btn-lg mt-5" name="btnCadastrarUsuario" value="Cadastrar" >
+                <button type="submit" class="btn btn-success btn-block btn-lg mt-5" name="btnCadastrarUsuario">Cadastrar</button>
               </form>
-              <a href="menu.php" class="btn btn-secondary btn-block btn-lg mt-5">Cancelar</a>
-            </div>
+        </div>
     </div>
+</div><!--fim do 2 container-->
+<div class="container mt-2"><!--  div container 3' -->
+		<div class="row">
+			<div class="col-sm-6 col-6">
+				<a href="cadastros.php">
+					<button class="btn btn-warning btn-block btn-lg">Voltar</button>
+				</a>
+				
+			</div>
+			<div class="col-6 col-sm-6">
+			<a href="login.php">
+					<button class="btn btn-danger btn-block btn-lg mb-2">Sair</button>
+				</a>
+			</div>
+		</div>
+	</div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -122,3 +121,4 @@ if(isset($_POST['btnCadastrarUsuario'])){
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
   </body>
+</html>

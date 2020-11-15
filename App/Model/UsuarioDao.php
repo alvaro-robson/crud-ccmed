@@ -41,20 +41,31 @@ class UsuarioDao{
 			$resultado = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 			foreach($resultado as $res){
 				echo
-					"<img src = upload/" . $res['imagem'] . " class = 'imagem-material'><br>
-					Id: " . $res['id_usuario'] . "<br>
-					Login: " . $res['login'] . "<br>
-					Nome: " . $res['nome'] . " " . $res['sobrenome'] . "<br>
-					Matrícula: " . $res['matricula'] . "<br>
-					Nível de acesso: " . $res['id_acesso'] . "(" . $res['nome_acesso'] . ")<br>
+					"
+					<div class='row mt-2'>
+					<div class='col-4 col-sm-4'>
+					<img src = upload/" . $res['imagem'] . " class = 'fotoSession' width='100%'>
+					</div>
+						<div class='col-8 col-sm-8'>
+						Login: <b>" . $res['login'] . "</b><br>
+						Nome: <b>" . $res['nome'] . " " . $res['sobrenome'] . "</b><br>
+						Matrícula: <b>" . $res['matricula'] . "</b><br>
+						Nível de acesso: <b>" . $res['id_acesso'] . " (" . $res['nome_acesso'] . ")</b><br>
+					</div>
 					
+					<div class='col-6 col-sm-6 mt-2'>
 					<a href = editar-usuario.php?id_usuario=" . $res['id_usuario'] . ">
-					<img src = 'icones/edit-64.png' class = 'icones'>
+					<button class='btn btn-info btn-block'>Editar</button>
 					</a>
+					</div>
+					<div class='col-6 col-sm-6 mt-2'>
 					<a href = excluir-usuario.php?id_usuario=".$res['id_usuario'].">
-						<img src = 'icones/x-mark-4-64.png' class = 'icones'>
+					<button class='btn btn-danger btn-block'>Excluir</button>
 					</a>
-					<br>-----------------------------<br>";
+					</div>
+					
+					</div>
+					";
 			}
 			return $resultado;
 		}else{
@@ -125,6 +136,7 @@ class UsuarioDao{
 				default:
 					echo "nenhum";
 					header('location:login.php');
+					
 			}
 		}else{
 			//header("location:login.php");
@@ -138,16 +150,28 @@ class UsuarioDao{
 	public function mostrarSessao(){
 		//MOSTRA OS DADOS DO USUÁRIO DA SESSÃO ATUAL
 		echo 
-		"<div class = 'session'><!--INICIO DA DIV SESSION-->
-			<div class = dadosUsuarioSession>
-				Olá, " . $_SESSION['nome'] . "! <br>Seja bem-vindo.<br>
-				ID: " . $_SESSION['id_usuario'] . ",<br>
-				matrícula: " . $_SESSION['matricula'] . "<br>
-				acesso: " . $_SESSION['id_acesso_fk'] . "<br>
-			</div>";
+
+		"
+		<div class ='container'>
+			<div class='row  alert-primary pb-2'>
+				<div class='col-sm-8 col-8'>
+					
+						<div class = dadosUsuarioSession>
+						Olá <b>" . $_SESSION['nome'] . "</b> Seja bem-vindo <br>Código de Matrícula: <b> " . $_SESSION['matricula'] . "</b><br>	
+						
+					</div>
+			</div>
+
+			
+			";
 		?>
-			<div class="divFotoSession">
-				<img src="upload/<?php echo $_SESSION['imagem'];?>" width = "100px" class="fotoSession">
+			
+				<div class="col-sm-4 col-4">
+			<div class="divFotoSession d-flex justify-content-center">
+				<img src="upload/<?php echo $_SESSION['imagem'];?>" width = "100px" height="1%" class="fotoSession">
+			
+			</div>
+			</div>
 			</div>
 		</div><!--FIM DA DIV SESSION-->
 		<?php

@@ -18,8 +18,7 @@
         $usuarioDao->mostrarSessao();
     }
 ?>
-    <br><a href="login.php">SAIR</a>
-
+  
 <!doctype html>
 <html lang="pt-br">
   <head>
@@ -31,24 +30,40 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
     <!-- Bootstrap CSS -->
-    <link href="custom.css" rel="stylesheet">
+    
 
     <title>Menu </title>
   </head>
   <body>
-      <!div class="row">
-          <div class="container mt-5" style="display: flex; align-items: center; justify-content: center">
-              <h1 class="">Menu do sistema</h1>
-          </div>
-      </div>
-    <div class="container mt-5">
-        <div class="col-sm-12">
-          <button type="submit" class="btn btn-secondary btn-block btn-lg mt-5">
-          <a href="listagens.php">Listas</a></button>
-          <button type="submit" class="btn btn-secondary btn-block btn-lg mt-5">
-              <a href="cadastros.php">Cadastros</a></button>
-        </div>
-    </div>
+          <div class="container" style="display: flex; align-items: center; justify-content: center"><!-- div container 1 --> 
+              <div class="row"><!--div row --> 
+                <div class="col-12 col-sm-12">
+                <h1 class="">Menu do sistema</h1>
+                </div><!--fim div col-12  --> 
+              </div><!--div row --> 
+             
+          </div><!--fim div container 1 --> 
+    
+    <div class="container mt-3"><!-- div container 2 --> 
+        <div class="row">
+            <div class="col-sm-12">
+                <a href="listagens.php"><button type="submit" class="btn btn-info btn-block btn-lg">Listas</button></a>
+                <a href="cadastros.php"><button type="submit" class="btn btn-info btn-block btn-lg mt-2">Cadastros</button></a>
+            </div><!--fim div col-sm-12 -->   
+        </div><!--fim div row -->    
+    
+    </div><!--fim div container 2 -->
+
+
+    <div class="container mt-4"><!--div container 3 --> 
+        <div class="row"><!-- div row --> 
+            <div class="col-sm-12">
+                <a href="login.php"><button  class="btn btn-danger btn-block btn-lg mt-2">Sair</button></a> 
+            
+            </div><!--fim div col-sm-12 --> 
+        </div><!--fim div row --> 
+    </div><!--fim div container 3 -->    
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

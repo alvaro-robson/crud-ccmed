@@ -2,14 +2,27 @@
   namespace App\Model; 
   require_once "vendor/autoload.php";
 ?>
-<html>
-    <head>
-        <link href="css/estilo2.css" rel="stylesheet">
-    </head>
-    <body>
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+    <title>Detalhar Pedido</title>
+  </head>
+  <body>
         <script src = scripts/document.js></script>
         <div class="container">
-            <a href="menu-pedidos.php">Voltar</a>
+            <div class="row">
+                <div class="col-12 col-sm-12">
+                <a href="menu-pedidos.php"><button class="btn btn-sm btn-secondary btn-block mb-2 mt-2">Voltar</button></a>
+                </div>
+            </div>    
+        
 <?php
 $material = new \App\Model\Material;
 $materialDao = new \App\Model\MaterialDao;
@@ -29,16 +42,27 @@ if(!isset($_SESSION['id_usuario'])){
 $usuario->setid_usuario($_SESSION['id_usuario']);
 foreach($pedidoDao->detalharPedidosUsuario($usuario) as $detalhar);
 echo
-"<br>=============================<br>
-Pedido nº " . $detalhar['id_pedido'] . "| Status: " . $detalhar['status_pedido'] . "<br>
-=============================<br>";
+"
+<div class='container'>
+<div class='row border '>
+<div class='col-sm-12 mt-3 border-top border border-dark pt-2'>
+<P>Pedido Nº <b>" . $detalhar['id_pedido'] . "</b> | Status: <b>" . $detalhar['status_pedido'] . "</b></P>
+</div>
+";
 foreach($pedidoDao->detalharPedidosUsuario($usuario) as $detalhar){
     echo
-    "<br>Material : " . $detalhar['nome_material'] . "<br>
-    Quantidade: " . $detalhar['quantidade'] . "<br>
-    Abertura: " . $detalhar['data_abertura'] . "<br>
-    Vencimento: " . $detalhar['vencimento'] . "<br>
-    ___________________________<br>";
+    "
+    <div class='col-sm-12'>
+    <p>Material : <b>" . $detalhar['nome_material'] . "</b><br>
+    Quantidade: <b>" . $detalhar['quantidade'] . "</b><br>
+    Abertura: <b>" . $detalhar['data_abertura'] ."</b>
+    Vencimento: <b>" . $detalhar['vencimento'] . "</b><br>
+   <br>
+   </div>
+   </p>
+</div>
+</div>    
+";
 }
 
 ?>

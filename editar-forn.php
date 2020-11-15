@@ -35,11 +35,9 @@
     <link href="custom.css" rel="stylesheet">
     <title>Alteração de fornecedor</title>
   </head>
-  <body class="color">
+  <body>
   <script src = "scripts/document.js"></script>
-  <br><a href="login.php">Sair</a>
-	<script src = "scripts/document.js"></script>
-	<?php
+ <?php
 	session_start();
 if(!isset($_SESSION['id_usuario'])){
     session_destroy();
@@ -79,15 +77,17 @@ if(isset($_POST['btnEditarForn'])){
     header("location:listagem-fornecedores.php");
 }
 ?>
-
-  <div class="row">
-          <div class="container mt-5" style="display: flex; align-items: center; justify-content: center">
+<div class="container"><!--div container 1 -->
+    <div class="row">
+        <div class="container" style="display: flex; align-items: center; justify-content: center">
               <h1 class="" align="center">Alteração de fornecedor</h1>
-          </div>
-      </div>
-    <div class="container mt-5">
-        <div class="col-sm-12">
-        <!--INICIO FORM---------------------------------------------->
+        </div>
+    </div>
+</div><!--fim div container 1 -->
+
+<div class="container"><!--  div container 2 -->
+    <div class="row">
+        <div class="col-sm-12 mb-3">
             <form class="mb-" action="<?php $_SERVER['PHP_SELF'];?>" method="POST" enctype="multipart/form-data">
                 
                 <div class="form-group">
@@ -107,7 +107,7 @@ if(isset($_POST['btnEditarForn'])){
 
                 <div class="form-group">
                     <label for="matricula">Tipo de logradouro</label>
-                    <select name="tipo_logra">
+                    <select name="tipo_logra" class="form-control">
                         <option>Rua</option>
                         <option>Avenida</option>
                     </select>
@@ -141,15 +141,32 @@ if(isset($_POST['btnEditarForn'])){
 
                 <div class="form-group">
                     <label for="matricula">Estado</label>
-                    <select name="estado">
+                    <select name="estado" class="form-control">
                         <option>SP</option>
                     </select>
                 </div>
-                 <input type="submit" class="btn btn-secondary btn-block btn-lg mt-5" name="btnEditarForn" value="Salvar" >
+                 <input type="submit" class="btn btn-success btn-block btn-lg" name="btnEditarForn" value="Salvar" >
               </form>
-              <a href="menu.php" class="btn btn-secondary btn-block btn-lg mt-5">Cancelar</a>
-            </div>
+             
+        </div>
     </div>
+</div><!--  fim div container 2 -->
+
+    <div class="container mt-2"><!--  div container 3 -->
+		<div class="row">
+			<div class="col-sm-6 col-6">
+				<a href="listagem-fornecedores.php">
+					<button class="btn btn-warning btn-block btn-lg">Voltar</button>
+				</a>
+				
+			</div>
+			<div class="col-6 col-sm-6">
+			<a href="login.php">
+					<button class="btn btn-danger btn-block btn-lg mb-2">Sair</button>
+				</a>
+			</div>
+		</div>
+	</div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

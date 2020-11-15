@@ -119,24 +119,46 @@ class MaterialDao{
 			$resultado = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 			foreach($resultado as $res){
 				echo
-					"<img src = upload/" . $res['imagem'] . " class = 'imagem-material'><br>
-					ID: " . $res['id_material'] . "<br>" .
-					$res['nome_material'] . " - " . $res['desc_material'] . "<br>
-					Qtde em estoque: " .	$res['qtde_estoque'] . "<br>
-					Fornecedor: " .	$res['nome_forn'] . "<br>
-					Prateleira: " . $res['nome_prat'] . "<br>" . 
-					$res['nome_coluna'] . "<br>" . 
-					$res['nome_corredor'] . "<br>
-					<a href = editar.php?id=".$res['id_material'] . ">
-					<img src = 'icones/edit-64.png' class = 'icones'>
-						</a>
-					<a href = excluir.php?id=".$res['id_material'].">
-						<img src = 'icones/x-mark-4-64.png' class = 'icones'>
-					</a> 
-					<a href = form-armazenar.php?id=".$res['id_material'].">
-						<img src = 'icones/plus-8-64.png' class = 'icones'>
-					</a>
-					<br>____________________________<br>";
+					"
+					<div class='row'>
+						<div class='col-sm-12'>
+							<img src = upload/" . $res['imagem'] . " class = 'imagem-material'>
+						</div>
+					</div>
+					<div class='container'>
+						<div class='row alert-secondary'>
+							<div class='col-12 col-sm-12 '>
+								<p>
+								Código do produto: <b>" . $res['id_material'] . "</b><br>
+								Descrição: <b>" . $res['nome_material'] . " - " . $res['desc_material'] . "</b><br>
+								Qtde em estoque: <b>" .	$res['qtde_estoque'] . "</b><br>
+								Fornecedor: <b>" .	$res['nome_forn'] . "</b><br>
+								Prateleira: <b>" . $res['nome_prat'] . "<br></b>
+								Coluna do estoque: <b>".$res['nome_coluna'] . "</b><br>
+								Nome do corredor: <b>" .$res['nome_corredor'] . "</b><br>
+								</p>
+							</div><!--fim da col 12 -->
+						
+							<div class='col-4 col-sm-4 mb-2'>
+								<a href = editar.php?id=".$res['id_material'] . ">
+									<button class='btn btn-block btn-info'>Editar</button>				
+								</a>
+							</div>
+							<div class='col-4 col-sm-4'>	
+								<a href = excluir.php?id=".$res['id_material'].">
+									<button class='btn btn-block btn-danger'>Excluir</button>
+								</a>
+							</div>
+							<div class='col-4 col-sm-4'>
+								<a href = form-armazenar.php?id=".$res['id_material'].">
+								<button class='btn btn-block btn-success'>Adicionar</button>	
+								</a>
+							</div>
+						</div>
+						</div>
+					
+					
+					";
 			}
 			return $resultado;
 		}else{

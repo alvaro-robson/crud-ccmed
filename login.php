@@ -29,11 +29,13 @@
     <title>Login</title>
   </head>
   <body class="color">
-  <div class="row">
-            <div class="container">
-            <img src="logo.png" width="50%" margin-bottom="20px" class="img-fluid">
-            </div>
-       </div>
+    <div class="container"> 
+         <div class="row">
+            <div class="col-sm-12">
+            logotipo aqui
+            </div>   
+        </div>
+    </div>
     <div class="container mt-5">
         <div class="col-sm-12">
             <form class="mb-" action="<?php $_SERVER['PHP_SELF']; ?>" method="POST">
@@ -48,7 +50,7 @@
                   <input type="password" class="form-control" id="descricao" name="senha" placeholder="******">
                 </div>
                 
-                <input type="submit" class="btn btn-secondary btn-block btn-lg mt-5" name="btnEntrar" value="Entrar">
+                <input type="submit" class="btn btn-success btn-block btn-lg mt-5" name="btnEntrar" value="Entrar">
               </form>
         </div>
     </div>

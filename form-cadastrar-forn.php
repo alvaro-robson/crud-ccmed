@@ -19,7 +19,6 @@
     $flpDao = new \App\Model\Forn_logra_possuiDao;
 	?>
 <!DOCTYPE html>
-<!doctype html>
 <html lang="pt-br">
   <head>
     <!-- Required meta tags -->
@@ -35,7 +34,6 @@
   </head>
   <body class="color">
   <script src = "scripts/document.js"></script>
-  <br><a href="login.php">Sair</a>
 	<script src = "scripts/document.js"></script>
 	<?php
 	session_start();
@@ -79,20 +77,22 @@ if(isset($_POST['btnCadastrarForn'])){
     $flpDao->create($flp);
 }
 ?>
+<div class="container"><!-- 1 div container -->
+    <div class="row">
+        <div class="col-12 col-sm-12" style="display: flex; align-items: center; justify-content: center">
+              <h1  align="center">Cadastro de fornecedores</h1>
+        </div>
+    </div>
+</div><!-- fim div container -->
 
-  <div class="row">
-          <div class="container mt-5" style="display: flex; align-items: center; justify-content: center">
-              <h1 class="" align="center">Cadastro de fornecedores</h1>
-          </div>
-      </div>
-    <div class="container mt-5">
+<div class="container mt-2">
+    <div class="row">
         <div class="col-sm-12">
-        <!--INICIO FORM---------------------------------------------->
             <form class="mb-" action="<?php $_SERVER['PHP_SELF'];?>" method="POST" enctype="multipart/form-data">
                 
                 <div class="form-group">
-                  <label for="login">Nome</label>
-                  <input type="text" class="form-control" id="login" name="nome_forn" placeholder="Digite o nome do fornecedor" required>
+                    <label for="login">Nome</label>
+                    <input type="text" class="form-control" id="login" name="nome_forn" placeholder="Digite o nome do fornecedor" required>
                 </div>
 
                 <div class="form-group">
@@ -107,7 +107,7 @@ if(isset($_POST['btnCadastrarForn'])){
 
                 <div class="form-group">
                     <label for="matricula">Tipo de logradouro</label>
-                    <select name="tipo_logra">
+                    <select name="tipo_logra" class="form-control">
                         <option>Rua</option>
                         <option>Avenida</option>
                     </select>
@@ -141,16 +141,34 @@ if(isset($_POST['btnCadastrarForn'])){
 
                 <div class="form-group">
                     <label for="matricula">Estado</label>
-                    <select name="estado">
+                    <select name="estado" class="form-control">
                         <option>SP</option>
                     </select>
                 </div>
-                 <input type="submit" class="btn btn-secondary btn-block btn-lg mt-5" name="btnCadastrarForn" value="Cadastrar" >
-              </form>
-              <a href="menu.php" class="btn btn-secondary btn-block btn-lg mt-5">Cancelar</a>
-            </div>
-    </div>
+                <button type="submit" class="btn btn-success btn-block btn-lg " name="btnCadastrarForn">Cadastrar</button>
 
+                
+            </form>
+              
+        </div>
+    </div>
+</div><!-- fim div container 2 -->
+
+    <div class="container mt-2"><!--  div container 3' -->
+		<div class="row">
+			<div class="col-sm-6 col-6">
+				<a href="cadastros.php">
+					<button class="btn btn-warning btn-block btn-lg">Voltar</button>
+				</a>
+				
+			</div>
+			<div class="col-6 col-sm-6">
+			<a href="login.php">
+					<button class="btn btn-danger btn-block btn-lg mb-2">Sair</button>
+				</a>
+			</div>
+		</div>
+	</div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

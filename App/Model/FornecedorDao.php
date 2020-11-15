@@ -74,7 +74,7 @@ class FornecedorDao{
 		 $stmt->bindValue(3, $forn->getcomplemento_end());
 		 $stmt->bindValue(4, $tel->getnumero_tel());
 		 $stmt->bindValue(5, $tel->getid_forn_fk());
-		 $stmt->bindValue(6, $tel->getemail_forn());
+		 $stmt->bindValue(6, $mail->getemail_forn());
 		 $stmt->bindValue(7, $tel->getid_forn_fk());
 		 $stmt->bindValue(8, $est->getnome_estado());
 		 $stmt->bindValue(9, $cid->getnome_cidade());
@@ -103,20 +103,31 @@ class FornecedorDao{
 		if($stmt->rowCount() > 0){
 			$resultado = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 			foreach($resultado as $res){
-				echo "<u>" . 
-					$res['nome_forn'] . "</u><br>" . 
-					$res['tipo_logra'] . " " . $res['nome_logra'] . ", " . $res['num_endereco'] . "<br>
-					CEP: " . $res['cep_fk'] . "<br>
-					Cidade: " . $res['nome_cidade'] . " - " . $res['nome_estado'] . "<br>
-					Telefone: " . $res['numero_tel'] . "<br>
-					Email: " . $res['email_forn'] . "<br>
+				echo "
+				<div class='row mt-3'>
+				<div class='col-12 col-sm-12'>
+				<p>Empresa: <b>" .	$res['nome_forn'] . "</b><br>
+					Endereço: <b>" .$res['tipo_logra'] . " " . $res['nome_logra'] . ", " . $res['num_endereco'] . "</b><br>
+					CEP: <b>" . $res['cep_fk'] . "</b><br>
+					Cidade: <b>" . $res['nome_cidade'] . " - " . $res['nome_estado'] . "</b><br>
+					Telefone: <b>" . $res['numero_tel'] . "</b><br>
+					Email: <b>" . $res['email_forn'] . "</b><br>
+					</p>
+					</div>
+					<div class='col-6 col-sm-6 mt-2'>
 					<a href = editar-forn.php?id_forn=" . $res['id_forn'] . ">
-					<img src = 'icones/edit-64.png' class = 'icones'>
-						</a>
-					<a href = excluir-forn.php?id_forn=" . $res['id_forn'] .">
-						<img src = 'icones/x-mark-4-64.png' class = 'icones'>
+					<button class='btn btn-info btn-block'>Editar</button>
 					</a>
-					-----------------------------<br>";
+					</div>
+					<div class='col-6 col-sm-6 mt-2 '>
+					<a href = excluir-forn.php?id_forn=" . $res['id_forn'] .">
+					<button class='btn btn-danger btn-block'>Excluir</button>
+					</a>
+					</div>
+
+					
+					</div>
+					";
 			}
 			return $resultado;
 		}else{

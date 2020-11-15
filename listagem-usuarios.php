@@ -3,15 +3,23 @@
   require_once "vendor/autoload.php";
 ?>
 <!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-	<link rel="stylesheet" href="css/estilo2.css">
-</head>
+<html lang="pt-br">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    
+     <!-- Bootstrap CSS -->
+    <link href="custom.css" rel="stylesheet">
+    <title>Cadastro de usuários</title>
+  </head>
 <body>
-	<script src = "scripts/document.js"></script>
-	<div class="container">
-		<a href="menu.php">MENU</a>
+<script src = "scripts/document.js"></script>
+ 
+
 
 <?php
   $usuario = new \App\Model\Usuario;
@@ -24,6 +32,26 @@
     }else{
         $usuarioDao->mostrarSessao();
     }
-
-echo "<h3><strong><u>Listagem dos usuários</u></strong></h3><br>";
+?>
+   <div class="container">
+    <?php
 $usuarioDao->relatorioUsuarios();
+?>
+    </div>
+
+<div class="container mt-4 mb-2"><!--  div container 3' -->
+		<div class="row">
+			<div class="col-sm-12">
+				<a href="listagens.php">
+					<button class="btn btn-warning btn-block btn-lg">Voltar</button>
+				</a>
+				<a href="login.php">
+					<button class="btn btn-danger btn-block btn-lg mt-2">Sair</button>
+				</a>
+			</div>
+		</div>
+	</div>
+        
+    
+</body>
+</html>
