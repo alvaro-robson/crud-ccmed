@@ -20,7 +20,7 @@ class Detalhe_pedidoDao{
 			$resultado = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 			return $resultado;
 		}else{
-			echo "Nenhum registro";
+			echo "Nenhum item selecionado";
 		}
 	}
 

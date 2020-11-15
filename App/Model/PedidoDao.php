@@ -33,7 +33,7 @@ class PedidoDao{
             }
 			return $resultado;
 		}else{
-			echo "Nenhum Registro";
+			echo "Nenhum Registro<br>";
 		}
 	}
 
@@ -57,7 +57,7 @@ class PedidoDao{
             }
 			return $resultado;
 		}else{
-			echo "Nenhum Registro";
+			echo "Nenhum Registro<br>";
 		}
 	}
 
@@ -80,7 +80,7 @@ class PedidoDao{
             }
 			return $resultado;
 		}else{
-			echo "Nenhum Registro cancelado";
+			echo "Nenhum registro cancelado";
 		}
 	}
 

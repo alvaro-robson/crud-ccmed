@@ -68,7 +68,9 @@
                 $detalhe->setid_pedido_fk($ultimo);
 
                 //FUNÇÃO PARA A LISTAGEM DE ITENS SOLICITADOS EM TEMPO REAL:
-                foreach($detalheDao->read() as $detalhes);
+                if($detalheDao->read() > 0){
+                    foreach($detalheDao->read() as $detalhes);
+                
                 if ($detalhes['id_pedido_fk'] == $ultimo){
                     echo "<br>Itens solicitados:<br>";
 
@@ -85,7 +87,7 @@
 				}
             }
             ?>
-</div>
+    </div>
         </div>
     </div>
 
@@ -112,6 +114,7 @@
             </form>
             
             <?php
+            }
 		
 		if(isset($_POST['finalizarPedido'])){
 			header("location:menu-pedidos.php");
