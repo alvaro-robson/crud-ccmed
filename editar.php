@@ -32,7 +32,9 @@ if (isset($_POST['btnEditar'])) {
 if (isset($_POST['btnCancelar'])) {
     header("location:index.php");
 }
-
+if(isset($_POST['btnSair'])){
+    session_destroy();
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -110,9 +112,11 @@ if (isset($_POST['btnCancelar'])) {
             </a>
             </div>
             <div class="col-sm-6 col-6">
+            <form method = "POST">
 				<a href="login.php">
-					<button class="btn btn-danger btn-block btn-lg ">Sair</button>
+					<button class="btn btn-danger btn-block btn-lg " name="btnSair">Sair</button>
                 </a>
+            </form>
                 </div>
 			</div>
 		</div>

@@ -204,6 +204,13 @@ class UsuarioDao{
 			<?php
 		}
 	}
+
+	public function sair(){
+		if(isset($_POST['btnSair'])){
+			session_destroy();
+			header("location:login.php");
+		}
+	}
 }
 
  ?>

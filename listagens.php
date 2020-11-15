@@ -72,9 +72,10 @@
 				<a href="menu.php">
 					<button class="btn btn-warning btn-block btn-lg">Voltar</button>
 				</a>
-				<a href="login.php">
-					<button class="btn btn-danger btn-block btn-lg mt-2">Sair</button>
-				</a>
+				<form method="post">
+					<input type="submit" class="btn btn-danger btn-block btn-lg mt-2" name="btnSair" value="Sair">
+					<?php $usuarioDao->sair()?>
+				</form>
 			</div>
 		</div>
 	</div>

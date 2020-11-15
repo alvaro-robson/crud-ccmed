@@ -58,8 +58,10 @@
     <div class="container mt-4"><!--div container 3 --> 
         <div class="row"><!-- div row --> 
             <div class="col-sm-12">
-                <a href="login.php"><button  class="btn btn-danger btn-block btn-lg mt-2">Sair</button></a> 
-            
+                <form method="post">
+                    <input type = "submit" class="btn btn-danger btn-block btn-lg mt-2" value="Sair" name="btnSair"> 
+                    <?php $usuarioDao->sair();?>
+                </form>
             </div><!--fim div col-sm-12 --> 
         </div><!--fim div row --> 
     </div><!--fim div container 3 -->    

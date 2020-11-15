@@ -153,7 +153,8 @@ class PedidoDao{
 		}else{
 			?>
 			<script>
-				redirecionar();
+				alert("Você não tem pedidos");
+				window.location.href = "menu-pedidos.php";
 			</script>
 			<?php
 		}
