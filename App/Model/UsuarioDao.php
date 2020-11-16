@@ -189,13 +189,14 @@ class UsuarioDao{
 
 	//VERIFICA SE JÁ EXISTE ALGUÉM COM A MESMA MATRÍCULA NA HORA DO CADASTRO
 	public function verificarMatricula(Usuario $usu){
-		$sql = "SELECT id_usuario from USUARIO WHERE matricula = ?";
+		$sql = "SELECT id_usuario from USUARIO WHERE matricula = ? or login = ?";
 		$stmt = Conexao::getConn()->prepare($sql);
-		$stmt->bindValue(1,  $usu->getmatricula());
+		$stmt->bindValue(1, $usu->getmatricula());
+		$stmt->bindValue(2, $usu->getlogin());
 		$stmt->execute();
 		if($stmt->rowCount() > 0){
 			?>
-				<script>alert("Já existe um funcionário cadastrado com esta matrícula");</script>
+				<script>alert("Matrícula ou login já cadastrados");</script>
 			<?php
 		}else{
 			$this->create($usu);
@@ -204,7 +205,24 @@ class UsuarioDao{
 			<?php
 		}
 	}
-
+	/*
+	public function verificarLogin(Usuario $usu){
+		$sql = "SELECT id_usuario from USUARIO WHERE login = ?";
+		$stmt = Conexao::getConn()->prepare($sql);
+		$stmt->bindValue(1,  $usu->getlogin());
+		$stmt->execute();
+		if($stmt->rowCount() > 0){
+			?>
+				<script>alert("Já existe um funcionário cadastrado com este login");</script>
+			<?php
+		}else{
+			$this->create($usu);
+			?>
+				<script>alert("Usuário cadastrado com sucesso!");</script>
+			<?php
+		}
+	}
+	*/
 	public function sair(){
 		if(isset($_POST['btnSair'])){
 			session_destroy();

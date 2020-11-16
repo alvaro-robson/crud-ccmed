@@ -64,5 +64,13 @@ foreach($pedidoDao->detalharPedidosUsuario($usuario) as $detalhar){
 </div>    
 ";
 }
+if(!isset($detalhar)){//Se não houver itens, o usuário será redirecionado à página anterior
+  ?>
+      <script>
+          alert("Não há itens para detalhar");
+          window.open(document.referrer,'_self');
+      </script>
+  <?php
+}
 
 ?>

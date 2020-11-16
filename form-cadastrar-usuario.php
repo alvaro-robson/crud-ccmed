@@ -13,6 +13,7 @@ session_start();
     }else{
         $usuarioDao->mostrarSessao();
     }
+    $usuarioDao->sair();//se o usuário clicar em sair, esta função é executada;
 
 if(isset($_POST['btnCadastrarUsuario'])){
     $usuario->setlogin($_POST['login']);
@@ -21,7 +22,15 @@ if(isset($_POST['btnCadastrarUsuario'])){
     $usuario->setsobrenome($_POST['sobrenome']);
     $usuario->setmatricula($_POST['matricula']);
     $usuario->setid_acesso_fk($_POST['id_acesso_fk']);
-    $usuarioDao->verificarMatricula($usuario);//NÃO FUNCIONOU DE PRIMEIRA. Tive que dar o comando "composer dumpautoload -o"
+    $usuario->setlogin($_POST['login']);
+    if($_POST['senha'] != $_POST['confirmSenha']){
+        //Se os campos senha e confirmSenha forem diferentes, dá o alert, se não, cadastra.
+        ?>
+        <script>alert("As senhas não conferem");</script>
+        <?php
+    }else{
+        $usuarioDao->verificarMatricula($usuario);//NÃO FUNCIONOU DE PRIMEIRA. Tive que dar o comando "composer dumpautoload -o"
+    }
 }
 
  ?>
@@ -64,6 +73,11 @@ if(isset($_POST['btnCadastrarUsuario'])){
                 <div class="form-group">
                   <label for="senha">Senha</label>
                   <input type="password" class="form-control" name="senha" placeholder="senha" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="senha">Confirmar senha</label>
+                  <input type="password" class="form-control" name="confirmSenha" placeholder="Confirmar senha" required>
                 </div>
                 
                 <div class="form-group">
@@ -108,9 +122,9 @@ if(isset($_POST['btnCadastrarUsuario'])){
 				
 			</div>
 			<div class="col-6 col-sm-6">
-			<a href="login.php">
-					<button class="btn btn-danger btn-block btn-lg mb-2">Sair</button>
-				</a>
+			<form action="<?php $_SERVER['PHP_SELF'];?>" method="post">
+                <input type="submit" name="btnSair" class="btn btn-danger btn-block btn-lg mb-2" value="Sair">
+            </form>
 			</div>
 		</div>
 	</div>

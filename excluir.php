@@ -41,7 +41,6 @@ if (!isset($_SESSION['id_usuario'])) {
 			<div class="col-sm-12">
 				<?php
 				if (isset($_POST['btnExcluir'])) {
-					$material->setid_material($_GET['id']);
 					$materialDao->delete();
 					header("location:index.php");
 				}

@@ -17,6 +17,7 @@
     }else{
         $usuarioDao->mostrarSessao();
     }
+    $usuarioDao->sair();//se o usuário clicar em sair, esta função é executada;
 ?>
   
 <!doctype html>
@@ -58,9 +59,8 @@
     <div class="container mt-4"><!--div container 3 --> 
         <div class="row"><!-- div row --> 
             <div class="col-sm-12">
-                <form method="post">
-                    <input type = "submit" class="btn btn-danger btn-block btn-lg mt-2" value="Sair" name="btnSair"> 
-                    <?php $usuarioDao->sair();?>
+                <form action="<?php $_SERVER['PHP_SELF'];?>" method="post">
+                    <input type="submit" name="btnSair" class="btn btn-danger btn-block btn-lg mt-2" value="Sair">
                 </form>
             </div><!--fim div col-sm-12 --> 
         </div><!--fim div row --> 

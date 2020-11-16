@@ -27,7 +27,7 @@
   <body>
     <div class="container">
         <div class="row">
-            <div class="col-sm-12">
+            
             <?php
             session_start();
             if(!isset($_SESSION['id_usuario'])){
@@ -38,7 +38,7 @@
             }
             ?>
 
-            </div>
+            
         </div>
     </div>
     <div class="container">
@@ -68,9 +68,7 @@
                 $detalhe->setid_pedido_fk($ultimo);
 
                 //FUNÇÃO PARA A LISTAGEM DE ITENS SOLICITADOS EM TEMPO REAL:
-                if($detalheDao->read() > 0){
-                    foreach($detalheDao->read() as $detalhes);
-                
+                foreach($detalheDao->read() as $detalhes);
                 if ($detalhes['id_pedido_fk'] == $ultimo){
                     echo "<br>Itens solicitados:<br>";
 
@@ -81,13 +79,17 @@
 					$material->setqtde_estoque($itens['quantidade']);
 					$material->setid_material($itens['id_material_fk']);
 					$materialDao->devolver($material);
-					$detalhe->setid_detalhe($itens['id_detalhe']);
-					$detalheDao->deletar_item($detalhe);
+					//$detalhe->setid_detalhe($itens['id_detalhe']);
+                    //$detalheDao->deletar_item($detalhe);
+                    $pedido->setid_pedido($ultimo);
+                    $pedidoDao->cancelarPedido($pedido);
 					header("location:menu-pedidos.php");
 				}
-            }
-            ?>
-    </div>
+			}
+    
+                ?>
+
+            </div>
         </div>
     </div>
 
@@ -114,16 +116,11 @@
             </form>
             
             <?php
-            }
 		
 		if(isset($_POST['finalizarPedido'])){
 			header("location:menu-pedidos.php");
-		}
-
+        }
     }
-                
-
-            
 		
 
 		//Mostrando os materiais a serem solicitados

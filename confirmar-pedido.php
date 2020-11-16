@@ -97,16 +97,18 @@ if(isset($_POST['btnCancelar'])){
 <div class="row">
                     <div class="col-12 col-sm-12">
                     <form method="post">
-                        <div class="form-group">
-                        <input type="number" class="form-control" name="quantidade" placeholder="Qtde. desejada" min="1" max="<?php echo $confirmar['qtde_estoque']; ?>" value="1">
-                        </div>
-                        <div class="form-group">
-                        <button class="btn btn-lg btn-block btn-success form-control" type="submit" name = "btnConfirmar"> Confirmar</button>                    
-                        </div>
-                        <div class="form-group">
-                        <button class="btn btn-lg btn-block btn-danger form-control" type="submit" name = "btnCancelar"> Cancelar</button> 
-                        </div>
-                    </form>
+                    <div class="form-group">
+                    <input type="number" class="form-control" name="quantidade" placeholder="Qtde. desejada" min="1" max="<?php echo $confirmar['qtde_estoque']; ?>">
+                    </div>
+                    <div class="form-group">
+                    <button class="btn btn-lg btn-block btn-success form-control" type="submit" name = "btnConfirmar"> Confirmar</button>                    
+                    </div>
+                    <div class="form-group">
+                    <button class="btn btn-lg btn-block btn-danger form-control" type="submit" name = "btnCancelar"> Cancelar</button> 
+                    </div>
+
+                       
+                        </form>
                         </div>
                         </div>
                     </div>

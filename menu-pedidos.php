@@ -61,7 +61,7 @@
                 <div class="form-group">
                 <button type="submit" class="btn btn-lg btn-block btn-info"  name="btnIniciarPedido">Iniciar pedido</button>
                 <button type="submit" class="btn btn-lg btn-block btn-info "  name="btnMeusPedidos">Meus pedidos</button>
-                <input type="submit" class="btn btn-lg btn-block btn-danger mt-5"  name="btnSair" value="Sair">
+                <button type="submit" class="btn btn-lg btn-block btn-danger mt-5"  name="btnSair">Sair</button>
 
                 
                 </div>

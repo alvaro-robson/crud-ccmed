@@ -32,9 +32,8 @@ if (isset($_POST['btnEditar'])) {
 if (isset($_POST['btnCancelar'])) {
     header("location:index.php");
 }
-if(isset($_POST['btnSair'])){
-    session_destroy();
-}
+$usuarioDao->sair();//se o usuário clicar em sair, esta função é executada;
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -112,11 +111,9 @@ if(isset($_POST['btnSair'])){
             </a>
             </div>
             <div class="col-sm-6 col-6">
-            <form method = "POST">
-				<a href="login.php">
-					<button class="btn btn-danger btn-block btn-lg " name="btnSair">Sair</button>
-                </a>
-            </form>
+                <form action="<?php $_SERVER['PHP_SELF'];?>" method="post">
+                    <input type="submit" name="btnSair" class="btn btn-danger btn-block btn-lg mb-2" value="Sair">
+                </form>
                 </div>
 			</div>
 		</div>

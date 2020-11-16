@@ -43,6 +43,7 @@ if(!isset($_SESSION['id_usuario'])){
 }else{
 	$usuarioDao->mostrarSessao();
 }
+$usuarioDao->sair();//se o usuário clicar em sair, esta função é executada;
 
 if(isset($_POST['btnCadastrarForn'])){
     foreach($fornDao->read() as $ultimoForn);
@@ -163,9 +164,9 @@ if(isset($_POST['btnCadastrarForn'])){
 				
 			</div>
 			<div class="col-6 col-sm-6">
-			<a href="login.php">
-					<button class="btn btn-danger btn-block btn-lg mb-2">Sair</button>
-				</a>
+                <form action="<?php $_SERVER['PHP_SELF'];?>" method="post">
+                    <input type="submit" name="btnSair" class="btn btn-danger btn-block btn-lg mb-2" value="Sair">
+                </form>
 			</div>
 		</div>
 	</div>

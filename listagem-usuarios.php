@@ -32,8 +32,12 @@
     }else{
         $usuarioDao->mostrarSessao();
     }
+    $usuarioDao->sair();//se o usuário clicar em sair, esta função é executada;
 ?>
-   <div class="container">
+   <div class="container mt-3">
+   <a href="listagens.php">
+					<button class="btn btn-warning btn-block btn-lg">Voltar</button>
+				</a>
     <?php
 $usuarioDao->relatorioUsuarios();
 ?>
@@ -42,12 +46,13 @@ $usuarioDao->relatorioUsuarios();
 <div class="container mt-4 mb-2"><!--  div container 3' -->
 		<div class="row">
 			<div class="col-sm-12">
+        
 				<a href="listagens.php">
 					<button class="btn btn-warning btn-block btn-lg">Voltar</button>
 				</a>
-				<a href="login.php">
-					<button class="btn btn-danger btn-block btn-lg mt-2">Sair</button>
-				</a>
+				<form action="<?php $_SERVER['PHP_SELF'];?>" method="post">
+          <input type="submit" name="btnSair" class="btn btn-danger btn-block btn-lg mt-2" value="Sair">
+        </form>
 			</div>
 		</div>
 	</div>

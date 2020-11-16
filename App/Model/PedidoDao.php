@@ -22,18 +22,40 @@ class PedidoDao{
 			$resultado = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 			foreach($resultado as $res){
                 echo
-                "Nº pedido: " . $res['id_pedido'] . "<br>
-                Abertura: " . $res['data_abertura'] . "<br>
-                Vencimento: " . $res['vencimento'] . "<br>
-                Fechamento: " . $res['data_fechamento'] . "<br>
-                Status: " . $res['status_pedido'] . "<br>
-                Usuário: " . $res['id_usuario_fk'] . "<br>
-                <a href = detalhar-pedidoGeral.php?id_pedido=" . $res['id_pedido'].">DETALHAR</a>
-                ________________________________<br>";
+				"
+				<div class='container'>
+					<div class='row'>
+						<div class='col-12 col-sm-12'>
+						<p>
+						Nº pedido: <b>" . $res['id_pedido'] . "</b><br>
+						Abertura: <b>" . $res['data_abertura'] . "</b><br>
+						Vencimento: <b>" . $res['vencimento'] . "</b><br>
+						Fechamento: <b>" . $res['data_fechamento'] . "</b><br>
+						Status: <b>" . $res['status_pedido'] . "</b><br>
+						Usuário: <b>" . $res['id_usuario_fk'] . "</b><br>
+
+						</p>
+						<a href = detalhar-pedidoGeral.php?id_pedido=" . $res['id_pedido'].">
+						<button class='btn btn-block btn-info'>Detalhar</button></a>
+				
+				
+				
+				</div>
+				</div>
+				</div>
+				";
             }
 			return $resultado;
 		}else{
-			echo "Nenhum Registro<br>";
+			echo "
+			<div class='container'>
+					<div class='row'>
+						<div class='col-12 col-sm-12'>
+						<p>Nenhum Registro</p>
+						</div>
+					</div>
+			</div>
+			";
 		}
 	}
 
@@ -46,18 +68,37 @@ class PedidoDao{
 			$resultado = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 			foreach($resultado as $res){
                 echo
-                "Nº pedido: " . $res['id_pedido'] . "<br>
-                Abertura: " . $res['data_abertura'] . "<br>
-                Vencimento: " . $res['vencimento'] . "<br>
-                Fechamento: " . $res['data_fechamento'] . "<br>
-                Status: " . $res['status_pedido'] . "<br>
-                Usuário: " . $res['id_usuario_fk'] . "<br>
-                <a href = detalhar-pedidoGeral.php?id_pedido=" . $res['id_pedido'].">DETALHAR</a>
-                ________________________________<br>";
+				"
+				<div class='container'>
+					<div class='row'>
+						<div class='col-12 col-sm-12 mb-3'>
+						
+				Nº pedido: <b>" . $res['id_pedido'] . "</b><br>
+                Abertura: <b>" . $res['data_abertura'] . "</b><br>
+                Vencimento: <b>" . $res['vencimento'] . "</b><br>
+                Fechamento: <b>" . $res['data_fechamento'] . "</b><br>
+                Status: <b>" . $res['status_pedido'] . "</b><br>
+				Usuário: <b>" . $res['id_usuario_fk'] . "</b><br>
+				
+				<a href = detalhar-pedidoGeral.php?id_pedido=" . $res['id_pedido'].">
+				<button class='btn btn-block btn-info ' >Detalhar</button>
+				</a>
+				
+				</div>
+				</div>
+				</div>
+				";
             }
 			return $resultado;
 		}else{
-			echo "Nenhum Registro<br>";
+			echo "
+			<div class='container'>
+				<div class='row'>
+					<div class='col-12 col-sm-12'>
+						<p>Nenhum Registro</p>
+				</div>
+			</div>
+	</div>";
 		}
 	}
 
@@ -69,18 +110,39 @@ class PedidoDao{
 			$resultado = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 			foreach($resultado as $res){
                 echo
-                "Nº pedido: " . $res['id_pedido_original'] . "<br>
-                Abertura: " . $res['data_abertura'] . "<br>
-                Vencimento: " . $res['vencimento'] . "<br>
-                Fechamento: " . $res['data_fechamento'] . "<br>
-                Status: " . $res['status_pedido'] . "<br>
-                Usuário: " . $res['id_usuario_fk'] . "<br>
-                <a href = detalhar-pedidoGeral.php?id_pedido=" . $res['id_pedido_original'].">DETALHAR</a>
-                ________________________________<br>";
+				"
+				<div class='container'>
+					<div class='row'>
+						<div class='col-12 col-sm-12 mb-3'>
+							<p>
+							Nº pedido: <b>" . $res['id_pedido_original'] . "</b><br>
+							Abertura: <b>" . $res['data_abertura'] . "</b><br>
+							Vencimento: <b>" . $res['vencimento'] . "</b><br>
+							Fechamento: <b>" . $res['data_fechamento'] . "</b><br>
+							Status: <b>" . $res['status_pedido'] . "</b><br>
+							Usuário: <b>" . $res['id_usuario_fk'] . "</b><br>
+							</p>
+							<a href = detalhar-pedidoGeral.php?id_pedido=" . $res['id_pedido_original'].">
+							<button class='btn btn-block btn-info'>Detalhar</button>
+							</a>
+
+							
+				</div>
+				</div>
+				</div>
+				";
             }
 			return $resultado;
 		}else{
-			echo "Nenhum registro cancelado";
+			echo "
+			<div class='container'>
+					<div class='row'>
+						<div class='col-12 col-sm-12 mb-3'>
+						<p>Nenhum Registro cancelado</p>
+						</div>
+					</div>
+				</div>
+			";
 		}
 	}
 
@@ -113,7 +175,7 @@ class PedidoDao{
 			echo "Nenhum registro";
 		}
 	}
-
+	/*
 	public function cancelarPedido(Pedido $ped){
 		$sql = "DELETE FROM PEDIDO where id_pedido = ?";
 		$stmt = Conexao::getConn()->prepare($sql);
@@ -127,6 +189,13 @@ class PedidoDao{
 		select id_pedido, data_abertura, vencimento, data_fechamento, status_pedido, id_usuario_fk
 		from PEDIDO WHERE id_pedido = ?; 
 		UPDATE PEDIDO_CANCELADO SET status_pedido = 'Cancelado'";
+		$stmt = Conexao::getConn()->prepare($sql);
+		$stmt->bindValue(1, $ped->getid_pedido());
+		$stmt->execute();
+	}
+	*/
+	public function cancelarPedido(Pedido $ped){
+		$sql = "UPDATE PEDIDO SET status_pedido = 'Cancelado' WHERE id_pedido = ?";
 		$stmt = Conexao::getConn()->prepare($sql);
 		$stmt->bindValue(1, $ped->getid_pedido());
 		$stmt->execute();
@@ -153,8 +222,7 @@ class PedidoDao{
 		}else{
 			?>
 			<script>
-				alert("Você não tem pedidos");
-				window.location.href = "menu-pedidos.php";
+				redirecionar();
 			</script>
 			<?php
 		}
@@ -192,11 +260,13 @@ class PedidoDao{
 			return $resultado;
 		}else{
 			//header("location:meus-pedidos.php");
+			/*
 			?>
 			<script>
 				redirecionar();
 			</script>
 			<?php
+			*/
 		}
 	}
 
