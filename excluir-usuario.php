@@ -12,6 +12,7 @@ if(!isset($_SESSION['id_usuario'])){
 }else{
 	$usuarioDao->mostrarSessao();
 }
+$usuarioDao->sair();//se o usuário clicar em sair, esta função é executada;
 
 ?>
 <html lang="pt-br">
@@ -29,9 +30,11 @@ if(!isset($_SESSION['id_usuario'])){
 
     <title>Exclusão de usuário</title>
   </head>
-  <body class="color">
-  	 <div class="container mt-5">
-        <div class="col-sm-12">
+  <body>
+  	 <div class="container">
+      <div class="row">
+        <div class="col-sm-12 mt-3">
+          <h3 style="text-align-last: center">Exclusão de Usuário</h3>
         	<?php 
         	if(isset($_POST['btnExcluirUsuario'])){
           	$usuarioDao->delete();
@@ -42,14 +45,29 @@ if(!isset($_SESSION['id_usuario'])){
           }
 
 
-          echo "<img width = '100%' src = upload/" . $coletar['imagem'] . " class = 'imagem-material'> " .  "Deseja excluir " . $coletar['nome'] . " " .  $coletar['sobrenome'] . "?";
+          echo "
+          <div class='container'>
+            <div class='row'>
+              <div class='col-12 col-sm-12'>
+          <img width = '100%' src = upload/" . $coletar['imagem'] . " class = 'imagem-material'> " .  "
+          <p class='mt-3'>Deseja excluir <b>
+          " . $coletar['nome'] . " " .  $coletar['sobrenome'] . " ?</b></p>
+          </div>
+          </div>
+          </div>
+          "
+          ;
         	
         	 ?>
-	<form method="POST" action="<?php $_SERVER['PHP_SELF']; ?>" class="mb-">
-		<input type="submit" name="btnExcluirUsuario" value="SIM" class="btn btn-secondary btn-block btn-lg mt-5">
-		<input type="submit" name="btnCancelar" value="NÃO" class="btn btn-secondary btn-block btn-lg mt-5">
-	</form>
+	      <form method="POST" action="<?php $_SERVER['PHP_SELF']; ?>" class="mb-">
+          <div class="form-group">  
+            <input type="submit" name="btnExcluirUsuario" value="SIM" class="btn btn-danger btn-block btn-lg">
+            <input type="submit" name="btnCancelar" value="NÃO" class="btn btn-warning btn-block btn-lg">
+            </div>
+          </form>
 </div>
 </div>
+</div>
+
 </body>
 </html>
