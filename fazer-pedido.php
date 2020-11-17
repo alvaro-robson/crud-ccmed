@@ -68,24 +68,28 @@
                 $detalhe->setid_pedido_fk($ultimo);
 
                 //FUNÇÃO PARA A LISTAGEM DE ITENS SOLICITADOS EM TEMPO REAL:
-                foreach($detalheDao->read() as $detalhes);
-                if ($detalhes['id_pedido_fk'] == $ultimo){
-                    echo "<br>Itens solicitados:<br>";
+                $select = $detalheDao->read();
+                if(isset($select)){
+                    foreach($detalheDao->read() as $detalhes);
+                
+                    if ($detalhes['id_pedido_fk'] == $ultimo){
+                        echo "<br>Itens solicitados:<br>";
 
-                    foreach($pedidoDao->mostrarItens($detalhe) as $itens){
-                    echo $itens['nome_material'] . " - " . $itens['quantidade'] . "un<br>
-                    -----------------------------<br>";
-                    if(isset($_POST['btnDevolver'])){
-					$material->setqtde_estoque($itens['quantidade']);
-					$material->setid_material($itens['id_material_fk']);
-					$materialDao->devolver($material);
-					//$detalhe->setid_detalhe($itens['id_detalhe']);
-                    //$detalheDao->deletar_item($detalhe);
-                    $pedido->setid_pedido($ultimo);
-                    $pedidoDao->cancelarPedido($pedido);
-					header("location:menu-pedidos.php");
-				}
-			}
+                        foreach($pedidoDao->mostrarItens($detalhe) as $itens){
+                            echo $itens['nome_material'] . " - " . $itens['quantidade'] . "un<br>
+                            -----------------------------<br>";
+                            if(isset($_POST['btnDevolver'])){
+                                $material->setqtde_estoque($itens['quantidade']);
+                                $material->setid_material($itens['id_material_fk']);
+                                $materialDao->devolver($material);
+                                //$detalhe->setid_detalhe($itens['id_detalhe']);
+                                //$detalheDao->deletar_item($detalhe);
+                                $pedido->setid_pedido($ultimo);
+                                $pedidoDao->cancelarPedido($pedido);
+                                header("location:menu-pedidos.php");
+                            }
+                        }
+			        }
     
                 ?>
 

@@ -54,7 +54,9 @@ if(!isset($_SESSION['id_usuario'])){
 <?php
 
 //MOSTRAR OS PEDIDOS DO USUÁRIO LOGADO:
+
 $usuario->setid_usuario($_SESSION['id_usuario']);
+/*
 foreach($pedidoDao->mostrarPedidosUsuario($usuario) as $mostrar){
   echo
   "
@@ -77,6 +79,11 @@ foreach($pedidoDao->mostrarPedidosUsuario($usuario) as $mostrar){
 </div>
   ";
 }
+if(!isset($mostrar)){
+  
+}
+*/
+$pedidoDao->mostrarPedidosUsuario($usuario);
 
 ?>
 </body>

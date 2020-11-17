@@ -218,13 +218,32 @@ class PedidoDao{
 		$stmt->execute();
 		if($stmt->rowCount() > 0){
 			$resultado = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+			
+			foreach($resultado as $res){
+			echo
+			"
+			<div class='container'>
+			<div class='row'>
+			<div class='col-12 col-sm-12'>
+			<p>Número do Pedido: <b>" . $res['id_pedido'] . "<br></b>
+			Data de Abertura:<b> " . $res['data_abertura'] . "</b><br>
+			Vencimento:<b> " . $res['vencimento'] . "</b> <br>
+			Fechamento: <b>" . $res['data_fechamento'] . "</b><br>
+			Status: <b>" . $res['status_pedido'] . "</b><br>
+			<a href = detalhar-pedido.php?id_pedido=" . $res['id_pedido'].">
+			<button class='btn btn-info btn-lg btn-block'> Detalhar
+			</button> 
+			</a>
+			<br>
+			</p>
+			</div>
+			</div>
+			</div>
+			";
+			}
 			return $resultado;
 		}else{
-			?>
-			<script>
-				redirecionar();
-			</script>
-			<?php
+			echo "Você não tem nenhum pedido";
 		}
 	}
 
