@@ -301,6 +301,26 @@ class PedidoDao{
 		$stmt->execute();
 		if($stmt->rowCount() > 0){
 			$resultado = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+			foreach($resultado as $res){
+				echo
+				"
+				<div class='container'>
+				<div class='row'>
+					<div class='col-12 col-sm-12'>
+					<p>
+					<br>Material : <b>" . $res['nome_material'] . "</b><br>
+					Quantidade: <b>" . $res['quantidade'] . "</b><br>
+					Status: <b>" . $res['status_pedido'] . "</b><br>
+					Abertura: <b>" . $res['data_abertura'] . "</b><br>
+					Vencimento: <b>" . $res['vencimento'] . "</b><br>
+					
+					</p>
+				
+				</div>
+				</div>
+				</div>
+				";
+			}
 			return $resultado;
 		}else{
 			//header("location:meus-pedidos.php");

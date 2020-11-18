@@ -89,7 +89,7 @@
                                 header("location:menu-pedidos.php");
                             }
                         }
-			        }
+			        
     
                 ?>
 
@@ -120,6 +120,7 @@
             </form>
             
             <?php
+            }
 		
 		if(isset($_POST['finalizarPedido'])){
 			header("location:menu-pedidos.php");

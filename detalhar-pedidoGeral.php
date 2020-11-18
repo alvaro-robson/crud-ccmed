@@ -15,9 +15,6 @@
     <title>Detalhar pedido</title>
   </head>
   <body>
-   
-
-
 <?php
 $material = new \App\Model\Material;
 $materialDao = new \App\Model\MaterialDao;
@@ -40,7 +37,7 @@ if(!isset($_SESSION['id_usuario'])){
         <div class='col-12 col-sm-12'>
         <a href ="todos-pedidos.php">
             <button class='btn btn-warning btn-block'>Voltar</button>
-           </a>
+        </a>
 </div>
 </div>
 </div>
@@ -55,6 +52,7 @@ if(!isset($_SESSION['id_usuario'])){
 <?php
 //RELATÓRIO DO PEDIDO SELECIONADO NA PÁG. meus-pedidos.php
 foreach($pedidoDao->detalharPedidosGeral($usuario) as $detalhar);
+
 echo
 "
 <div class='container'>
@@ -65,6 +63,7 @@ echo
     </div>
 </div>
 ";
+/*
 foreach($pedidoDao->detalharPedidosGeral() as $detalhar){
     echo
     "
@@ -85,6 +84,7 @@ foreach($pedidoDao->detalharPedidosGeral() as $detalhar){
     </div>
     ";
 }
+
     if(!isset($detalhar)){//Se não houver itens, o usuário será redirecionado à página anterior
         ?>
             <script>
@@ -93,6 +93,8 @@ foreach($pedidoDao->detalharPedidosGeral() as $detalhar){
             </script>
         <?php
     }
+    */
+    
 echo "
 <div class='container'>
     <div class='row'>
