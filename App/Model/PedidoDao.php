@@ -313,9 +313,7 @@ class PedidoDao{
 					Status: <b>" . $res['status_pedido'] . "</b><br>
 					Abertura: <b>" . $res['data_abertura'] . "</b><br>
 					Vencimento: <b>" . $res['vencimento'] . "</b><br>
-					
 					</p>
-				
 				</div>
 				</div>
 				</div>
