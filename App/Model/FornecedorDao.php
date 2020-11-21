@@ -28,6 +28,23 @@ class FornecedorDao{
 			echo "Nenhum registro";
 		endif;
 	}
+	/*
+	public function readEspecifico(Fornecedor $forn){
+		$sql = 'SELECT * FROM FORNECEDOR WHERE id_forn = ?';
+		$stmt = Conexao::getConn()->prepare($sql);
+		$stmt = bindValue(1, $forn->getid_forn());
+		$stmt->execute();
+		if($stmt->rowCount() == 1){
+			$resultado = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+			foreach($resultado as $res){
+				echo $res['nome_forn'];
+			}
+			return $resultado;
+		}else{
+			echo "Nenhum registro";
+		}
+	}
+	*/
 
 	public function update(Fornecedor $forn){
 		$sql = 'UPDATE FORNECEDOR SET nome_forn = ?, num_endereco = ?, complemento_end = ? WHERE id_forn = ?';

@@ -1,6 +1,7 @@
 <?php 
 namespace App\Model;
 require_once "vendor/autoload.php";
+$fornecedor = new \App\Model\Fornecedor;
 $FornecedorDao = new \App\Model\FornecedorDao;
 $material = new \App\Model\Material;
 $materialDao = new \App\Model\MaterialDao;
@@ -87,7 +88,30 @@ if(isset($_POST['btnCadastrar'])){
 				?>
 					<div class="form-group">
                     <label for="fornecedor">Fornecedor</label>
-                    <input type="number" class="form-control" id="local" name="id_forn_fk" placeholder="codigo fornecedor" min="1"  max="<?php echo $max; ?>" required>
+                    <!--input type="number" class="form-control" id="local" name="id_forn_fk" placeholder="codigo fornecedor" min="1"  max="<?php echo $max; ?>" required-->
+                    <select name="nomes" id="" class = "filtro form-control">
+                      
+                        <?php
+                          foreach($FornecedorDao->read() as $forns){
+                            ?>
+                            <option value="">
+                            <?php
+                            echo $forns['nome_forn'];
+                            ?>
+                            </option>
+                            <?php
+                          }
+                        ?>
+                    </select>
+                    
+                    <?php
+                    /*
+                      if(isset($_POST['id_forn_fk'])){
+                        $fornecedor->setid_forn('id_forn_fk');
+                        $FornecedorDao->readEspecifico($fornecedor);
+                      }
+                      */
+                    ?>
 					</div>
 					<div class="form-group">
                 	<label for="imagem">Imagem</label>
