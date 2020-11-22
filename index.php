@@ -38,10 +38,8 @@ if(!isset($_SESSION['id_usuario'])){
 }
 
 //--CRUD-MATERIAL-------------------------------------------------------
-$material = new \App\Model\Material();
-
-
-$materialDao = new \App\Model\MaterialDao();
+$material = new \App\Model\Material;
+$materialDao = new \App\Model\MaterialDao;
 //CREATE
 if(isset($_POST['btnCadastrar'])){
 		//$material->setid_material(1);

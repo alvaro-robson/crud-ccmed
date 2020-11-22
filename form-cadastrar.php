@@ -29,7 +29,11 @@ if(isset($_POST['btnCadastrar'])){
     $material->setdesc_material($_POST['desc_material']);
     $material->setqtde_estoque($_POST['qtde_estoque']);
     $material->setid_prat_fk($_POST['id_prat_fk']);
-    $material->setid_forn_fk($_POST['id_forn_fk']);
+    $forn = explode("-", $_POST['select_forn']);
+    $forn_id = $forn[0];
+    $forn_nome = $forn[1];
+    $material->setid_forn_fk($forn_id);
+    //$material->setid_forn_fk($_POST['id_forn_fk']);
     //$material->setimagem($imagem);
     $materialDao->create($material);//NÃO FUNCIONOU DE PRIMEIRA. Tive que dar o comando "composer dumpautoload -o"
 }
@@ -89,22 +93,19 @@ if(isset($_POST['btnCadastrar'])){
 					<div class="form-group">
                     <label for="fornecedor">Fornecedor</label>
                     <!--input type="number" class="form-control" id="local" name="id_forn_fk" placeholder="codigo fornecedor" min="1"  max="<?php echo $max; ?>" required-->
-                    <select name="nomes" id="" class = "filtro form-control">
-                      
-                        <?php
-                          foreach($FornecedorDao->read() as $forns){
-                            ?>
-                            <option value="">
-                            <?php
-                            echo $forns['nome_forn'];
-                            ?>
-                            </option>
-                            <?php
-                          }
-                        ?>
+                    <select name="select_forn" id="" class = "filtro form-control" required>
+                      <?php //MENU DE SELEÇÃO COM OS FORNECEDORES PUXADOS DO BANCO
+                        foreach($FornecedorDao->read() as $forns){
+                          ?>
+                          <option>
+                            <?php echo $forns['id_forn'] . "-" . $forns['nome_forn'];?>
+                          </option>
+                          <?php
+                        }
+                      ?>
                     </select>
-                    
                     <?php
+                    //echo $_POST['select_forn'];
                     /*
                       if(isset($_POST['id_forn_fk'])){
                         $fornecedor->setid_forn('id_forn_fk');

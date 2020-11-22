@@ -112,7 +112,7 @@ class MaterialDao{
 		ON CO.id_corr = C.id_corr_fk INNER JOIN PRATELEIRA P
 		ON C.id_coluna = P.id_coluna_fk INNER JOIN MATERIAL M
 		ON P.id_prat = M.id_prat_fk INNER JOIN FORNECEDOR F
-		ON M.id_forn_fk = F.id_forn';
+		ON M.id_forn_fk = F.id_forn order by id_material';
 		$stmt = Conexao::getConn()->prepare($sql);
 		$stmt->execute();
 		if($stmt->rowCount() > 0){
