@@ -28,10 +28,10 @@ if(isset($_POST['btnCadastrar'])){
     $material->setnome_material($_POST['nome_material']);
     $material->setdesc_material($_POST['desc_material']);
     $material->setqtde_estoque($_POST['qtde_estoque']);
-    $material->setid_prat_fk($_POST['id_prat_fk']);
-    $forn = explode("-", $_POST['select_forn']);
-    $forn_id = $forn[0];
-    $forn_nome = $forn[1];
+    $material->setid_prat_fk($_POST['select_prat']);
+    $forn = explode("-", $_POST['select_forn']); //Variável $forn vai ser o array separado pelo hífen
+    $forn_id = $forn[0]; //$forn_id é a posição 0 do array, ou seja, o número do id do fornecedor na caixa de seleção
+    $forn_nome = $forn[1]; //$forn_nome é a posição 1, ou seja, o nome
     $material->setid_forn_fk($forn_id);
     //$material->setid_forn_fk($_POST['id_forn_fk']);
     //$material->setimagem($imagem);
@@ -83,7 +83,18 @@ if(isset($_POST['btnCadastrar'])){
                   	</div>
                   	<div class="form-group">
                     <label for="prateleira">Prateleira</label>
-                    <input type="number" class="form-control" id="local" name="id_prat_fk" placeholder="codigo prateleira" min="1" max="64" required>
+                    <!--input type="number" class="form-control" id="local" name="id_prat_fk" placeholder="codigo prateleira" min="1" max="64" required-->
+                    <select name="select_prat" id="" class = "filtro form-control" required>
+                      <?php //MENU DE SELEÇÃO COM OS FORNECEDORES PUXADOS DO BANCO
+                        foreach($pratDao->read() as $prats){
+                          ?>
+                          <option>
+                            <?php echo $prats['id_prat'];?>
+                          </option>
+                          <?php
+                        }
+                      ?>
+                    </select>
                   </div>
                 <?php
                     //tratamento de erros para o campo de fornecedor permitir até o número limite de ids que tem no banco

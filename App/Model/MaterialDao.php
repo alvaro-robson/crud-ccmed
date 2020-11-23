@@ -133,7 +133,7 @@ class MaterialDao{
 								Descrição: <b>" . $res['nome_material'] . " - " . $res['desc_material'] . "</b><br>
 								Qtde em estoque: <b>" .	$res['qtde_estoque'] . "</b><br>
 								Fornecedor: <b>" .	$res['nome_forn'] . "</b><br>
-								Prateleira: <b>" . $res['nome_prat'] . "<br></b>
+								Prateleira: <b>" . $res['id_prat_fk'] . "<br></b>
 								Coluna do estoque: <b>".$res['nome_coluna'] . "</b><br>
 								Nome do corredor: <b>" .$res['nome_corredor'] . "</b><br>
 								</p>
