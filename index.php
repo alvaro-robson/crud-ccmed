@@ -81,15 +81,10 @@ $materialDao->relatorioMateriais();
 			<a href="listagens.php">
 				<button class="btn btn-warning btn-block btn-lg">Voltar</button>
 			</a>
-				
 		</div>
-			
 	</div>
 </div>
 <?php
-
-
-
 
 //--CRUD--FORNECEDOR---------------------------------------------
 $forn = new \App\Model\Fornecedor;

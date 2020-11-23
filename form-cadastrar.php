@@ -83,9 +83,8 @@ if(isset($_POST['btnCadastrar'])){
                   	</div>
                   	<div class="form-group">
                     <label for="prateleira">Prateleira</label>
-                    <!--input type="number" class="form-control" id="local" name="id_prat_fk" placeholder="codigo prateleira" min="1" max="64" required-->
                     <select name="select_prat" id="" class = "filtro form-control" required>
-                      <?php //MENU DE SELEÇÃO COM OS FORNECEDORES PUXADOS DO BANCO
+                      <?php //MENU DE SELEÇÃO COM AS PRATELEIRAS PUXADAS DO BANCO
                         foreach($pratDao->read() as $prats){
                           ?>
                           <option>
@@ -97,33 +96,20 @@ if(isset($_POST['btnCadastrar'])){
                     </select>
                   </div>
                 <?php
-                    //tratamento de erros para o campo de fornecedor permitir até o número limite de ids que tem no banco
-                    $array = $FornecedorDao->contar();
-                    $max = implode(end($array));
 				?>
 					<div class="form-group">
-                    <label for="fornecedor">Fornecedor</label>
-                    <!--input type="number" class="form-control" id="local" name="id_forn_fk" placeholder="codigo fornecedor" min="1"  max="<?php echo $max; ?>" required-->
-                    <select name="select_forn" id="" class = "filtro form-control" required>
-                      <?php //MENU DE SELEÇÃO COM OS FORNECEDORES PUXADOS DO BANCO
-                        foreach($FornecedorDao->read() as $forns){
-                          ?>
-                          <option>
-                            <?php echo $forns['id_forn'] . "-" . $forns['nome_forn'];?>
-                          </option>
-                          <?php
-                        }
-                      ?>
-                    </select>
-                    <?php
-                    //echo $_POST['select_forn'];
-                    /*
-                      if(isset($_POST['id_forn_fk'])){
-                        $fornecedor->setid_forn('id_forn_fk');
-                        $FornecedorDao->readEspecifico($fornecedor);
-                      }
-                      */
-                    ?>
+            <label for="fornecedor">Fornecedor</label>
+            <select name="select_forn" id="" class = "filtro form-control" required>
+              <?php //MENU DE SELEÇÃO COM OS FORNECEDORES PUXADOS DO BANCO
+                foreach($FornecedorDao->read() as $forns){
+                  ?>
+                  <option>
+                    <?php echo $forns['id_forn'] . "-" . $forns['nome_forn'];?>
+                  </option>
+                  <?php
+                }
+              ?>
+            </select>
 					</div>
 					<div class="form-group">
                 	<label for="imagem">Imagem</label>
